@@ -50,7 +50,7 @@ Plantilla directa: **"Ellos quieren [deseo], pero les preocupa [miedo/fricción]
 
 **El insight publicitario** potencia la premisa: una verdad del cliente que tiene pero no dice en voz alta ("estoy cansada de tener que pensar hooks nuevos para que me compren"). Si el brain dump revela un insight así, construí la premisa sobre él — es la diferencia entre un video correcto y uno que la rompe. Proceso completo (brain dump, apedrear la idea, pulir) en `references/proceso-creativo.md`.
 
-**Regla de oro:** si la creatividad no vende ni conecta, es arte, no comunicación. Y el guion está listo cuando no queda más nada por quitar — cada palabra justifica su lugar.
+**Regla de oro:** si la creatividad no vende ni conecta, es arte, no comunicación. Y el guion está listo cuando no queda más nada por quitar — cada palabra justifica su lugar. Ojo: "no queda nada por quitar" es **economía de expresión** (decir cada cosa con menos palabras y sin vueltas), no menos beats. Se recorta la palabrería y el relleno, nunca las escenas o capas que hacen respirar una pieza de branding. Un reel largo bien escrito también cumple esta regla.
 
 **Reglas de la premisa:**
 - Nace de una idea **relatable**: un escenario "dolorosamente fácil de entender", no una idea compleja
@@ -93,6 +93,12 @@ Detalle completo de cada nivel, cuándo usar cada formato y la tabla nicho→for
 | Reel largo | 60-90 seg | 150-230 palabras | Historia completa, caso de estudio |
 
 Elegí la duración en función del contenido, no al revés.
+
+**El objetivo manda el largo, no el reflejo de acortar:**
+- **Branding / conexión / historia de marca:** pide desarrollo. Varios beats, storytelling que respire. Default: reel extendido o largo (45-90 seg). Acortar acá mata la narrativa.
+- **Anuncio / respuesta directa / BOFU:** pide ir al punto. Un beat de valor, sin vueltas. Default: micro-reel o estándar (7-35 seg).
+
+Definí primero si la pieza es branding o anuncio; recién ahí elegís la duración.
 
 ---
 
@@ -352,7 +358,7 @@ Cuando el usuario trae un guion propio: leelo entero una vez antes de comentar, 
 - ¿El desarrollo entrega exactamente lo que prometió el hook?
 - ¿Hay una sola idea central?
 - ¿La cadena es causal (South Park) sin que aparezcan escritas las palabras "pero / por lo tanto"?
-- ¿No queda nada por quitar? (cada palabra justifica su lugar)
+- ¿No queda nada por quitar? (economía de expresión: menos palabras y vueltas, nunca menos beats)
 - ¿La historia se REVIVE en tiempo presente y con los sentidos, o se reporta desde el helicóptero?
 - ¿La transformación central se puede resumir en 5 segundos? ¿Hay micro-hooks entre las fases?
 - ¿El ritmo alterna oraciones cortas, medianas y largas? (leído en voz alta, ¿es monótono?)
