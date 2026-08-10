@@ -26,6 +26,11 @@
       "name": "reuniones-muta",
       "source": "./plugins/reuniones-muta",
       "description": "Reuniones convertidas en entregables: resumen-prospecto destila la reunion estrategica en un HTML con diseno Muta ('En Limpio') listo para enviar."
+    },
+    {
+      "name": "claude-os",
+      "source": "./plugins/claude-os",
+      "description": "Las tres skills que sostienen un Claude OS, en orden de ciclo de vida: cowork-builder para armarlo la primera vez, session-audit para el dia a dia, setup-auditor para el mantenimiento cada 1 o 2 meses."
     }
   ]
 }
