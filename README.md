@@ -9,10 +9,11 @@ Marketplace de skills de Claude Code de Muta Digital, para equipo y amigos.
 - **metodologia-fv** — investigación de mercado (7 Maletas), psicología del consumidor y matriz de diversificación de ángulos. Basado en la metodología de Felipe Vergara.
 - **reuniones-muta** — reuniones convertidas en entregables: `resumen-prospecto` destila una reunión estratégica en un HTML con diseño Muta ("En Limpio") para mandarle al prospecto o cliente como resumen post-reunión.
 
-- **claude-os** — las tres skills que sostienen un Claude OS, en orden de ciclo de vida:
+- **claude-os** — las cuatro skills que sostienen un Claude OS, en orden de ciclo de vida:
   1. `cowork-builder` — **la primera vez.** Construye el sistema de trabajo desde cero, o le suma un dominio nuevo. Se corre una sola vez y por pedido explícito.
   2. `session-audit` — **el día a día.** Al cerrar una sesión, audita lo que pasó y guarda lo aprendido en el archivo que corresponde (CLAUDE.md, MEMORY.md o la estación).
   3. `setup-auditor` — **el mantenimiento.** Se programa para correr una vez cada 1 o 2 meses, o cuando sale un modelo nuevo: audita CLAUDE.md, skills, hooks y subagentes contra la guía vigente de Anthropic y devuelve un veredicto borrar / dejar / reescribir por instrucción.
+  4. `skill-audit` — **manual, con `/skill-audit`.** Audita el registro de skills instaladas: presupuesto de descripciones, cuáles llegan truncadas, y un plan ordenado de bajas y recortes.
 
 Los dos últimos se complementan: `metodologia-fv` define qué decir, `creacion-contenido` lo escribe. Cada skill funciona por separado.
 

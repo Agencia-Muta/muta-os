@@ -30,7 +30,7 @@
     {
       "name": "claude-os",
       "source": "./plugins/claude-os",
-      "description": "Las tres skills que sostienen un Claude OS, en orden de ciclo de vida: cowork-builder para armarlo la primera vez, session-audit para el dia a dia, setup-auditor para el mantenimiento cada 1 o 2 meses."
+      "description": "Las cuatro skills que sostienen un Claude OS, en orden de ciclo de vida: cowork-builder para armarlo la primera vez, session-audit para el dia a dia, setup-auditor para el mantenimiento cada 1 o 2 meses, skill-audit (manual) para auditar el registro de skills instaladas."
     }
   ]
 }

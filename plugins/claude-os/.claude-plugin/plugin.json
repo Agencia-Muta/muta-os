@@ -1,7 +1,7 @@
 {
   "name": "claude-os",
-  "version": "1.0.0",
-  "description": "Las tres skills que sostienen un Claude OS, en orden de ciclo de vida. cowork-builder: se corre una sola vez, la primera, para construir el sistema desde cero o sumarle un dominio nuevo. session-audit: uso diario, al cerrar una sesion, guarda lo aprendido en el archivo que corresponde. setup-auditor: mantenimiento, se programa cada 1 o 2 meses (o cuando sale un modelo nuevo) para auditar CLAUDE.md, skills, hooks y subagentes contra la guia vigente de Anthropic.",
+  "version": "1.1.0",
+  "description": "Las cuatro skills que sostienen un Claude OS, en orden de ciclo de vida. cowork-builder: se corre una sola vez, la primera, para construir el sistema desde cero o sumarle un dominio nuevo. session-audit: uso diario, al cerrar una sesion, guarda lo aprendido en el archivo que corresponde. setup-auditor: mantenimiento, se programa cada 1 o 2 meses (o cuando sale un modelo nuevo) para auditar CLAUDE.md, skills, hooks y subagentes contra la guia vigente de Anthropic. skill-audit: manual, con /skill-audit, audita el registro de skills instaladas (presupuesto de descripciones, truncadas, bajas y recortes).",
   "author": {
     "name": "Muta Digital"
   },
@@ -11,6 +11,7 @@
     "memoria",
     "auditoria",
     "mantenimiento",
-    "cowork"
+    "cowork",
+    "registro"
   ]
 }
