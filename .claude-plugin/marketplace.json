@@ -1,6 +1,8 @@
 {
   "name": "muta-os",
-  "owner": { "name": "Matias Cardoselli" },
+  "owner": {
+    "name": "Matias Cardoselli"
+  },
   "plugins": [
     {
       "name": "meta-ads-muta",
@@ -30,7 +32,7 @@
     {
       "name": "claude-os",
       "source": "./plugins/claude-os",
-      "description": "Las cuatro skills que sostienen un Claude OS, en orden de ciclo de vida: cowork-builder para armarlo la primera vez, session-audit para el dia a dia, setup-auditor para el mantenimiento cada 1 o 2 meses, skill-audit (manual) para auditar el registro de skills instaladas."
+      "description": "Las cinco skills que sostienen un Claude OS: cowork-builder para armarlo la primera vez, session-audit para el dia a dia, setup-auditor para el mantenimiento cada 1 o 2 meses, skill-audit (manual) para auditar el registro de skills instaladas, y skill-a-prompt para migrar una skill a un prompt de texto pegable cuando hay que usarla en una herramienta sin skills."
     }
   ]
 }
