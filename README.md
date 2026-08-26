@@ -10,7 +10,6 @@ Marketplace de skills de Claude Code de Muta Digital, para equipo y amigos.
 
 - **docs-y-resumenes** — material crudo convertido en documentos ejecutables.
   - `resumen-reunion` — convierte la transcripción de una reunión en un resumen con párrafo de contexto, qué se discutió, qué se definió y los pendientes separados por lado. El mismo texto sirve para mandar por mail al cliente y para actualizar el estado del proyecto.
-  - `resumen-prospecto` — destila una reunión estratégica con un prospecto o cliente en el documento HTML "En Limpio" con diseño Muta, listo para mandarle. No es una propuesta ni una minuta interna.
   - `muta-sop` — toma audios, transcripciones, notas sueltas o una explicación hablada y devuelve un SOP, QA, guía interna, guía para cliente o plantilla, con el paso a paso redactado para alguien que nunca hizo la tarea. Si lo que le contaron son varios procesos pegados (cambia el responsable, se estira más de 90 minutos, hay paso de manos), lo detecta y propone separarlos antes de escribir.
 
 - **claude-os** — las skills que sostienen un Claude OS, en orden de ciclo de vida:
