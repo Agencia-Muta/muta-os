@@ -32,7 +32,7 @@
     {
       "name": "docs-y-resumenes",
       "source": "./plugins/docs-y-resumenes",
-      "description": "Material crudo convertido en documentos ejecutables. muta-sop toma una explicacion hablada, un audio o notas de un proceso y devuelve un SOP, QA, guia interna o plantilla. resumen-prospecto destila una reunion estrategica en el HTML 'En Limpio' con diseno Muta, listo para mandarle al cliente."
+      "description": "Material crudo convertido en documentos ejecutables: muta-sop arma SOPs y guias desde un proceso hablado, resumen-reunion convierte una transcripcion en un resumen con contexto y pendientes por lado, y resumen-prospecto destila una reunion estrategica en el HTML 'En Limpio' con diseno Muta."
     }
   ]
 }
