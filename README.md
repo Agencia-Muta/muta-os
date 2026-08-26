@@ -9,6 +9,9 @@ Marketplace de skills de Claude Code de Muta Digital, para equipo y amigos.
 - **metodologia-fv** — investigación de mercado (7 Maletas), psicología del consumidor y matriz de diversificación de ángulos. Basado en la metodología de Felipe Vergara.
 - **reuniones-muta** — reuniones convertidas en entregables: `resumen-prospecto` destila una reunión estratégica en un HTML con diseño Muta ("En Limpio") para mandarle al prospecto o cliente como resumen post-reunión.
 
+- **docs-y-resumenes** — material crudo convertido en documentos ejecutables.
+  - `muta-sop` — toma audios, transcripciones, notas sueltas o una explicación hablada y devuelve un SOP, QA, guía interna, guía para cliente o plantilla, con el paso a paso redactado para alguien que nunca hizo la tarea. Si lo que le contaron son varios procesos pegados (cambia el responsable, se estira más de 90 minutos, hay paso de manos), lo detecta y propone separarlos antes de escribir.
+
 - **claude-os** — las skills que sostienen un Claude OS, en orden de ciclo de vida:
   1. `cowork-builder` — **la primera vez.** Construye el sistema de trabajo desde cero, o le suma un dominio nuevo. Se corre una sola vez y por pedido explícito.
   2. `session-audit` — **el día a día.** Al cerrar una sesión, audita lo que pasó y guarda lo aprendido en el archivo que corresponde (CLAUDE.md, MEMORY.md o la estación).
@@ -28,6 +31,7 @@ Los dos últimos se complementan: `metodologia-fv` define qué decir, `creacion-
 /plugin install meta-ads-muta@muta-os
 /plugin install reuniones-muta@muta-os
 /plugin install claude-os@muta-os
+/plugin install docs-y-resumenes@muta-os
 ```
 
 **App Claude (web/desktop/Cowork):**

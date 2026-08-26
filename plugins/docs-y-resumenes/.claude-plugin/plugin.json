@@ -1,0 +1,16 @@
+{
+  "name": "docs-y-resumenes",
+  "version": "1.0.0",
+  "description": "Convierte material crudo y desordenado en documentos ejecutables. muta-sop: toma audios, transcripciones, notas sueltas o una explicacion hablada de un proceso y devuelve un SOP, QA, guia interna, guia para cliente o plantilla, con el paso a paso redactado para que alguien que nunca hizo la tarea pueda ejecutarla. Detecta cuando lo que le contaron son varios procesos pegados y propone separarlos antes de escribir.",
+  "author": {
+    "name": "Muta Digital"
+  },
+  "keywords": [
+    "sop",
+    "documentacion",
+    "procesos",
+    "resumenes",
+    "guia interna",
+    "plantilla"
+  ]
+}
