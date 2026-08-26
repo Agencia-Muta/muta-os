@@ -52,6 +52,12 @@ Un solo archivo HTML (sin markdown intermedio) que pasa en limpio lo hablado en 
 
 9. **Verificar y entregar.** Antes que nada: `grep -c "{{" archivo.html` tiene que dar 0 (un placeholder sin reemplazar llegando al cliente es el peor bug posible de esta skill). Después, si hay browser disponible, chequeo rápido de render. Entregá la ruta y un resumen de qué secciones salieron. **La skill nunca envía el documento**: el usuario lo revisa y lo manda.
 
+## Cuando el documento se manda por mail
+
+- **Asunto: `En Limpio | <Nombre del negocio>`.** Siempre, sin variantes: el correo se rastrea por el nombre del negocio en el asunto, igual que con los presupuestos.
+- **El PDF adjunto se llama `En Limpio - <Nombre del negocio>.pdf`.** El sufijo de versión (`-v1`) es del archivo de trabajo, nunca del que ve el cliente: si hay que versionar, se adjunta una copia con el nombre limpio.
+- No enhebrar la respuesta en el hilo de mail por el que llegó la consulta si ese hilo arranca pidiendo tarifario o presupuesto. Mail nuevo, para que el documento se reenvíe internamente sin ese encabezado arriba.
+
 ## Estructura fija (los muebles)
 
 Esto es idéntico en todos los documentos; es lo que lo hace reconocible como pieza de Muta:
