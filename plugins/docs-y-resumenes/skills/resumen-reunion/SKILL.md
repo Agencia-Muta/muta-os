@@ -31,12 +31,13 @@ No se usa para destilar una reunión de diagnóstico en una pieza diseñada para
 5. Escribí el contexto como un párrafo corrido de dos a cuatro oraciones: por qué se hizo la reunión, cómo salió en general, y qué queda en el aire. Es lo primero que lee alguien que no estuvo.
 6. Escribí cada tema en un solo lugar, con el qué y el porqué juntos. No separes "lo que se discutió" de "lo que se definió": en casi todos los temas se discutió y se resolvió, y separarlos hace que el resumen diga todo dos veces y salga al triple de largo.
 7. Máximo dos subpuntos por tema. El tema que necesita más se gana su propia sección con título y párrafo, como cualquier asunto que tenga peso propio (una decisión técnica con varias implicancias, un tema comercial que se abrió al final).
-8. Marcá qué no bloquea. Si algo puede resolverse después sin frenar lo demás, decilo: evita que alguien detenga el proyecto esperando algo opcional.
-9. Cruzá definiciones contra pendientes: toda definición que implique trabajo (instalar algo, producir algo, cambiar algo) tiene que aparecer en pendientes con su responsable. Una definición sin pendiente es una tarea que nadie va a hacer.
-10. Agrupá los pendientes por responsable, con el nombre de cada uno. No los separes en "nuestro lado" y "el de ellos": hay freelances y terceros que no entran en ninguno, y adentro de cada lado hay gente distinta que necesita saber qué le toca.
-11. Las tensiones van como pendientes de definición, nunca como reproches. Si dijeron dos cosas incompatibles, el texto dice "queda por definir si X o Y".
-12. Revisá que todo sea mostrable al cliente tal cual está. Nada de comentarios internos sobre el trato, la cuenta o las personas. Si al registrar el estado hace falta algo interno, se suma a mano en ese momento.
-13. Antes de entregar, releelo preguntándote si alguien que faltó entiende qué pasó y qué sigue. Lo que no se entienda sin haber estado, explicalo.
+8. Los eventos futuros acordados (una filmación, un viaje, una presentación, una visita) no se comprimen: llevan cuándo son, qué formato tienen y qué hay que preparar, y su preparación aparece en pendientes. Son lo más caro de perder en un resumen, porque tienen fecha de vencimiento: un color mal puesto se corrige cuando se ve, un viaje sin preparar se pierde.
+9. Marcá qué no bloquea. Si algo puede resolverse después sin frenar lo demás, decilo: evita que alguien detenga el proyecto esperando algo opcional.
+10. Cruzá definiciones contra pendientes: toda definición que implique trabajo (instalar algo, producir algo, cambiar algo) tiene que aparecer en pendientes con su responsable. Una definición sin pendiente es una tarea que nadie va a hacer.
+11. Agrupá los pendientes por responsable, con el nombre de cada uno. No los separes en "nuestro lado" y "el de ellos": hay freelances y terceros que no entran en ninguno, y adentro de cada lado hay gente distinta que necesita saber qué le toca.
+12. Las tensiones van como pendientes de definición, nunca como reproches. Si dijeron dos cosas incompatibles, el texto dice "queda por definir si X o Y".
+13. Revisá que todo sea mostrable al cliente tal cual está. Nada de comentarios internos sobre el trato, la cuenta o las personas. Si al registrar el estado hace falta algo interno, se suma a mano en ese momento.
+14. Antes de entregar, releelo preguntándote si alguien que faltó entiende qué pasó y qué sigue. Lo que no se entienda sin haber estado, explicalo.
 
 ## Formato de salida
 
