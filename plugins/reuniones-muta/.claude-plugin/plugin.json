@@ -1,9 +1,0 @@
-{
-  "name": "reuniones-muta",
-  "version": "1.0.0",
-  "description": "Reuniones convertidas en entregables. Skill resumen-prospecto: destila una reunion estrategica con un prospecto o cliente en un documento HTML con diseno Muta ('En Limpio'), listo para enviarle como resumen estrategico post-reunion.",
-  "author": {
-    "name": "Muta Digital"
-  },
-  "keywords": ["reuniones", "entregables", "prospectos", "diagnostico", "resumen estrategico", "clientes"]
-}

@@ -7,9 +7,9 @@ Marketplace de skills de Claude Code de Muta Digital, para equipo y amigos.
 - **meta-ads-muta** — análisis técnico multinivel de campañas de Meta Ads (ROAS, CPL, CPM, fatiga, embudo).
 - **creacion-contenido** — redacción de contenido: guiones de video corto, fórmulas de copy, carruseles y laboratorio de hooks.
 - **metodologia-fv** — investigación de mercado (7 Maletas), psicología del consumidor y matriz de diversificación de ángulos. Basado en la metodología de Felipe Vergara.
-- **reuniones-muta** — reuniones convertidas en entregables: `resumen-prospecto` destila una reunión estratégica en un HTML con diseño Muta ("En Limpio") para mandarle al prospecto o cliente como resumen post-reunión.
 
 - **docs-y-resumenes** — material crudo convertido en documentos ejecutables.
+  - `resumen-prospecto` — destila una reunión estratégica con un prospecto o cliente en el documento HTML "En Limpio" con diseño Muta, listo para mandarle. No es una propuesta ni una minuta interna.
   - `muta-sop` — toma audios, transcripciones, notas sueltas o una explicación hablada y devuelve un SOP, QA, guía interna, guía para cliente o plantilla, con el paso a paso redactado para alguien que nunca hizo la tarea. Si lo que le contaron son varios procesos pegados (cambia el responsable, se estira más de 90 minutos, hay paso de manos), lo detecta y propone separarlos antes de escribir.
 
 - **claude-os** — las skills que sostienen un Claude OS, en orden de ciclo de vida:
@@ -29,7 +29,6 @@ Los dos últimos se complementan: `metodologia-fv` define qué decir, `creacion-
 /plugin install creacion-contenido@muta-os
 /plugin install metodologia-fv@muta-os
 /plugin install meta-ads-muta@muta-os
-/plugin install reuniones-muta@muta-os
 /plugin install claude-os@muta-os
 /plugin install docs-y-resumenes@muta-os
 ```

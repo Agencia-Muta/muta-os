@@ -25,11 +25,6 @@
       "description": "Proceso de branding: informe de investigacion de mercado de la categoria en la que juega un cliente o prospecto."
     },
     {
-      "name": "reuniones-muta",
-      "source": "./plugins/reuniones-muta",
-      "description": "Reuniones convertidas en entregables: resumen-prospecto destila la reunion estrategica en un HTML con diseno Muta ('En Limpio') listo para enviar."
-    },
-    {
       "name": "claude-os",
       "source": "./plugins/claude-os",
       "description": "Las cinco skills que sostienen un Claude OS: cowork-builder para armarlo la primera vez, session-audit para el dia a dia, setup-auditor para el mantenimiento cada 1 o 2 meses, skill-audit (manual) para auditar el registro de skills instaladas, y skill-a-prompt para migrar una skill a un prompt de texto pegable cuando hay que usarla en una herramienta sin skills."
@@ -37,7 +32,7 @@
     {
       "name": "docs-y-resumenes",
       "source": "./plugins/docs-y-resumenes",
-      "description": "Material crudo convertido en documentos ejecutables. muta-sop toma audios, transcripciones o una explicacion hablada de un proceso y devuelve un SOP, QA, guia interna o plantilla, separando en varios documentos cuando lo que le contaron son varios procesos pegados."
+      "description": "Material crudo convertido en documentos ejecutables. muta-sop toma una explicacion hablada, un audio o notas de un proceso y devuelve un SOP, QA, guia interna o plantilla. resumen-prospecto destila una reunion estrategica en el HTML 'En Limpio' con diseno Muta, listo para mandarle al cliente."
     }
   ]
 }
