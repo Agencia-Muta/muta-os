@@ -1,6 +1,6 @@
 {
   "name": "docs-y-resumenes",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Convierte material crudo y desordenado en documentos ejecutables. muta-sop: una explicacion hablada, un audio o notas de un proceso se vuelven un SOP, QA, guia interna o plantilla, detectando cuando lo que le contaron son varios procesos pegados. resumen-reunion: la transcripcion de una reunion se vuelve un resumen con contexto, lo discutido, lo definido y los pendientes de cada lado, para mandar por mail al cliente y para actualizar el estado del proyecto.",
   "author": {
     "name": "Muta Digital"

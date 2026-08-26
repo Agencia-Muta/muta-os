@@ -71,8 +71,13 @@ operativo de la agencia: clasificándolo, priorizándolo y dejándolo listo para
 El paso a paso es donde el documento se gana o se pierde. Estas reglas existen porque cada una
 corrige una forma distinta de volverlo ilegible:
 
-- Párrafos completos, nunca viñetas. Una lista de bullets parece más clara y en la práctica
-  esconde el orden: el lector no sabe si son pasos, opciones o cosas a tener en cuenta.
+- Párrafos completos, nunca viñetas, para narrar una acción secuencial. Una lista de bullets
+  parece más clara y en la práctica esconde el orden: el lector no sabe si son pasos, opciones
+  o cosas a tener en cuenta.
+- Excepción: un checklist de verificación (preguntas de control antes de dar algo por terminado,
+  opciones de configuración a tildar) sí va en bullets, cada ítem con mayúscula inicial. Ahí no
+  hay una secuencia que narrar, es una lista de chequeos independientes entre sí, y metida en un
+  párrafo corrido se vuelve ilegible.
 - Cada paso lleva un título claro y describe una acción concreta.
 - No sobreexpliques acciones simples. Si el paso es "entrá a Metricool", no le dediques un
   párrafo: quien ejecuta ya está frente a la pantalla.
