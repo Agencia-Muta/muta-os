@@ -1,9 +1,9 @@
 ---
 name: guion-video
 description: >
-  Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y qué tipo de guion se necesita. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
+  Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y las tres decisiones de formato. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.4.0
+  version: 1.4.1
 ---
 
 # Guionista de Video Corto
@@ -65,7 +65,7 @@ Antes de escribirla, identificá qué **deseo primario** toca la pieza: salud, e
 
 Lo que potencia una premisa es un **insight**: una verdad que el espectador tiene pero no dice en voz alta. Si aparece uno, construí la premisa sobre él. Es la diferencia entre un video correcto y uno que funciona.
 
-**Premisa ≠ hook.** El hook capta atención en los primeros segundos; la premisa es lo que el espectador se lleva si se queda. El payoff se entrega cerca de las tres cuartas partes del video, sostenido por un loop abierto que mantiene la tensión hasta ahí.
+**Premisa ≠ hook.** El hook capta atención en los primeros segundos; la premisa es lo que el espectador se lleva si se queda.
 
 Comunicá la premisa en una línea antes del guion, para que el usuario valide la dirección.
 
@@ -73,10 +73,10 @@ Comunicá la premisa en una línea antes del guion, para que el usuario valide l
 
 ## El mundo del que mira
 
-Es lo que separa un guion correcto de uno que el destinatario siente escrito para él. Cuatro reglas, ninguna opcional:
+Es lo que separa un guion correcto de uno que el destinatario siente escrito para él. Cinco reglas, ninguna opcional:
 
 1. **Metelo en escenas suyas, con los sustantivos de su rubro.** El viajante que recorre el país, la góndola, el camión que sale del depósito, el reporte de likes que le llega a fin de mes, el sobrino que "sabe de redes". Un guion sin ningún sustantivo del mundo del que mira le habla *de* él, no *a* él. Si el brief no trae esos detalles, pedilos en la Fase 0: cómo es un día del que va a ver esto, qué le llega, quién lo rodea, qué mira todas las mañanas.
-2. **Absolvé antes de señalar.** El problema del espectador tiene una lógica y nunca es su culpa: "No es que te estafaron. Es que te estaban midiendo lo único que sabían medir." / "Y tiene lógica, porque nunca lo necesitaste." Ese movimiento es la calidez real de una pieza; los adjetivos cálidos no la reemplazan. Un guion que solo diagnostica queda institucional aunque el léxico esté bien.
+2. **Absolvé antes de señalar.** El problema del espectador tiene una lógica y nunca es su culpa: "No es que te estafaron. Es que te estaban midiendo lo único que sabían medir." / "Y tiene lógica, porque nunca lo necesitaste." Ese movimiento es la calidez real de una pieza; los adjetivos cálidos no la reemplazan. Un guion que solo diagnostica queda institucional.
 3. **Hablale, no lo describas.** Segunda persona sostenida, y las preguntas que él ya se hace en su cabeza: cuánto de esto llega a ser una consulta de verdad, cuánta termina en una factura. Una pregunta que el espectador ya se hizo vale más que una afirmación nuestra.
 4. **La marca entra en escena haciendo, nunca descripta desde afuera.** "Elegimos un número y lo medimos" es alguien trabajando; "En [marca] se elige un número" es un folleto. Primera persona del plural y voz activa siempre que la marca aparece, salvo que su guía de voz diga otra cosa.
 5. **Economía no es compresión.** Lo hablado necesita aire y repetición con intención: "Te mostraron alcance. Te mostraron seguidores. Te mostraron un reel con cien mil reproducciones." Se corta el relleno y la palabrería; no se corta la respiración ni los beats que hacen que el argumento se sienta, además de entenderse.
@@ -107,8 +107,8 @@ El espectador decide en un segundo y medio si se queda.
 - Incluye el contexto mínimo para que se entienda por qué le importa a él
 - Tiene que poder cumplirse con el contenido real. Nada de promesa que después no se paga
 - La forma más fuerte suele ser el mandato directo o la afirmación sin rodeos: "Dejá de entrenar todos los días" gana a "Mucha gente cree que hay que entrenar todos los días, y es mentira"
-- Son tres capas: la toma que frena, el texto en pantalla y lo hablado. Si las tres dicen lo mismo, aburre; si no se relacionan, confunde. No siempre están las tres
-- **El texto en pantalla del hook es el gancho contextual.** No repite lo hablado: da el contexto o abre la curiosidad que lo hablado no da. Va arriba, porque la mirada scrollea de arriba hacia abajo. Las tres capas se potencian: si dicen lo mismo, aburre; si no se relacionan, confunde. En algunos formatos (un antes y después, una demostración) el gancho es todo textual y contextual, y no hace falta decir nada
+- Son tres capas que se potencian: la toma que frena, el texto en pantalla y lo hablado. Si las tres dicen lo mismo, aburre; si no se relacionan, confunde. No siempre están las tres
+- **El texto en pantalla del hook es el gancho contextual.** No repite lo hablado: da el contexto o abre la curiosidad que lo hablado no da. Va arriba, porque la mirada scrollea de arriba hacia abajo. En algunos formatos (un antes y después, una demostración) el gancho es todo textual y contextual, y no hace falta decir nada
 - **La primera imagen la decide el guion, no la edición.** El que scrollea decide en un segundo y medio, muchas veces sin sonido: el primer cuadro es la mitad del hook. Escribí qué se ve en el segundo cero
 
 **Leé `references/sistema-de-hooks.md` antes de escribir el hook** y pasalo por su checklist. Ahí están las macrocategorías, los métodos para frenar el scroll, las palancas psicológicas y la lista de hooks quemados.
@@ -140,7 +140,7 @@ Ponelo siempre que el tema lo permita. En venta directa a veces sobra: si el arg
 
 ### LA CADENA DE OPEN LOOPS (obligatoria en todo lo que no sea venta directa pura)
 
-**Toda creatividad es una promesa:** el gancho promete, el payoff paga, y lo que sostiene la atención en el medio son los **open loops** — preguntas, tensiones o promesas abiertas en la mente del que mira, que lo obligan a seguir para resolverlas. Ojo: **el payoff no es la oferta.** El payoff es lo que el espectador recibe a cambio de mirar; la oferta es lo que la marca quiere venderle. Si el payoff es "te encajaron una publicidad", el video no pagó nada.
+**Toda creatividad es una promesa:** el gancho promete, el payoff paga, y lo que sostiene la atención en el medio son los **open loops** — preguntas, tensiones o promesas abiertas en la mente del que mira, que lo obligan a seguir para resolverlas. Ojo: **el payoff no es la oferta.** El payoff es lo que el espectador se lleva por mirar — una risa, un dato, una historia cerrada. La oferta es lo que la marca quiere venderle. Si lo único que recibió es la publicidad, el video no pagó nada.
 
 Todo guion con algo de storytelling se sostiene sobre dos niveles de open loop, no uno:
 
@@ -170,7 +170,6 @@ En piezas de venta, el cierre suele funcionar mejor con un filtro adelante: deci
 
 ## Técnicas de retención
 
-- **Re-hook:** a mitad del guion, un segundo gancho para el que se está desconectando
 - **Espejo:** en el hook, describí la situación exacta del espectador ideal. "¿Llegás a fin de mes sin saber en qué se te fue la plata?" gana a "¿Querés ahorrar?"
 - **Autoridad implícita:** no digas que sos experto. Mostralo con un dato, un resultado o un ejemplo dentro del guion
 - **Ritmo:** alterná oraciones cortas, medianas y largas. Leído en voz alta no puede sonar monótono
