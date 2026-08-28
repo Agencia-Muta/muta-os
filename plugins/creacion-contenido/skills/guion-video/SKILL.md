@@ -2,6 +2,8 @@
 name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y qué tipo de guion se necesita. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
+metadata:
+  version: 1.1.0
 ---
 
 # Guionista de Video Corto
@@ -28,20 +30,26 @@ Si no hay brief ni guía de voz y el usuario quiere avanzar igual, escribí, y a
 
 ---
 
-## FASE 1 — Qué tipo de guion es
+## FASE 1 — Las tres decisiones de formato
 
-Preguntá cuál de estos, salvo que ya esté claro. Cambia la estructura entera, así que no lo asumas:
+Un video no es una decisión de formato: son tres, y conviene hacerlas conscientes antes de escribir. Si el usuario ya definió alguna, no la vuelvas a preguntar.
 
-| Tipo | Para qué sirve | Qué lo define |
-|---|---|---|
-| **Venta directa / anuncio** | Que el espectador consulte o compre | Un problema suyo, el criterio de la marca frente a ese problema, un filtro de audiencia y una acción |
-| **Historia** | Conexión y recordación de marca | Situación, conflicto, quiebre, resolución, aprendizaje |
-| **Criterio / autoridad** | Mostrar cómo se piensa un problema | Una decisión concreta y por qué se tomó así |
-| **Educativo / tutorial** | Utilidad y guardados | Pasos o puntos que el espectador puede aplicar |
-| **Serie** | Sostener un arco en varias piezas | Un tema repartido en episodios con continuidad entre ellos |
-| **Yap** | Hablar a cámara suelto, sin producción | Una idea dicha entera, sin estructura visible |
+**Nivel 1 — Tipo de contenido. ¿Qué objetivo cumple la pieza?**
+- **Educacional:** enseñar algo útil del nicho y ganar autoridad
+- **Historia / Conexión:** que te compren como persona o marca, vínculo emocional
+- **Autoridad:** prueba social y resultados concretos, lo que justifica elegirte
+- **Series:** contenido en capítulos que genera hábito y retención
+- **Double Down:** repetir con variaciones un formato que ya probó funcionar
 
-Si el pedido no encaja limpio en ninguno, elegí el más cercano y decilo en una línea.
+**Nivel 2 — Formato narrativo. ¿Cómo se estructura?**
+Problema→Solución · Antes→Después→Puente · Error común · Mitos vs. hechos · Tutorial paso a paso · Do's & Don'ts · Tips/Hacks · Comparación · Historia personal/Breakthrough · Viaje inverso · Venta directa
+
+**Nivel 3 — Formato de producción. ¿Cómo se graba?**
+Hablando a cámara · Voz en off + B-roll · Cambios de plano · Screenshare · Green screen · UGC/Testimonial · Texto animado · Pizarra/Slides
+
+El detalle de cada nivel, la tabla de nicho a formato de producción y el flujo de decisión están en `references/formatos-de-contenido.md`. Para elegir la estructura narrativa según el objetivo (awareness, consideración, conversión) y para situaciones concretas ("tenés un caso de éxito", "tu tema es aburrido o técnico", "necesitás máxima retención"), usá la **guía rápida de uso** al final del manual: `../estructuras-copy/references/manual-estructuras.md`.
+
+**Usalo como brújula, no como jaula.** Los formatos no son categorías puras: un mismo video puede ser educacional EN formato de historia personal. Los tres niveles ordenan la decisión; no la reemplazan.
 
 ---
 
@@ -185,7 +193,7 @@ Premisa: [deseo + preocupación + resolución, en una línea]
 [guion como flujo de habla natural, sin etiquetas de bloque]
 
 Duración estimada: ~XX segundos
-Tipo: [venta directa / historia / criterio / educativo / serie / yap]
+Formato: [tipo de contenido → formato narrativo → formato de producción]
 Objetivo: [el objetivo comercial declarado en la Fase 0]
 Notas de dirección: [tono, pausas, énfasis, y cómo se graba: a cámara, voz en off con broll, cambios de plano, pantalla compartida]
 Texto en pantalla: [si aplica]

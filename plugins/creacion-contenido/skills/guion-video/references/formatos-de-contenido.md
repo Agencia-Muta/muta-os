@@ -58,6 +58,7 @@ Tomás un formato que ya funcionó y lo repetís con variaciones. No es copiar: 
 | 08 | **Comparación / Nosotros vs. Ellos** | Dos opciones en paralelo, una gana | MOFU/BOFU | Audiencias evaluando opciones |
 | 09 | **Historia Personal / Breakthrough** | El momento "me cayó la ficha" | TOFU/MOFU | Marca personal, confianza, diferenciación |
 | 10 | **Viaje Inverso** | Arrancás por el gran resultado y volvés atrás a explicar | TOFU/MOFU | Casos de éxito con resultado llamativo; videos largos |
+| 11 | **Venta directa** | Un problema del espectador, el criterio de la marca frente a ese problema, un filtro de audiencia y una acción | BOFU | Anuncios que tienen que ir al grano. En ticket alto y venta consultiva el argumento se desarrolla, no se comprime: el filtro ("esto no es para vos si...") califica el lead |
 
 Ejemplos de cada uno: "La comida queda con sabor a metal. No es el fuego, es la sartén." (01) / "Antes tardábamos 4 horas en editar un video. Hoy 40 minutos. Lo que cambió fue este proceso." (02) / "El error #1 cuando querés vender por Instagram: hablar de vos y no del problema del cliente." (03) / "Mito: 'con más presupuesto vendés más'. Realidad: si el mensaje no convierte, solo perdés más rápido." (04) / "Conseguimos 30 leads en una semana con $50 de pauta. Así lo hicimos." (10)
 
