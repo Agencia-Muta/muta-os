@@ -1,6 +1,8 @@
 ---
 name: resumen-reunion
 description: Convierte una reunion en un resumen con contexto, lo que se definio con su razonamiento y los pendientes por responsable. Sirve para mandar por mail al cliente y para actualizar el estado del proyecto.
+metadata:
+  version: 1.0.0
 ---
 
 # resumen-reunion

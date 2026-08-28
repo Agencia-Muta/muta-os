@@ -14,6 +14,8 @@ description: >
   "insights del cliente", "ángulos de marketing", "guía para video", "brief creativo".
   También activala cuando el usuario tenga el reporte de 7 Maletas listo y quiera
   convertirlo en dirección creativa para anuncios.
+metadata:
+  version: 1.0.0
 ---
 
 # Detective de Ángulos — Psicología del Consumidor para Creatividad Publicitaria

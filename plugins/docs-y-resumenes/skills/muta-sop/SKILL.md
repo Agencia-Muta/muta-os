@@ -1,6 +1,8 @@
 ---
 name: muta-sop
 description: Documenta procesos operativos de Muta como SOP, QA, guia interna o plantilla. Usar al pedir documentar un proceso, crear o mejorar un SOP, o convertir notas y grabaciones en un documento ejecutable.
+metadata:
+  version: 1.0.0
 ---
 
 # muta-sop: Documentación de Procesos para Muta Digital

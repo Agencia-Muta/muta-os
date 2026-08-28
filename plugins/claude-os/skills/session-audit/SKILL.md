@@ -1,6 +1,8 @@
 ---
 name: session-audit
 description: Audita la sesion o el sistema de archivos del Claude OS y guarda lo aprendido en el archivo correcto. Usar ante 'audita la sesion', 'guarda lo que aprendimos' o 'antes de cerrar guarda'.
+metadata:
+  version: 1.0.0
 ---
 
 # session-audit — Auditoría del Claude OS

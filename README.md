@@ -48,3 +48,7 @@ Marketplaces → elegir `muta-os` → "Enable auto-update".
 ## Atribución
 
 `metodologia-fv` implementa la metodología de Felipe Vergara (7 Maletas de Cualquier Compra, matriz de diversificación creativa). Implementación propia de Muta Digital, sin afiliación oficial.
+
+## Versionado de skills
+
+Cada skill lleva `metadata.version` en el frontmatter de su SKILL.md, y el registro completo vive en [VERSIONS.md](VERSIONS.md). Todo cambio que se pushea a una skill sube su versión en los dos lados, en el mismo commit — así el equipo que ya la tiene instalada sabe que hay algo nuevo. Las reglas de cuándo sube mayor, menor o parche están en [VERSIONS.md](VERSIONS.md#cuándo-se-sube-qué).

@@ -1,6 +1,8 @@
 ---
 name: skill-a-prompt
 description: Convierte una skill (SKILL.md + referencias) en un prompt de texto pegable en cualquier IA o como instrucciones de un GPT. Se activa con "pasá esta skill a prompt", "convertila para ChatGPT/GPT".
+metadata:
+  version: 1.0.0
 ---
 
 # Skill a Prompt

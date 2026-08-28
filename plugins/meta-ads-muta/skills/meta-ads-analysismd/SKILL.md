@@ -2,6 +2,8 @@
 name: meta-ads-analysismd
 description: >
   Ejecuta un análisis técnico profundo y multinivel de campañas de Meta Ads. Usá esta skill SIEMPRE que el usuario pida analizar o revisar campañas de Meta/Facebook/Instagram; diagnosticar por qué una campaña no convierte o está cara; evaluar ROAS, CPL, CPM, CPC, CTR, frecuencia, costo por conversación o costo por resultado; revisar adsets, anuncios o creativos; detectar fatiga de audiencia; auditar el embudo; descubrir qué está pasando y por qué; recomendar qué pausar, escalar u optimizar. Activar también si el usuario dice "analizá mis campañas", "qué está pasando con mis ads", "mirá el rendimiento de Meta", "hay audiencias que se solapan", "los creativos están fatigados", "por qué me sube el CPL", "cómo está el ROAS". Funciona con archivos subidos (CSV, Excel), acceso directo a la cuenta vía token, o MCP activo (Windsor.ai, Supermetrics).
+metadata:
+  version: 1.0.0
 ---
 
 # Meta Ads — Framework de Análisis

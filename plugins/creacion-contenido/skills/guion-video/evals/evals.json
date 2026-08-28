@@ -1,0 +1,59 @@
+{
+  "skill_name": "guion-video",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Necesito un guion para un anuncio de una fábrica de aberturas de aluminio.",
+      "expected_output": "No escribe el guion. Pide el contexto de la Fase 0: qué vende la marca y a quién, si existe un brief, si hay archivo de tono y voz, y qué tiene que pasar después del video (el objetivo comercial concreto). Puede además preguntar por los tres niveles de formato, pero lo bloqueante es el contexto de marca.",
+      "assertions": [
+        "Pidió el contexto de marca (qué vende, a quién, diferencial) antes de escribir una línea del guion",
+        "Preguntó si existe un brief y/o un archivo de tono y voz de la marca",
+        "Preguntó el objetivo comercial (consulta, reunión, venta), no la métrica de plataforma",
+        "NO entregó un guion completo en esta primera respuesta",
+        "NO asumió un tono ni inventó datos de la fábrica"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Escribime el guion de un anuncio de venta directa para [MARCA]. Te paso el brief y la guía de voz adjuntos. Objetivo: que entren consultas de dueños de negocio por el formulario de la web. Lo graba el dueño hablando a cámara.",
+      "expected_output": "Escribe el guion directamente, sin volver a preguntar lo ya dado. El guion está en la voz de la marca (respeta el registro y las prohibiciones de la guía adjunta), usa el formato narrativo de venta directa (problema del espectador, criterio de la marca, filtro de audiencia, una acción), no supera 60 segundos y cierra apuntando al formulario. Al ser pauta paga, produce internamente tres caminos y entrega el mejor con los dos hooks descartados.",
+      "assertions": [
+        "NO volvió a preguntar contexto que ya estaba dado",
+        "El guion respeta la guía de voz adjunta (registro y prohibiciones)",
+        "La duración estimada declarada no supera los 60 segundos",
+        "El cierre pide una sola acción y apunta al objetivo comercial declarado (el formulario), no a seguir/guardar/compartir",
+        "No hay hashtags en la entrega",
+        "Incluye un filtro de audiencia (para quién no es) antes o dentro del cierre",
+        "Entregó caminos alternativos de hook por ser una pieza de pauta paga",
+        "El texto en pantalla del hook coincide con las primeras palabras habladas"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Quiero hacer un video del caso de éxito de un cliente. Ya tenemos el caso escrito, te lo paso. [CASO]",
+      "expected_output": "Reconoce que es contenido de autoridad, elige una estructura narrativa del manual (por ejemplo Viaje Inverso, Antes-Después-Puente o Transformation Story) y la nombra, usando la guía rápida de uso como selector. El guion sale del caso escrito sin inventar hechos ni números que no estén en el caso. El hook pasa el checklist de sistema-de-hooks.md.",
+      "assertions": [
+        "Identificó el tipo de contenido como autoridad (Nivel 1)",
+        "Eligió y NOMBRÓ una estructura narrativa concreta del manual",
+        "Todos los números y hechos del guion existen en el caso escrito provisto — ninguno inventado",
+        "El hook tiene menos de 12 palabras y no usa fórmulas quemadas (nada de 'el secreto que nadie te cuenta')",
+        "El payoff cierra el loop que abrió el hook"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Te paso un guion que escribió el equipo para revisar. [GUION CON UN HOOK QUE ARRANCA CON CONTEXTO Y UN CIERRE 'espero que les haya servido, síganos para más']",
+      "expected_output": "Lee el guion entero, identifica UNA falla principal (no una lista de todo lo que está mal), reescribe solo la parte que falla y justifica el cambio en una línea. No reescribe el guion completo.",
+      "assertions": [
+        "Identificó una sola falla principal, la más importante",
+        "Reescribió solo la parte que falla, no el guion entero",
+        "Justificó el cambio en una línea",
+        "Si tocó el cierre, lo reemplazó por una acción comercial concreta, no por otro CTA de plataforma"
+      ],
+      "files": []
+    }
+  ]
+}

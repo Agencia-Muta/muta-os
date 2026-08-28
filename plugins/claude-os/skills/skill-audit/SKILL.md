@@ -1,7 +1,10 @@
 ---
 name: skill-audit
-description: Audita el registro de skills: mide el presupuesto de descripciones, detecta cuales llegan truncadas y devuelve un plan ordenado de bajas y recortes. Manual, con /skill-audit.
+description: >
+  Audita el registro de skills: mide el presupuesto de descripciones, detecta cuales llegan truncadas y devuelve un plan ordenado de bajas y recortes. Manual, con /skill-audit.
 disable-model-invocation: true
+metadata:
+  version: 1.0.0
 ---
 
 # skill-audit — Auditoría del registro de skills

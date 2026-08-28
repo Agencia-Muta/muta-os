@@ -1,6 +1,9 @@
 ---
 name: cowork-builder
-description: Construir o rediseniar desde cero el sistema de trabajo de Cowork, o sumarle un dominio nuevo. Uso unico y solo por pedido explicito: no activar en tareas del dia a dia ni en PRDs.
+description: >
+  Construir o rediseniar desde cero el sistema de trabajo de Cowork, o sumarle un dominio nuevo. Uso unico y solo por pedido explicito: no activar en tareas del dia a dia ni en PRDs.
+metadata:
+  version: 1.0.0
 ---
 
 # cowork-builder — Configurador de Sistema de Trabajo en Claude Cowork

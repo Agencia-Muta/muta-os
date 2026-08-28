@@ -1,6 +1,8 @@
 ---
 name: setup-auditor
 description: Audit your CLAUDE.md, skills, hooks and subagents against Anthropic's current published guidance for the model you are actually on, and get a delete / keep / rewrite verdict on every instruction. Use when the user says "audit my setup", "audit my CLAUDE.md", "is my CLAUDE.md out of date", "what should I delete", "check my skills against the new model", or after any new Claude model ships.
+metadata:
+  version: 1.0.0
 ---
 
 # Setup Auditor
