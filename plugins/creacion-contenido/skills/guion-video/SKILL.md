@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y qué tipo de guion se necesita. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.2.1
+  version: 1.3.0
 ---
 
 # Guionista de Video Corto
@@ -61,6 +61,8 @@ Todo guion parte de una premisa: la idea central y desde dónde la abordás. Sin
 
 Con esas tres líneas tenés más de la mitad del video. A veces la preocupación es solo entretenimiento, y también vale.
 
+Antes de escribirla, identificá qué **deseo primario** toca la pieza: salud, estatus, plata, vínculos, tiempo y autonomía (los Primary Life Outcomes, detallados en `references/proceso-creativo.md`). Toda pieza toca al menos uno, y no es el mismo para todos los públicos: la palanca de una distribuidora B2B no es la salud, es tener menos problemas y más rotación.
+
 Lo que potencia una premisa es un **insight**: una verdad que el espectador tiene pero no dice en voz alta. Si aparece uno, construí la premisa sobre él. Es la diferencia entre un video correcto y uno que funciona.
 
 **Premisa ≠ hook.** El hook capta atención en los primeros segundos; la premisa es lo que el espectador se lleva si se queda. El payoff se entrega cerca de las tres cuartas partes del video, sostenido por un loop abierto que mantiene la tensión hasta ahí.
@@ -106,7 +108,7 @@ El espectador decide en un segundo y medio si se queda.
 - Tiene que poder cumplirse con el contenido real. Nada de promesa que después no se paga
 - La forma más fuerte suele ser el mandato directo o la afirmación sin rodeos: "Dejá de entrenar todos los días" gana a "Mucha gente cree que hay que entrenar todos los días, y es mentira"
 - Son tres capas: la toma que frena, el texto en pantalla y lo hablado. Si las tres dicen lo mismo, aburre; si no se relacionan, confunde. No siempre están las tres
-- Si hay texto en pantalla en el hook, tiene que coincidir con las primeras palabras habladas, no agregar información distinta
+- **El texto en pantalla del hook es el gancho contextual.** No repite lo hablado: da el contexto o abre la curiosidad que lo hablado no da. Va arriba, porque la mirada scrollea de arriba hacia abajo. Las tres capas se potencian: si dicen lo mismo, aburre; si no se relacionan, confunde
 
 **Leé `references/sistema-de-hooks.md` antes de escribir el hook** y pasalo por su checklist. Ahí están las macrocategorías, los métodos para frenar el scroll, las palancas psicológicas y la lista de hooks quemados.
 
@@ -134,12 +136,14 @@ Puede ser un dato que contradice la intuición, el mismo problema visto desde ot
 
 Ponelo siempre que el tema lo permita. En venta directa a veces sobra: si el argumento ya cierra, no fuerces uno.
 
-### LA CADENA DE LOOPS (obligatoria en todo lo que no sea venta directa pura)
+### LA CADENA DE OPEN LOOPS (obligatoria en todo lo que no sea venta directa pura)
 
-Todo guion con algo de storytelling se sostiene sobre dos niveles de curiosidad, no uno:
+**Toda creatividad es una promesa:** el gancho promete, el payoff paga, y lo que sostiene la atención en el medio son los **open loops** — preguntas, tensiones o promesas abiertas en la mente del que mira, que lo obligan a seguir para resolverlas. Ojo: **el payoff no es la oferta.** El payoff es lo que el espectador recibe a cambio de mirar; la oferta es lo que la marca quiere venderle. Si el payoff es "te encajaron una publicidad", el video no pagó nada.
 
-1. **El loop madre.** Se abre en el hook y se cierra recién en el payoff, cerca de las tres cuartas partes. Es la pregunta grande que el espectador necesita responder para irse tranquilo.
-2. **Los mini-loops de pasaje.** Cada escena, al terminar, abre la puerta de la siguiente: un dato incompleto, una consecuencia anunciada y no mostrada, un "y ahí apareció el problema de verdad". El espectador nunca está al día: siempre hay una pregunta pendiente además de la grande.
+Todo guion con algo de storytelling se sostiene sobre dos niveles de open loop, no uno:
+
+1. **El open loop madre.** Se abre en el hook y se cierra recién en el payoff, cerca de las tres cuartas partes. Es la pregunta grande que el espectador necesita responder para irse tranquilo. Y la estructura se siente, no se mide: el contexto se tiene que sentir antes del hook, el hook al lado del payoff, y el payoff cerca del final.
+2. **Los mini open loops de pasaje.** Cada escena, al terminar, abre la puerta de la siguiente: un dato incompleto, una consecuencia anunciada y no mostrada, un "y ahí apareció el problema de verdad". El espectador nunca está al día: siempre hay una pregunta pendiente además de la grande.
 
 **El pasaje más traicionero es el de los resultados.** Un resultado nunca entra como lista: entra por el beat que lo hizo visible ("y lo mejor no lo vimos nosotros: lo vio el grupo cuando cruzó sus ventas contra los contactos"). Si los números caen en frío después del mecanismo, ahí se cortó la cadena — el espectador ya no tiene ninguna pregunta abierta cuando más importa que la tenga.
 

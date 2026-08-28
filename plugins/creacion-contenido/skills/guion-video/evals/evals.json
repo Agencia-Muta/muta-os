@@ -26,7 +26,7 @@
         "No hay hashtags en la entrega",
         "Incluye un filtro de audiencia (para quién no es) antes o dentro del cierre",
         "Entregó caminos alternativos de hook por ser una pieza de pauta paga",
-        "El texto en pantalla del hook coincide con las primeras palabras habladas"
+        "El texto en pantalla del hook funciona como gancho contextual: da contexto o curiosidad, no repite lo hablado"
       ],
       "files": []
     },
