@@ -41,4 +41,6 @@ Este archivo registra la versión vigente de cada skill del marketplace. Cualqui
 
 | 2026-08-28 | guion-video | 1.4.1 | Prueba final a ciegas: dos anuncios de venta directa (mismos temas que las piezas de referencia escritas a mano), agente sin acceso a esas piezas, contexto completo desde los documentos de Drive | Al nivel de las piezas de referencia. Un hook salió mejor que el de referencia. Cero hechos inventados, voz limpia, sin suspenso artificial en directos. La skill queda congelada: próximo cambio, sacar antes que agregar |
 
+| 2026-08-28 | guion-video | 1.5.0 | Contraprueba sin skill: el mismo pedido de guion de storytelling a un agente limpio, con brief, guia de voz y el feedback del cliente interno, y nada mas | El guion salio argumentado igual que con la skill. Debilita la hipotesis que motivo 1.5.0: en este caso el formato historia no se cayo por el esqueleto de la Fase 4, se cayo por falta de material real que revivir (el episodio era inventado, sin escena ni personaje). La bifurcacion de 1.5.0 se sostiene como regla, pero su evidencia es mas debil de lo que decia el registro anterior |
+
 Los casos 3 y 4 de guion-video y 2 y 3 de carrusel quedan pendientes de correr con material real de cliente (necesitan un caso de éxito escrito como fixture).
