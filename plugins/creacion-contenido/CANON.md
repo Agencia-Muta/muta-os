@@ -19,6 +19,8 @@ Si un bloque cambia acá, se actualiza en todas las skills que lo usan y se sube
 > Si no hay brief ni guía de voz y el usuario quiere avanzar igual, escribí, y avisale en una línea que el registro va a salir genérico y va a haber que ajustarlo a mano.
 >
 > **Idioma y registro:** los define la guía de voz de la marca. Si no hay guía, seguí el registro en el que escribe el usuario.
+>
+> **Si la pieza la graba una persona con manual de voz propio** (por ejemplo, Mati con `principios-de-voz.md`), ese manual entra como segunda capa: aporta los matices de habla (muletillas, ritmo, preguntas retóricas), nunca pisa las reglas de la marca. La marca define los límites; el que graba define cómo suena adentro de esos límites.
 
 ---
 
