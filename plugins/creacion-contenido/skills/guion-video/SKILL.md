@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y las tres decisiones de formato. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.4.4
+  version: 1.4.5
 ---
 
 # Guionista de Video Corto
@@ -121,12 +121,11 @@ Entregá lo que prometió el hook.
 
 - Una sola idea por video. Profundidad antes que amplitud
 - Cada oración justifica la siguiente. Pensá la cadena con causalidad **[pero] / [por lo tanto]**, y después **borrá esos conectores**: la causalidad queda sobreentendida y el texto suena hablado
-- Un dato, una emoción o un giro menor cada cinco a siete segundos
+- Cada beat aporta algo nuevo: un dato, una emoción o un giro menor. Si dos oraciones seguidas no agregan nada, sobra una
 - Al menos un ejemplo concreto. Si el desarrollo no tiene ninguno, reescribilo
 - Nada de relleno: "básicamente", "en definitiva", "la verdad es que"
 - **Contestá la objeción cuando nace, no al final.** En cada beat, preguntate qué está pensando el espectador en contra ("esto es otro chamuyo", "a mí no me aplica") y respondele en esa línea. Una objeción que viaja diez segundos sin respuesta es un scroll
 
-Patrones que funcionan, elegí uno: problema y solución, antes y después, mito y verdad, lista de puntos, historia mínima, comparación directa.
 
 
 ### GIRO
@@ -173,7 +172,6 @@ En piezas de venta, el cierre suele funcionar mejor con un filtro adelante: deci
 
 ## Técnicas de retención
 
-- **Espejo:** en el hook, describí la situación exacta del espectador ideal. "¿Llegás a fin de mes sin saber en qué se te fue la plata?" gana a "¿Querés ahorrar?"
 - **Autoridad implícita:** no digas que sos experto. Mostralo con un dato, un resultado o un ejemplo dentro del guion
 - **Ritmo:** alterná oraciones cortas, medianas y largas. Leído en voz alta no puede sonar monótono
 
