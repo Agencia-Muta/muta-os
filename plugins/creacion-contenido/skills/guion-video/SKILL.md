@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y qué tipo de guion se necesita. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.2.0
+  version: 1.2.1
 ---
 
 # Guionista de Video Corto
@@ -140,6 +140,8 @@ Todo guion con algo de storytelling se sostiene sobre dos niveles de curiosidad,
 
 1. **El loop madre.** Se abre en el hook y se cierra recién en el payoff, cerca de las tres cuartas partes. Es la pregunta grande que el espectador necesita responder para irse tranquilo.
 2. **Los mini-loops de pasaje.** Cada escena, al terminar, abre la puerta de la siguiente: un dato incompleto, una consecuencia anunciada y no mostrada, un "y ahí apareció el problema de verdad". El espectador nunca está al día: siempre hay una pregunta pendiente además de la grande.
+
+**El pasaje más traicionero es el de los resultados.** Un resultado nunca entra como lista: entra por el beat que lo hizo visible ("y lo mejor no lo vimos nosotros: lo vio el grupo cuando cruzó sus ventas contra los contactos"). Si los números caen en frío después del mecanismo, ahí se cortó la cadena — el espectador ya no tiene ninguna pregunta abierta cuando más importa que la tenga.
 
 La prueba: cortá el guion en cualquier punto intermedio. Si lo que queda antes del corte cierra solo y no duele abandonar ahí, el pasaje anterior no abrió nada — reescribilo. La fórmula South Park ([pero]/[por lo tanto] con los conectores borrados) es la herramienta natural para esto: cada "pero" es un mini-loop que se abre, cada "por lo tanto" es uno que se paga.
 
