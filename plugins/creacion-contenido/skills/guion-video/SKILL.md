@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y las tres decisiones de formato. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.4.3
+  version: 1.4.4
 ---
 
 # Guionista de Video Corto
@@ -151,6 +151,8 @@ En un guion de storytelling largo, sumá un gancho intermedio cerca de la mitad 
 **El pasaje más traicionero es el de los resultados.** Un resultado nunca entra como lista: entra por el beat que lo hizo visible ("y lo mejor no lo vimos nosotros: lo vio el grupo cuando cruzó sus ventas contra los contactos"). Si los números caen en frío después del mecanismo, ahí se cortó la cadena — el espectador ya no tiene ninguna pregunta abierta cuando más importa que la tenga.
 
 La prueba: cortá el guion en cualquier punto intermedio. Si lo que queda antes del corte cierra solo y no duele abandonar ahí, el pasaje anterior no abrió nada — reescribilo. La fórmula South Park ([pero]/[por lo tanto] con los conectores borrados) es la herramienta natural para esto: cada "pero" es un mini-loop que se abre, cada "por lo tanto" es uno que se paga.
+
+**El video directo es el mundo inverso.** No lleva open loops construidos: arranca nombrando el problema exacto del que mira ("se te está cayendo el techo por la humedad"), entrega el valor casi enseguida, y el orden es problema, solución, cómo se aplica, cuánto sale. Lo que retiene es la relevancia, no el suspenso: el que tiene ese problema se queda porque cada segundo le sirve, y el que no, se va — y está bien que se vaya. Si la pieza muestra un proceso, la tracción de "¿y funciona?" viene sola con la demo: no la fabriques, y jamás te guardes el valor para generar intriga. En directo, retener reteniendo información es perder al comprador.
 
 Para piezas narrativas, leé antes la sección de open loops y el arco de 5 partes en `references/proceso-creativo.md`: no es opcional en storytelling.
 
