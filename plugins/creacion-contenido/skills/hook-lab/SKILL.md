@@ -3,7 +3,7 @@ name: hook-lab
 description: >
   Laboratorio de hooks: genera 10 hooks alternativos para un guion, idea de video o contenido existente, cada uno desde un ángulo estratégico distinto, para testear cuál detiene mejor el scroll. Usá esta skill cuando el usuario diga "dame hooks alternativos", "más opciones de hook", "el hook no funciona", "variantes de este hook", "hooks para testear", "qué hook uso", "10 hooks", o comparta un guion/idea pidiendo específicamente trabajar el gancho inicial. No escribe el guion completo (eso es guion-video): solo produce y evalúa hooks.
 metadata:
-  version: 1.1.1
+  version: 1.2.0
 ---
 
 # Hook Lab — 10 Hooks Alternativos para Testear
@@ -33,7 +33,7 @@ Un hook se escribe en la voz de la marca. Un hook buenísimo en el registro equi
 Del guion o idea que trajo el usuario, identificá (y comunicá en 3 líneas):
 1. **Hook actual** (si existe): por qué funciona o falla
 2. **Promesa/payoff del contenido:** qué recibe quien se queda — el hook nuevo tiene que poder cumplirse
-3. **Audiencia y objetivo:** a quién le habla y qué acción busca
+3. **Audiencia y objetivo:** a quién le habla y qué acción busca. Si hay más de un perfil o dolor distinto (el del margen, el del stock, el que quiere marca propia), nombralos y repartí los diez hooks entre ellos, diciendo cuál apunta a cuál
 
 Si falta el objetivo o la audiencia y no se deduce del contenido, preguntá una sola vez. Si se deduce, ejecutá.
 
