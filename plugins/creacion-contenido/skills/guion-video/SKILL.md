@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y qué tipo de guion se necesita. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.1.0
+  version: 1.1.1
 ---
 
 # Guionista de Video Corto
@@ -66,6 +66,17 @@ Lo que potencia una premisa es un **insight**: una verdad que el espectador tien
 **Premisa ≠ hook.** El hook capta atención en los primeros segundos; la premisa es lo que el espectador se lleva si se queda. El payoff se entrega cerca de las tres cuartas partes del video, sostenido por un loop abierto que mantiene la tensión hasta ahí.
 
 Comunicá la premisa en una línea antes del guion, para que el usuario valide la dirección.
+
+---
+
+## El mundo del que mira
+
+Es lo que separa un guion correcto de uno que el destinatario siente escrito para él. Cuatro reglas, ninguna opcional:
+
+1. **Metelo en escenas suyas, con los sustantivos de su rubro.** El viajante que recorre el país, la góndola, el camión que sale del depósito, el reporte de likes que le llega a fin de mes, el sobrino que "sabe de redes". Un guion sin ningún sustantivo del mundo del que mira le habla *de* él, no *a* él. Si el brief no trae esos detalles, pedilos en la Fase 0: cómo es un día del que va a ver esto, qué le llega, quién lo rodea, qué mira todas las mañanas.
+2. **Absolvé antes de señalar.** El problema del espectador tiene una lógica y nunca es su culpa: "No es que te estafaron. Es que te estaban midiendo lo único que sabían medir." / "Y tiene lógica, porque nunca lo necesitaste." Ese movimiento es la calidez real de una pieza; los adjetivos cálidos no la reemplazan. Un guion que solo diagnostica queda institucional aunque el léxico esté bien.
+3. **Hablale, no lo describas.** Segunda persona sostenida, y las preguntas que él ya se hace en su cabeza: cuánto de esto llega a ser una consulta de verdad, cuánta termina en una factura. Una pregunta que el espectador ya se hizo vale más que una afirmación nuestra.
+4. **Economía no es compresión.** Lo hablado necesita aire y repetición con intención: "Te mostraron alcance. Te mostraron seguidores. Te mostraron un reel con cien mil reproducciones." Se corta el relleno y la palabrería; no se corta la respiración ni los beats que hacen que el argumento se sienta, además de entenderse.
 
 ---
 
@@ -172,6 +183,7 @@ En piezas de pauta paga, donde el costo de equivocarse es plata, escribí **tres
 
 - ¿Está escrito en la voz de la marca, y respeta sus prohibiciones?
 - ¿La premisa es clara y el escenario es fácil de reconocer?
+- ¿Hay al menos una escena con sustantivos del mundo del que mira, y el problema se absuelve antes de señalarse?
 - ¿El hook tiene menos de 12 palabras y pasa el checklist de `sistema-de-hooks.md`?
 - ¿El desarrollo entrega exactamente lo que prometió el hook?
 - ¿Hay una sola idea central y al menos un ejemplo concreto?
