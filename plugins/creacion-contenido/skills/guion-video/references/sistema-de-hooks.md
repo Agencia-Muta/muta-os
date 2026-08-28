@@ -49,6 +49,14 @@ Todo hook que funciona tira de al menos una; **los mejores tiran de dos a la vez
 
 Regla de diversificación: cuando generes varias opciones de hook, cubrí como mínimo una intelectual (palancas 1-2), una sensorial (3) y una directa al espectador (4). Tres sabores de contrarian no son tres opciones.
 
+## El marco negativo (dato, no regla)
+
+En igualdad de condiciones, el encuadre negativo suele rendir más que el positivo: los titulares con superlativos negativos ("el peor", "el error que", "lo que te está costando") superaron a los positivos ("el mejor", "el truco para") por un 63% en el estudio de Outbrain sobre titulares.
+
+Cómo se usa acá: "El error que te está costando consultas" le suele ganar a "El truco para conseguir más consultas". El miedo a perder pesa más que las ganas de ganar.
+
+El límite lo pone la voz de la marca: el marco negativo apunta al problema o a la mala práctica, nunca al que mira. "Tu Instagram está espantando clientes" señala al espectador y no va; "este formato espanta clientes" señala la práctica y va. Y es un dato de tendencia, no una regla: si el hook positivo es más concreto, gana el concreto.
+
 ## Checklist de hooks (pasar TODO hook por acá)
 
 1. ¿Se entiende de qué va en menos de 2 segundos de reloj?
