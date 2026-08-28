@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y las tres decisiones de formato. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.4.2
+  version: 1.4.3
 ---
 
 # Guionista de Video Corto
@@ -128,7 +128,6 @@ Entregá lo que prometió el hook.
 
 Patrones que funcionan, elegí uno: problema y solución, antes y después, mito y verdad, lista de puntos, historia mínima, comparación directa.
 
-En guiones largos, poné un gancho intermedio cerca de la mitad del recorrido: una frase que vuelve a tirar del que se estaba yendo. No es un segundo fijo, es proporcional al largo — y si la cadena de open loops está bien armada, muchas veces ya lo tenés puesto sin necesidad de agregarlo.
 
 ### GIRO
 
@@ -146,6 +145,8 @@ Todo guion con algo de storytelling se sostiene sobre dos niveles de open loop, 
 
 1. **El open loop madre.** Se abre en el hook y se cierra recién en el payoff, cerca de las tres cuartas partes. Es la pregunta grande que el espectador necesita responder para irse tranquilo. Y la estructura se siente, no se mide: el contexto se tiene que sentir antes del hook, el hook al lado del payoff, y el payoff cerca del final.
 2. **Los mini open loops de pasaje.** Cada escena, al terminar, abre la puerta de la siguiente: un dato incompleto, una consecuencia anunciada y no mostrada, un "y ahí apareció el problema de verdad". El espectador nunca está al día: siempre hay una pregunta pendiente además de la grande. Y el encadenado baja hasta la oración: no entregues toda la información de una vez, andá dando pistas de a poco, abriendo una pregunta nueva en cada oración como en una película de suspenso. El ritmo es cíclico: abrís un loop, lo desarrollás, lo cerrás, y abrís el siguiente. Un open loop también puede ser puramente visual, sin una palabra: algo se movió, ¿qué pasa?
+
+En un guion de storytelling largo, sumá un gancho intermedio cerca de la mitad del recorrido: una frase que vuelve a tirar del que se estaba yendo. No es un segundo fijo, es proporcional al largo — y si la cadena está bien armada, muchas veces ya lo tenés puesto sin agregarlo. En venta directa, educacional o yap no aplica: ahí retiene el argumento, no el suspenso.
 
 **El pasaje más traicionero es el de los resultados.** Un resultado nunca entra como lista: entra por el beat que lo hizo visible ("y lo mejor no lo vimos nosotros: lo vio el grupo cuando cruzó sus ventas contra los contactos"). Si los números caen en frío después del mecanismo, ahí se cortó la cadena — el espectador ya no tiene ninguna pregunta abierta cuando más importa que la tenga.
 
