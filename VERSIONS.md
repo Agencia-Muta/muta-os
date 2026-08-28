@@ -27,3 +27,13 @@ Este archivo registra la versión vigente de cada skill del marketplace. Cualqui
 - **Menor (x.Y.0):** capacidad nueva, o cambio en los disparadores del campo description.
 - **Parche (x.y.Z):** correcciones y aclaraciones que no cambian el uso.
 - **Regla dura:** todo cambio que se pushea sube la versión en el frontmatter Y en este archivo, en el mismo commit.
+
+## Corridas de eval
+
+| Fecha | Skill | Versión | Casos corridos | Resultado |
+|-------|-------|---------|----------------|-----------|
+| 2026-08-28 | guion-video | 1.1.0 | Caso 1 (pedido sin contexto), en sesión limpia | 5 de 5 aserciones |
+| 2026-08-28 | carrusel | 1.1.0 | Caso 1 (pedido sin contexto), en sesión limpia | 4 de 4 aserciones |
+| 2026-08-28 | guion-video | 1.1.0 | Caso 2 (mano a mano con contexto cargado, anuncio de venta directa) | 8 de 8 aserciones; converge con la versión escrita a mano y suma premisa, hooks alternativos y notas de dirección |
+
+Los casos 3 y 4 de guion-video y 2 y 3 de carrusel quedan pendientes de correr con material real de cliente (necesitan un caso de éxito escrito como fixture).
