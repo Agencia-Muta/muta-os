@@ -54,6 +54,20 @@
         "Si tocó el cierre, lo reemplazó por una acción comercial concreta, no por otro CTA de plataforma"
       ],
       "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Quiero un video de historia para [MARCA]. Te paso el brief y la guía de voz. La historia real: un cliente nos pidió algo con lo que no estábamos de acuerdo, se lo dijimos y la relación terminó. Objetivo: que otros dueños de negocio entiendan cómo trabajamos y consulten. [HECHOS DE LA HISTORIA]",
+      "expected_output": "Reconoce el formato Historia y usa el arco de 5 partes (hook, contexto, conflicto, punto de giro, resolución), no el esqueleto de argumento. El guion revive al menos un momento en escena (qué se dijo, qué se vio, qué se sintió) en vez de resumir los eventos desde arriba. El conflicto incluye un obstáculo interno de la marca (la tentación de decir que sí, el miedo a perder al cliente), no solo el desacuerdo externo. Se siente una historia, no un argumento con anécdota.",
+      "assertions": [
+        "Usó el arco de 5 partes de proceso-creativo.md, no HOOK→DESARROLLO→GIRO→CIERRE de argumento",
+        "Hay al menos un momento revivido en escena (diálogo, silencio, detalle físico del momento), no solo eventos resumidos",
+        "El conflicto tiene un obstáculo interno de la marca, además del externo",
+        "El punto de giro es un beat señalable (el espectador puede decir 'ahí se dio vuelta')",
+        "El payoff cierra el loop del hook y el guion corta poco después, sin discurso agregado",
+        "Ningún hecho de la historia fue inventado: todo sale del material provisto"
+      ],
+      "files": []
     }
   ]
 }

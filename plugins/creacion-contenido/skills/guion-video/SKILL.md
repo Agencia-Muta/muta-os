@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y las tres decisiones de formato. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.4.6
+  version: 1.5.0
 ---
 
 # Guionista de Video Corto
@@ -95,7 +95,12 @@ No acortes por reflejo. Lo que se recorta es la palabrería y el relleno, nunca 
 
 ## FASE 4 — Estructura
 
-El esqueleto es **HOOK → DESARROLLO → GIRO → CIERRE**. El payoff cierra el loop del hook cerca de las tres cuartas partes.
+El esqueleto depende del formato elegido en la Fase 1:
+
+- **Piezas de argumento** (venta directa, educacional, criterio): **HOOK → DESARROLLO → GIRO → CIERRE**.
+- **Historia / storytelling**: el esqueleto es el **arco de 5 partes** de `references/proceso-creativo.md` — HOOK → CONTEXTO → CONFLICTO → PUNTO DE GIRO → RESOLUCIÓN — y mandan sus reglas: **revivir en vez de reportar** (zoom en el momento, con lo que se veía y se decía, nunca el resumen desde el helicóptero), un conflicto con obstáculo interno además del externo, y un punto de giro que el espectador pueda señalar. Las reglas de DESARROLLO que son de argumento (la objeción contestada en su línea, el ejemplo concreto) acá no se agregan: ese trabajo lo hace la escena.
+
+En los dos casos, el payoff cierra el loop del hook cerca de las tres cuartas partes.
 
 ### HOOK (0-3 segundos)
 
@@ -153,8 +158,6 @@ La prueba: cortá el guion en cualquier punto intermedio. Si lo que queda antes 
 
 **El video directo es el mundo inverso.** No lleva open loops construidos: arranca nombrando el problema exacto del que mira ("se te está cayendo el techo por la humedad"), entrega el valor casi enseguida, y el orden es problema, solución, cómo se aplica, cuánto sale. Lo que retiene es la relevancia, no el suspenso: el que tiene ese problema se queda porque cada segundo le sirve, y el que no, se va — y está bien que se vaya. Si la pieza muestra un proceso, la tracción de "¿y funciona?" viene sola con la demo: no la fabriques, y jamás te guardes el valor para generar intriga. En directo, retener reteniendo información es perder al comprador.
 
-Para piezas narrativas, leé antes la sección de open loops y el arco de 5 partes en `references/proceso-creativo.md`: no es opcional en storytelling.
-
 ### CIERRE
 
 Una sola acción. Y antes de escribirla, preguntate si hace falta.
@@ -208,7 +211,7 @@ En piezas de pauta paga, donde el costo de equivocarse es plata, escribí **tres
 - ¿Hay al menos una escena con sustantivos del mundo del que mira, y el problema se absuelve antes de señalarse?
 - ¿El hook tiene menos de 12 palabras y pasa el checklist de `sistema-de-hooks.md`?
 - ¿El desarrollo entrega exactamente lo que prometió el hook?
-- ¿Hay una sola idea central y al menos un ejemplo concreto?
+- ¿Hay una sola idea central? En argumento: ¿al menos un ejemplo concreto? En historia: ¿al menos un momento revivido en escena — qué se veía, qué se dijo — o está todo reportado desde arriba?
 - ¿La cadena es causal, sin que aparezcan escritas las palabras "pero" y "por lo tanto"?
 - ¿El payoff cierra el loop del hook?
 - ¿El cierre pide una sola acción, alineada al objetivo comercial?
