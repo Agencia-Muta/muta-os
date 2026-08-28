@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y qué tipo de guion se necesita. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.3.1
+  version: 1.4.0
 ---
 
 # Guionista de Video Corto
@@ -109,6 +109,7 @@ El espectador decide en un segundo y medio si se queda.
 - La forma más fuerte suele ser el mandato directo o la afirmación sin rodeos: "Dejá de entrenar todos los días" gana a "Mucha gente cree que hay que entrenar todos los días, y es mentira"
 - Son tres capas: la toma que frena, el texto en pantalla y lo hablado. Si las tres dicen lo mismo, aburre; si no se relacionan, confunde. No siempre están las tres
 - **El texto en pantalla del hook es el gancho contextual.** No repite lo hablado: da el contexto o abre la curiosidad que lo hablado no da. Va arriba, porque la mirada scrollea de arriba hacia abajo. Las tres capas se potencian: si dicen lo mismo, aburre; si no se relacionan, confunde. En algunos formatos (un antes y después, una demostración) el gancho es todo textual y contextual, y no hace falta decir nada
+- **La primera imagen la decide el guion, no la edición.** El que scrollea decide en un segundo y medio, muchas veces sin sonido: el primer cuadro es la mitad del hook. Escribí qué se ve en el segundo cero
 
 **Leé `references/sistema-de-hooks.md` antes de escribir el hook** y pasalo por su checklist. Ahí están las macrocategorías, los métodos para frenar el scroll, las palancas psicológicas y la lista de hooks quemados.
 
@@ -123,6 +124,7 @@ Entregá lo que prometió el hook.
 - Un dato, una emoción o un giro menor cada cinco a siete segundos
 - Al menos un ejemplo concreto. Si el desarrollo no tiene ninguno, reescribilo
 - Nada de relleno: "básicamente", "en definitiva", "la verdad es que"
+- **Contestá la objeción cuando nace, no al final.** En cada beat, preguntate qué está pensando el espectador en contra ("esto es otro chamuyo", "a mí no me aplica") y respondele en esa línea. Una objeción que viaja diez segundos sin respuesta es un scroll
 
 Patrones que funcionan, elegí uno: problema y solución, antes y después, mito y verdad, lista de puntos, historia mínima, comparación directa.
 
@@ -162,11 +164,12 @@ Una sola acción. Y antes de escribirla, preguntate si hace falta.
 
 En piezas de venta, el cierre suele funcionar mejor con un filtro adelante: decir para quién no es antes de decir cómo seguir. Filtra el lead y sube la credibilidad de lo que afirmaste.
 
+**La última línea es la que se acuerdan.** La gente recuerda el momento más alto del video y lo último que escuchó: la línea final se escribe con el mismo cuidado que el hook, porque es la que se repite y decide el compartido. Y andate apenas pagaste: cada segundo después del payoff y la acción es fuga. Si el guion sigue hablando después de que terminó, cortalo ahí.
+
 ---
 
 ## Técnicas de retención
 
-- **Loop abierto:** plantá en el hook una pregunta que solo se resuelve al final. El cerebro no se va sin cerrarla
 - **Re-hook:** a mitad del guion, un segundo gancho para el que se está desconectando
 - **Espejo:** en el hook, describí la situación exacta del espectador ideal. "¿Llegás a fin de mes sin saber en qué se te fue la plata?" gana a "¿Querés ahorrar?"
 - **Autoridad implícita:** no digas que sos experto. Mostralo con un dato, un resultado o un ejemplo dentro del guion
@@ -211,6 +214,8 @@ En piezas de pauta paga, donde el costo de equivocarse es plata, escribí **tres
 - ¿El cierre pide una sola acción, alineada al objetivo comercial?
 - ¿Se pasa de 60 segundos?
 - ¿Suena a alguien hablando? Leelo en voz alta. Si suena a texto escrito, reescribilo
+- ¿Lo puede decir la boca del que graba? Frases subordinadas largas, palabras que esa persona no usaría en una cena, números difíciles de decir: se cambian antes de entregar, no en la toma
+- ¿El guion funciona en mudo? Con el sonido apagado, entre el texto en pantalla y lo que se ve, ¿se entiende qué pasa y por qué quedarse?
 
 ---
 
