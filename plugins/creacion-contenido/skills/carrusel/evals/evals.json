@@ -1,0 +1,46 @@
+{
+  "skill_name": "carrusel",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Armame un carrusel sobre los errores más comunes al invertir en publicidad.",
+      "expected_output": "No escribe los slides. Pide el contexto de la Fase 0: de qué marca es, si hay brief y archivo de voz, y qué tiene que pasar después de la pieza (objetivo comercial). Recién con eso elige fórmula o framework.",
+      "assertions": [
+        "Pidió el contexto de marca antes de escribir slides",
+        "Preguntó si hay brief y/o guía de tono y voz",
+        "Preguntó el objetivo comercial de la pieza, no la métrica de plataforma",
+        "NO entregó el carrusel completo en esta primera respuesta"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Carrusel para [MARCA] con el brief y la guía de voz adjuntos. Es una lista: las 7 cosas que miramos antes de invertir un peso en pauta. Objetivo: que el dueño de negocio nos escriba.",
+      "expected_output": "Elige y nombra el framework (Pila de valor, por ser una lista con número exacto) o la fórmula Lista/Tips, y escribe slide por slide. La portada promete el número exacto y se sostiene sola. Entrega exactamente 7 ítems sin relleno. La última slide pide una sola acción: escribir. Sin hashtags. Caption con hook propio.",
+      "assertions": [
+        "Nombró el framework o la fórmula elegida antes o al presentar los slides",
+        "La portada (slide 1) funciona como post independiente y promete el número exacto",
+        "Entregó exactamente los 7 ítems prometidos, sin slides de relleno",
+        "Cada slide tiene una sola idea",
+        "La última slide pide UNA acción alineada al objetivo comercial (escribir), no guardar/compartir/seguir",
+        "No hay hashtags en ninguna parte de la entrega",
+        "El texto respeta la guía de voz adjunta"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Quiero convertir este caso de éxito en un carrusel. [CASO CON NÚMEROS]",
+      "expected_output": "Reconoce que es contenido de prueba y usa el framework Problema y prueba (o una estructura narrativa mapeada a slides): el slide 1 afirma el resultado con número, el medio muestra el mecanismo con nombre y pasos, el último slide muestra el recibo. Ningún número que no esté en el caso escrito.",
+      "assertions": [
+        "Eligió una arquitectura de prueba (Problema y prueba, o narrativa equivalente) y la nombró",
+        "El slide 1 abre con un resultado afirmado con número real del caso",
+        "Los slides del medio nombran el mecanismo concreto, no generalidades tipo 'optimizamos la estrategia'",
+        "El último slide de contenido cierra el loop del slide 1 con la prueba",
+        "Todos los números provienen del caso provisto — ninguno inventado",
+        "La última slide pide una sola acción comercial"
+      ],
+      "files": []
+    }
+  ]
+}

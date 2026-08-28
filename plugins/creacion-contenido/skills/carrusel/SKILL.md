@@ -2,11 +2,27 @@
 name: carrusel
 description: >
   Diseñador de carruseles para Instagram y LinkedIn: estructura slide por slide con títulos, textos y sugerencias visuales, listos para armar en Canva o Figma. Usá esta skill siempre que el usuario quiera crear, mejorar o estructurar un carrusel. Se activa con pedidos como "armá un carrusel", "carrusel de X slides", "pasá este contenido a carrusel", "carrusel para Instagram", "carrusel para LinkedIn", "qué pongo en cada slide", o cuando el usuario comparte un carrusel existente para revisión. Entrega estructura y textos, no genera las imágenes.
+metadata:
+  version: 1.1.0
 ---
 
 # Carrusel — Estructura Slide por Slide
 
 Convertís ideas, guiones o contenidos en carruseles con estructura probada. El carrusel es el formato que más guardados genera: se consume a ritmo propio y funciona como mini-landing. Entregás textos finales por slide + sugerencia visual, listos para que el equipo los arme en Canva.
+
+## Fase 0 — Contexto de la marca
+
+No escribas una línea sin esto. Si falta, pedilo antes de arrancar.
+
+1. **De qué marca es.** Qué vende, a quién, qué la diferencia de sus competidores. Si existe un brief, pedilo: es la fuente principal y reemplaza a cualquier suposición tuya sobre el rubro.
+2. **En qué tono habla.** Preguntá si hay un archivo de tono y voz de la marca, y pedilo. Si existe, escribís en esa voz y respetás sus prohibiciones **aunque contradigan algo de esta skill: la guía de voz de la marca gana siempre.**
+3. **Qué tiene que pasar después de la pieza.** El objetivo comercial concreto (una consulta, una reunión, una venta, dar a conocer algo), no la métrica de plataforma.
+
+Si el usuario ya dio todo esto, no preguntes: ejecutá.
+
+Si no hay brief ni guía de voz y el usuario quiere avanzar igual, escribí, y avisale en una línea que el registro va a salir genérico y va a haber que ajustarlo a mano.
+
+**Idioma y registro:** los define la guía de voz de la marca. Si no hay guía, seguí el registro en el que escribe el usuario.
 
 ## Principios del carrusel
 
@@ -17,7 +33,7 @@ Convertís ideas, guiones o contenidos en carruseles con estructura probada. El 
 - **Cada slide vende el swipe al siguiente.** Cortá las ideas en el punto de tensión: mini open-loops, un número que sigue ("...y eso que este era el 3"), un teaser ("el que sigue me sorprendió").
 - **El slide 2 es el más abandonado.** Después de la portada, el slide 2 tiene que confirmar la promesa (contexto en 1-2 oraciones que tocan el dolor), no dar relleno.
 - **La anteúltima slide entrega el payoff completo; la última pide UNA acción.**
-- **Texto mínimo:** título ≤ 8 palabras, cuerpo ≤ 30 palabras por slide. Los títulos hacen el trabajo pesado: la gente escanea — si el título en negrita no comunica el punto solo, reescribilo.
+- **Texto mínimo:** título ≤ 8 palabras, cuerpo ≤ 30 palabras por slide. Los títulos hacen el trabajo pesado: la gente escanea — si el título en negrita no comunica el punto solo, reescribilo. Son referencia, no límite duro: lo que manda es que cada slide tenga una sola idea y se sostenga solo.
 - **Señales de formato:** `→` para contraste o énfasis, números para procesos, negrita para la frase clave.
 - **Legible en móvil:** el diseño lo resuelve Canva, pero el texto tiene que funcionar sin imagen de apoyo.
 
@@ -56,25 +72,32 @@ Si el contenido viene de un guion de video, no lo pegues cortado: re-estructural
 
 Detalles, templates y errores de cada fórmula: `references/../../estructuras-copy/references/manual-estructuras.md` (manual completo de la skill estructuras-copy). Consultalo si la fórmula elegida no te resulta familiar.
 
+Para carruseles narrativos (una historia, un caso, una transformación) no estás limitado a las fórmulas de copy: cualquiera de las 10 estructuras narrativas del manual (`references/../../estructuras-copy/references/manual-estructuras.md`, Sección 2) se puede mapear a slides con la misma lógica de un beat por slide. La guía rápida de uso al final de ese manual rutea qué estructura conviene según el objetivo (awareness, consideración, conversión). Antes de elegir estructura, leé también `references/frameworks-narrativos.md` de esta skill (cinco arquitecturas de carrusel según la razón para seguir swipeando).
+
 ## Especificaciones por plataforma
 
 | Plataforma | Slides | Ratio | Densidad de texto | Caption |
 |---|---|---|---|---|
-| **Instagram** | 8-10 (tope 10-20) | 4:5 vertical (1080×1350), nunca horizontal | Baja: ~30 palabras máx por slide | Hook en la línea 1 (primeros 125 caracteres), CTA de guardar/compartir al final; 3-10 hashtags |
+| **Instagram** | 8-10 como referencia (la plataforma admite hasta 20) | 4:5 vertical (1080×1350), nunca horizontal | Baja: ~30 palabras máx por slide | Hook en la línea 1 (primeros 125 caracteres); el CTA sale del objetivo comercial |
 | **LinkedIn** | 7-12 (ideal 9-10) | 1:1 o 4:5 (documento PDF) | Alta: el lector de LinkedIn tolera profundidad | Hook + teaser de 1-2 párrafos; link en el primer comentario, nunca en el cuerpo |
 | **TikTok (photo carousel)** | 6-12 | 9:16 (1080×1920) | Mínima: **el texto en imagen ES el hook**, <6 palabras por slide | <150 caracteres; sumá audio en tendencia (TikTok premia carruseles con música) |
 
-En Instagram, guardar y compartir son las señales principales: invitalas explícitamente. Si el contenido lo permite, la última slide puede cerrar el loop con la primera (re-engagement).
+Si el contenido lo permite, la última slide puede cerrar el loop con la primera.
 
-## CTA de última slide (elegí UNO según objetivo)
+## CTA de última slide
 
-| Objetivo | CTA |
-|---|---|
-| Guardados | "Guardá este carrusel para cuando [situación]" |
-| Compartidos | "Mandáselo a [persona específica que lo necesita]" |
-| Seguidores | "Seguime para más [tema] todas las semanas" |
-| Leads | "Comentá [PALABRA] y te mando [recurso]" |
-| Venta | "Escribinos / Link en bio" |
+El cierre de toda pieza sale del objetivo comercial declarado en la Fase 0, nunca de una métrica de plataforma. Seguidores, guardados, alcance y compartidos no son objetivos de una pieza: son efectos secundarios que a veces acompañan.
+
+Una sola acción por pieza. Si pedís dos cosas, no conseguís ninguna. Y antes de escribir el CTA, preguntate si hace falta: si la acción es la consecuencia lógica del contenido, no se dice.
+
+**CTAs prohibidos como cierre por defecto:**
+- "Seguime para más [tema]"
+- "Comentá SÍ si te pasó"
+- "Mandáselo a alguien que lo necesita"
+- "Guardá este reel / este carrusel"
+- "Link en bio" como cierre suelto, sin acción comercial concreta detrás
+
+Cualquiera de esos puede aparecer solo si el objetivo comercial declarado lo justifica de verdad (por ejemplo, un lead magnet que se entrega por comentario), nunca como relleno de cierre.
 
 ## Formato de entrega
 
@@ -98,8 +121,9 @@ Texto: [...]
 Visual: [...]
 
 📝 CAPTION: [2-4 líneas que complementan sin repetir el carrusel; primera línea = hook propio]
-🏷 Hashtags: [3-5 específicos del nicho]
 ```
+
+No se piden ni se sugieren hashtags en ninguna entrega. Las palabras por las que la marca quiere aparecer van escritas dentro del copy, en una frase que se lee natural. Si una guía de voz de marca específica pide hashtags, gana la guía de esa marca.
 
 ## Checklist pre-entrega
 
