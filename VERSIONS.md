@@ -12,7 +12,7 @@ Este archivo registra la versión vigente de cada skill del marketplace. Cualqui
 | claude-os | skill-audit | 1.0.0 | Versionado inicial |
 | creacion-contenido | carrusel | 1.1.0 | Fase 0 de contexto de marca; CTA por objetivo comercial; sin hashtags; cinco frameworks narrativos nuevos en references |
 | creacion-contenido | estructuras-copy | 1.1.0 | Fase 0 de contexto de marca; expone las 10 estructuras narrativas y la guía rápida del manual |
-| creacion-contenido | guion-video | 1.1.1 | Sección "El mundo del que mira": escenas con sustantivos del rubro, absolver antes de señalar, hablarle y no describirlo, economía sin compresión. Salió de la primera corrida de calidad: el guion pasaba las aserciones pero quedaba institucional |
+| creacion-contenido | guion-video | 1.1.2 | Sección "El mundo del que mira": escenas con sustantivos del rubro, absolver antes de señalar, hablarle y no describirlo, economía sin compresión. Salió de la primera corrida de calidad: el guion pasaba las aserciones pero quedaba institucional. 1.1.2: los hechos sobre la marca se verifican contra el brief igual que los números; si falta un dato, se pregunta |
 | creacion-contenido | hook-lab | 1.1.0 | Fase 0 de contexto y voz de marca |
 | docs-y-resumenes | muta-sop | 1.0.0 | Versionado inicial |
 | docs-y-resumenes | resumen-reunion | 1.0.0 | Versionado inicial |
@@ -35,5 +35,7 @@ Este archivo registra la versión vigente de cada skill del marketplace. Cualqui
 | 2026-08-28 | guion-video | 1.1.0 | Caso 1 (pedido sin contexto), en sesión limpia | 5 de 5 aserciones |
 | 2026-08-28 | carrusel | 1.1.0 | Caso 1 (pedido sin contexto), en sesión limpia | 4 de 4 aserciones |
 | 2026-08-28 | guion-video | 1.1.0 | Caso 2 (mano a mano con contexto cargado, anuncio de venta directa) | 8 de 8 aserciones; converge con la versión escrita a mano y suma premisa, hooks alternativos y notas de dirección |
+| 2026-08-28 | guion-video | 1.1.0 | Corrida de calidad con modelo chico (ángulo "ya pasaste por varias agencias") | Pasó las aserciones pero quedó institucional: sin escenas del mundo del que mira, sin absolución, comprimido. Originó 1.1.1 |
+| 2026-08-28 | guion-video | 1.1.1 | Misma corrida repetida con la skill parcheada y fixture con textura de audiencia | Brecha de tono cerrada (escenas, absolución, respiración). Encontró un hecho operativo inventado sobre la marca: originó 1.1.2 |
 
 Los casos 3 y 4 de guion-video y 2 y 3 de carrusel quedan pendientes de correr con material real de cliente (necesitan un caso de éxito escrito como fixture).

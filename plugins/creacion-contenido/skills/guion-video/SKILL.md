@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y qué tipo de guion se necesita. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.1.1
+  version: 1.1.2
 ---
 
 # Guionista de Video Corto
@@ -182,6 +182,7 @@ En piezas de pauta paga, donde el costo de equivocarse es plata, escribí **tres
 **Checklist:**
 
 - ¿Está escrito en la voz de la marca, y respeta sus prohibiciones?
+- ¿Todo hecho afirmado sobre la marca o su servicio está en el brief o lo dijo el usuario? Un dato operativo inventado ("el primer mes no se graba nada") es un guion que no se puede grabar, por bueno que suene. Si el argumento necesita un dato que no tenés, preguntalo
 - ¿La premisa es clara y el escenario es fácil de reconocer?
 - ¿Hay al menos una escena con sustantivos del mundo del que mira, y el problema se absuelve antes de señalarse?
 - ¿El hook tiene menos de 12 palabras y pasa el checklist de `sistema-de-hooks.md`?
