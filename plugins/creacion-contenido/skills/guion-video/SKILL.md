@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y las tres decisiones de formato. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.4.1
+  version: 1.4.2
 ---
 
 # Guionista de Video Corto
@@ -128,7 +128,7 @@ Entregá lo que prometió el hook.
 
 Patrones que funcionan, elegí uno: problema y solución, antes y después, mito y verdad, lista de puntos, historia mínima, comparación directa.
 
-En videos de más de 30 segundos, poné un gancho intermedio alrededor del segundo 12: una frase que reengancha al que se estaba yendo.
+En guiones largos, poné un gancho intermedio cerca de la mitad del recorrido: una frase que vuelve a tirar del que se estaba yendo. No es un segundo fijo, es proporcional al largo — y si la cadena de open loops está bien armada, muchas veces ya lo tenés puesto sin necesidad de agregarlo.
 
 ### GIRO
 
