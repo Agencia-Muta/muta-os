@@ -39,4 +39,6 @@ Este archivo registra la versión vigente de cada skill del marketplace. Cualqui
 | 2026-08-28 | guion-video | 1.1.0 | Corrida de calidad con modelo chico (ángulo "ya pasaste por varias agencias") | Pasó las aserciones pero quedó institucional: sin escenas del mundo del que mira, sin absolución, comprimido. Originó 1.1.1 |
 | 2026-08-28 | guion-video | 1.1.1 | Misma corrida repetida con la skill parcheada y fixture con textura de audiencia | Brecha de tono cerrada (escenas, absolución, respiración). Encontró un hecho operativo inventado sobre la marca: originó 1.1.2 |
 
+| 2026-08-28 | guion-video | 1.4.1 | Prueba final a ciegas: dos anuncios de venta directa (mismos temas que las piezas de referencia escritas a mano), agente sin acceso a esas piezas, contexto completo desde los documentos de Drive | Al nivel de las piezas de referencia. Un hook salió mejor que el de referencia. Cero hechos inventados, voz limpia, sin suspenso artificial en directos. La skill queda congelada: próximo cambio, sacar antes que agregar |
+
 Los casos 3 y 4 de guion-video y 2 y 3 de carrusel quedan pendientes de correr con material real de cliente (necesitan un caso de éxito escrito como fixture).
