@@ -50,3 +50,22 @@ Si un bloque cambia acá, se actualiza en todas las skills que lo usan y se sube
 ## Bloque 4 — Hashtags
 
 > No se piden ni se sugieren hashtags en ninguna entrega. Las palabras por las que la marca quiere aparecer van escritas dentro del copy, en una frase que se lee natural. Si una guía de voz de marca específica pide hashtags, gana la guía de esa marca.
+
+---
+
+## Bloque 5 — El mundo del que mira
+
+> Es lo que separa una pieza correcta de una que el destinatario siente escrita para él:
+>
+> 1. **Metelo en escenas suyas, con los sustantivos de su rubro** (el viajante, la góndola, el reporte que le llega a fin de mes). Una pieza sin ningún sustantivo del mundo del que mira le habla *de* él, no *a* él. Si el brief no trae esos detalles, pedilos.
+> 2. **Absolvé antes de señalar.** El problema del que mira tiene una lógica y nunca es su culpa. Ese movimiento es la calidez real de una pieza; los adjetivos cálidos no la reemplazan.
+> 3. **Hablale, no lo describas.** Segunda persona sostenida, y las preguntas que él ya se hace en su cabeza.
+> 4. **La marca entra en escena haciendo**, en primera persona del plural y voz activa, nunca descripta desde afuera — salvo que su guía de voz diga otra cosa.
+
+*(guion-video lleva su propia versión extendida de este bloque; ante diferencia, cada skill sigue la suya.)*
+
+---
+
+## Bloque 6 — Hechos verificados
+
+> Todo hecho afirmado sobre la marca, su servicio o sus resultados sale del brief, del material provisto o de lo que dijo el usuario. Un dato inventado — un número, un proceso, una persona con nombre — invalida la pieza por buena que suene. Si el argumento necesita un dato que no tenés, preguntalo.

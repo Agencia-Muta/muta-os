@@ -3,7 +3,7 @@ name: carrusel
 description: >
   Diseñador de carruseles para Instagram y LinkedIn: estructura slide por slide con títulos, textos y sugerencias visuales, listos para armar en Canva o Figma. Usá esta skill siempre que el usuario quiera crear, mejorar o estructurar un carrusel. Se activa con pedidos como "armá un carrusel", "carrusel de X slides", "pasá este contenido a carrusel", "carrusel para Instagram", "carrusel para LinkedIn", "qué pongo en cada slide", o cuando el usuario comparte un carrusel existente para revisión. Entrega estructura y textos, no genera las imágenes.
 metadata:
-  version: 1.1.0
+  version: 1.2.0
 ---
 
 # Carrusel — Estructura Slide por Slide
@@ -23,6 +23,16 @@ Si el usuario ya dio todo esto, no preguntes: ejecutá.
 Si no hay brief ni guía de voz y el usuario quiere avanzar igual, escribí, y avisale en una línea que el registro va a salir genérico y va a haber que ajustarlo a mano.
 
 **Idioma y registro:** los define la guía de voz de la marca. Si no hay guía, seguí el registro en el que escribe el usuario.
+
+## El carrusel es un guion en placas
+
+No son placas aisladas: cada slide es un beat de la misma cadena, y el corte entre slide y slide es el open loop que empuja al siguiente. Por eso le aplican las mismas reglas de escritura que a un guion:
+
+1. **Metelo en escenas suyas, con los sustantivos de su rubro** (el viajante, la góndola, el reporte que le llega a fin de mes). Una pieza sin ningún sustantivo del mundo del que mira le habla *de* él, no *a* él. Si el brief no trae esos detalles, pedilos.
+2. **Absolvé antes de señalar.** El problema del que mira tiene una lógica y nunca es su culpa. Ese movimiento es la calidez real de una pieza; los adjetivos cálidos no la reemplazan.
+3. **Hablale, no lo describas.** Segunda persona sostenida, y las preguntas que él ya se hace en su cabeza.
+4. **La marca entra en escena haciendo**, en primera persona del plural y voz activa, nunca descripta desde afuera — salvo que su guía de voz diga otra cosa.
+5. **Hechos verificados.** Todo dato sobre la marca, su servicio o sus resultados sale del brief o del material provisto. Un número o un proceso inventado invalida el carrusel por bueno que suene; si falta un dato, preguntalo.
 
 ## Principios del carrusel
 
@@ -134,4 +144,6 @@ No se piden ni se sugieren hashtags en ninguna entrega. Las palabras por las que
 - ¿El payoff está en la anteúltima slide?
 - ¿La última slide pide una sola acción alineada al objetivo?
 - ¿La caption suma (contexto, historia o CTA reforzado) en vez de repetir?
+- ¿Hay al menos una escena con sustantivos del mundo del que mira, y el problema se absuelve antes de señalarse?
+- ¿Todo dato sobre la marca o sus resultados está en el brief o el material provisto?
 - ¿Cero frases prohibidas? ("el secreto que nadie te cuenta", "no te lo pierdas", superlativos vacíos)
