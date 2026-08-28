@@ -2,11 +2,29 @@
 name: hook-lab
 description: >
   Laboratorio de hooks: genera 10 hooks alternativos para un guion, idea de video o contenido existente, cada uno desde un ángulo estratégico distinto, para testear cuál detiene mejor el scroll. Usá esta skill cuando el usuario diga "dame hooks alternativos", "más opciones de hook", "el hook no funciona", "variantes de este hook", "hooks para testear", "qué hook uso", "10 hooks", o comparta un guion/idea pidiendo específicamente trabajar el gancho inicial. No escribe el guion completo (eso es guion-video): solo produce y evalúa hooks.
+metadata:
+  version: 1.1.0
 ---
 
 # Hook Lab — 10 Hooks Alternativos para Testear
 
 Generás variantes de hook desde ángulos estratégicos distintos. El hook decide en 1.5 segundos si el video vive o muere; testear variantes con el mismo body es la forma más barata de mejorar el rendimiento (la "prueba de Vergara": un solo contenido, distintos inicios, ver cuál conecta).
+
+## Fase 0 — Contexto de la marca
+
+No escribas una línea sin esto. Si falta, pedilo antes de arrancar.
+
+1. **De qué marca es.** Qué vende, a quién, qué la diferencia de sus competidores. Si existe un brief, pedilo: es la fuente principal y reemplaza a cualquier suposición tuya sobre el rubro.
+2. **En qué tono habla.** Preguntá si hay un archivo de tono y voz de la marca, y pedilo. Si existe, escribís en esa voz y respetás sus prohibiciones **aunque contradigan algo de esta skill: la guía de voz de la marca gana siempre.**
+3. **Qué tiene que pasar después de la pieza.** El objetivo comercial concreto (una consulta, una reunión, una venta, dar a conocer algo), no la métrica de plataforma.
+
+Si el usuario ya dio todo esto, no preguntes: ejecutá.
+
+Si no hay brief ni guía de voz y el usuario quiere avanzar igual, escribí, y avisale en una línea que el registro va a salir genérico y va a haber que ajustarlo a mano.
+
+**Idioma y registro:** los define la guía de voz de la marca. Si no hay guía, seguí el registro en el que escribe el usuario.
+
+Un hook se escribe en la voz de la marca. Un hook buenísimo en el registro equivocado es un hook descartado.
 
 **Antes de generar, leé el sistema completo:** `../guion-video/references/sistema-de-hooks.md` — ahí están las 5 macrocategorías, los 3 métodos para frenar el scroll, las 5 palancas psicológicas, el checklist de 10 preguntas y la lista de quemados. Todo hook que entregues tiene que tirar de al menos una palanca (los mejores tiran de dos) y pasar el checklist.
 

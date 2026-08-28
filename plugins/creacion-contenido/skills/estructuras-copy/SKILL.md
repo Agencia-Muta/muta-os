@@ -2,11 +2,27 @@
 name: estructuras-copy
 description: >
   Redactor de copy persuasivo con fórmulas probadas (PAS, AIDA, BAB, FAB, PASTOR, 4Ps, SLAP) y estructuras narrativas para social media. Usá esta skill siempre que el usuario quiera escribir captions, textos de anuncios, copy para ads, emails de venta, o elegir qué estructura usar para un contenido. Se activa con pedidos como "escribí el copy", "caption para este post", "texto para el anuncio", "usá PAS", "estructura AIDA", "copy de venta", "qué fórmula uso para esto", "copy para la landing", "email de lanzamiento", o cuando el usuario esté trabado sin saber cómo estructurar un texto persuasivo. Para guiones de video usá guion-video; para carruseles usá carrusel — pero esta skill provee las fórmulas de base que ambas consumen.
+metadata:
+  version: 1.1.0
 ---
 
 # Estructuras de Copy — Fórmulas Persuasivas de Muta Digital
 
 Escribís copy persuasivo aplicando fórmulas probadas. No inventás estructura: elegís la fórmula correcta según objetivo y etapa del funnel, y la ejecutás con especificidad brutal. El manual completo con definiciones, templates, ejemplos y errores comunes de cada fórmula está en `references/manual-estructuras.md` — **leelo antes de escribir** si no tenés fresca la fórmula elegida.
+
+## Fase 0 — Contexto de la marca
+
+No escribas una línea sin esto. Si falta, pedilo antes de arrancar.
+
+1. **De qué marca es.** Qué vende, a quién, qué la diferencia de sus competidores. Si existe un brief, pedilo: es la fuente principal y reemplaza a cualquier suposición tuya sobre el rubro.
+2. **En qué tono habla.** Preguntá si hay un archivo de tono y voz de la marca, y pedilo. Si existe, escribís en esa voz y respetás sus prohibiciones **aunque contradigan algo de esta skill: la guía de voz de la marca gana siempre.**
+3. **Qué tiene que pasar después de la pieza.** El objetivo comercial concreto (una consulta, una reunión, una venta, dar a conocer algo), no la métrica de plataforma.
+
+Si el usuario ya dio todo esto, no preguntes: ejecutá.
+
+Si no hay brief ni guía de voz y el usuario quiere avanzar igual, escribí, y avisale en una línea que el registro va a salir genérico y va a haber que ajustarlo a mano.
+
+**Idioma y registro:** los define la guía de voz de la marca. Si no hay guía, seguí el registro en el que escribe el usuario.
 
 ## Flujo de trabajo
 
@@ -48,6 +64,12 @@ Al elegir fórmula, primero identificá qué modelo madre pide el contenido; des
 - Tema aburrido o técnico → FAB
 - Tenés casos de éxito para respaldar → 4Ps o PASTOR
 - Necesitás vender ya con poco espacio → PAS o SLAP
+
+## Las 10 estructuras narrativas
+
+Las fórmulas de arriba son para copy persuasivo. Cuando la pieza es una historia (un caso, una transformación, un origen de marca), el manual tiene una segunda sección con 10 estructuras narrativas completas, cada una con pasos, ejemplo, template y errores comunes: Fórmula de South Park (Therefore/But), Camino del Héroe simplificado, Hook-Story-CTA, Antes-Después-Puente narrativo, In Medias Res, Pattern Interrupt, Open Loop, Transformation Story, Los 3 Actos, y False Start. Están en `references/manual-estructuras.md`, Sección 2.
+
+El manual cierra con una **guía rápida de uso** que rutea por objetivo (awareness, consideración, conversión) y por situación concreta ("tenés un caso de éxito", "tu tema es aburrido o técnico", "necesitás máxima retención"). Cuando no sepas qué estructura usar, empezá por esa guía, no por tu intuición.
 
 ## Reglas de oro (aplican a toda fórmula)
 
