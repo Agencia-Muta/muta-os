@@ -3,7 +3,7 @@ name: guion-video
 description: >
   Guionista de video corto para redes y anuncios (Reels de Instagram, TikTok, YouTube Shorts, UGC, ads), en cualquier nicho. Antes de escribir pide el contexto de la marca, su tono de voz y qué tipo de guion se necesita. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o auditar guiones de video corto, sin importar el rubro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", o cuando el usuario comparte un guion existente para revisión. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
 metadata:
-  version: 1.1.2
+  version: 1.2.0
 ---
 
 # Guionista de Video Corto
@@ -76,7 +76,8 @@ Es lo que separa un guion correcto de uno que el destinatario siente escrito par
 1. **Metelo en escenas suyas, con los sustantivos de su rubro.** El viajante que recorre el país, la góndola, el camión que sale del depósito, el reporte de likes que le llega a fin de mes, el sobrino que "sabe de redes". Un guion sin ningún sustantivo del mundo del que mira le habla *de* él, no *a* él. Si el brief no trae esos detalles, pedilos en la Fase 0: cómo es un día del que va a ver esto, qué le llega, quién lo rodea, qué mira todas las mañanas.
 2. **Absolvé antes de señalar.** El problema del espectador tiene una lógica y nunca es su culpa: "No es que te estafaron. Es que te estaban midiendo lo único que sabían medir." / "Y tiene lógica, porque nunca lo necesitaste." Ese movimiento es la calidez real de una pieza; los adjetivos cálidos no la reemplazan. Un guion que solo diagnostica queda institucional aunque el léxico esté bien.
 3. **Hablale, no lo describas.** Segunda persona sostenida, y las preguntas que él ya se hace en su cabeza: cuánto de esto llega a ser una consulta de verdad, cuánta termina en una factura. Una pregunta que el espectador ya se hizo vale más que una afirmación nuestra.
-4. **Economía no es compresión.** Lo hablado necesita aire y repetición con intención: "Te mostraron alcance. Te mostraron seguidores. Te mostraron un reel con cien mil reproducciones." Se corta el relleno y la palabrería; no se corta la respiración ni los beats que hacen que el argumento se sienta, además de entenderse.
+4. **La marca entra en escena haciendo, nunca descripta desde afuera.** "Elegimos un número y lo medimos" es alguien trabajando; "En [marca] se elige un número" es un folleto. Primera persona del plural y voz activa siempre que la marca aparece, salvo que su guía de voz diga otra cosa.
+5. **Economía no es compresión.** Lo hablado necesita aire y repetición con intención: "Te mostraron alcance. Te mostraron seguidores. Te mostraron un reel con cien mil reproducciones." Se corta el relleno y la palabrería; no se corta la respiración ni los beats que hacen que el argumento se sienta, además de entenderse.
 
 ---
 
@@ -132,6 +133,17 @@ El momento "no lo había pensado así". Es lo que hace que un video se guarde y 
 Puede ser un dato que contradice la intuición, el mismo problema visto desde otro lado, una consecuencia no obvia, o una analogía que aclara por contraste.
 
 Ponelo siempre que el tema lo permita. En venta directa a veces sobra: si el argumento ya cierra, no fuerces uno.
+
+### LA CADENA DE LOOPS (obligatoria en todo lo que no sea venta directa pura)
+
+Todo guion con algo de storytelling se sostiene sobre dos niveles de curiosidad, no uno:
+
+1. **El loop madre.** Se abre en el hook y se cierra recién en el payoff, cerca de las tres cuartas partes. Es la pregunta grande que el espectador necesita responder para irse tranquilo.
+2. **Los mini-loops de pasaje.** Cada escena, al terminar, abre la puerta de la siguiente: un dato incompleto, una consecuencia anunciada y no mostrada, un "y ahí apareció el problema de verdad". El espectador nunca está al día: siempre hay una pregunta pendiente además de la grande.
+
+La prueba: cortá el guion en cualquier punto intermedio. Si lo que queda antes del corte cierra solo y no duele abandonar ahí, el pasaje anterior no abrió nada — reescribilo. La fórmula South Park ([pero]/[por lo tanto] con los conectores borrados) es la herramienta natural para esto: cada "pero" es un mini-loop que se abre, cada "por lo tanto" es uno que se paga.
+
+Para piezas narrativas, leé antes la sección de open loops y el arco de 5 partes en `references/proceso-creativo.md`: no es opcional en storytelling.
 
 ### CIERRE
 
