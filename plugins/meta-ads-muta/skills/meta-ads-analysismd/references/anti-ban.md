@@ -41,26 +41,20 @@ El usuario es un media buyer, marketer o dueño de negocio — no un desarrollad
 
 Completar TODOS estos pasos en orden. Si cualquier paso falla, detener el flujo y no avanzar.
 
-### 1. Pregunta de sesiones concurrentes (primera pregunta, antes del token)
+No preguntar por sesiones concurrentes cuando el usuario pide explícitamente el análisis: si lo pide, es porque no hay otra fuente corriendo. Asumirlo.
 
-Preguntar al usuario:
-
-> "¿Hay otra herramienta o reporte automático consultando estas cuentas publicitarias ahora mismo?"
-
-Si la respuesta es sí o ambigua, abortar hasta que el otro proceso termine. Meta detecta múltiples fuentes concurrentes como actividad no-humana.
-
-### 2. Verificación del token
+### 1. Verificación del token
 
 Antes de cualquier llamada de datos, verificar el token:
 - Tipo: preferir System User Token (no expira). Token personal = riesgo mayor.
 - Permisos: solo `ads_read` + `business_management`. Si tiene `ads_management`, detener y pedir token de solo lectura.
 - Expiración: si el token expirado (error 190), pedir renovación. No reintentar con el mismo token.
 
-### 3. Detección de modo de la app
+### 2. Detección de modo de la app
 
 Si la app está en Development Mode (sin publicar / sin App Review), limitar el total de llamadas de la sesión a 10 máximo. Development Mode = cuota muy reducida.
 
-### 4. Confirmación explícita por cuenta
+### 3. Confirmación explícita por cuenta
 
 Antes del primer llamado que apunte a una cuenta publicitaria específica, decirle al usuario:
 
@@ -68,7 +62,7 @@ Antes del primer llamado que apunte a una cuenta publicitaria específica, decir
 
 Esperar confirmación. Una confirmación anterior NO se extiende a una cuenta distinta.
 
-### 5. Ramp-up primera sesión
+### 4. Ramp-up primera sesión
 
 Si es la primera vez que se usa la API con esta cuenta (sin historial de uso previo), restringir a:
 - 1 cuenta publicitaria
