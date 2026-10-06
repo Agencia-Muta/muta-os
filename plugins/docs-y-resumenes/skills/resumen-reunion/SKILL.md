@@ -1,6 +1,6 @@
 ---
 name: resumen-reunion
-description: Convierte una reunion en un resumen con contexto, lo que se definio con su razonamiento y los pendientes por responsable. Sirve para mandar por mail al cliente y para actualizar el estado del proyecto.
+description: Convierte una reunion en un resumen con contexto, definiciones con su razonamiento y pendientes por responsable; si se pide, carga los pendientes en Asana. Para "resumi la reunion con X" o "que quedo pendiente de X".
 ---
 
 # resumen-reunion
@@ -13,7 +13,9 @@ El mismo texto sirve para el mail al cliente y para la actualización de estado 
 
 Cuando alguien pide resumir una reunión, una llamada o una transcripción para mandarla o registrarla. Se activa con "resumí la reunión con X", "armá la actualización de estado de X", "pasame el resumen de esta llamada para mandarle al cliente".
 
-No se usa para destilar una reunión de diagnóstico en una pieza diseñada para un prospecto: eso es otro documento y otro lector.
+También cuando se pide solo lo accionable ("qué quedó pendiente de la reunión con X", "cargá los pendientes en Asana"): el resumen es el mismo, y de ahí salen las tareas.
+
+No se usa para destilar una reunión de diagnóstico en una pieza diseñada para un prospecto: eso es `en-limpio-resumen-prospectos` (plugin muta-ventas).
 
 ## Qué necesito antes de empezar
 
@@ -21,6 +23,7 @@ No se usa para destilar una reunión de diagnóstico en una pieza diseñada para
 |---|---|---|
 | La reunión: transcripción completa, audio o relato en primera persona | sí | buscarla en el grabador si hay uno conectado; si no, pedirla. Nunca trabajar sobre el resumen automático del grabador: se pierde el razonamiento y queda el titular |
 | Cliente o proyecto | no | inferirlo del contenido |
+| Proyecto de Asana donde van las tareas (solo si se piden) | sí, en ese caso | preguntar; nunca asumirlo |
 
 ## Proceso
 
@@ -71,6 +74,16 @@ El título dice qué pasó, no que hubo una reunión: "Diseño aprobado + pendie
 Si una sección no tiene contenido, va igual con una línea que lo aclare. Sacarla hace parecer que el tema no existió.
 
 Si la transcripción tiene huecos o algo quedó ambiguo, decilo donde corresponde en vez de completarlo con lo más probable. Los nombres propios de herramientas, montos y fechas se transcriben exactos: si no se entendió cuál se dijo, marcalo en vez de poner el que suena parecido.
+
+## Si se pide cargar en Asana o actualizar el estado
+
+Primero el resumen, con el OK de Mati. Recién después las acciones. Antes de tocar Asana, leer `00-recursos/reglas-asana.md`.
+
+**Tareas.** Una tarea por pendiente, nunca varios en una. Van al proyecto del cliente o del área que Mati confirme. Responsable solo si se nombró en la reunión; si no, sin asignar. Descripción: fecha de la reunión, qué se acordó y el contexto que haga falta para hacerla sin leer el resumen. Fecha límite solo si se dijo una. Mostrar la lista completa de tareas a crear y esperar confirmación antes de crearlas.
+
+**Estado del proyecto.** Resumen esquemático de lo pendiente por responsable, con links a las tareas creadas. **El estado va siempre en verde (on_track).** Amarillo o rojo solo si Mati lo pide textualmente para ese update.
+
+**Mail al cliente.** Es el mismo resumen, pegado tal cual: no se escribe una versión aparte. Queda en borrador; lo manda Mati.
 
 ## Referencia
 
