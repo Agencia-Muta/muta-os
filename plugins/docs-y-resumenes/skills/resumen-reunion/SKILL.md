@@ -1,6 +1,6 @@
 ---
 name: resumen-reunion
-description: Convierte una reunion en un resumen con contexto, definiciones con su razonamiento y pendientes por responsable; si se pide, carga los pendientes en Asana. Para "resumi la reunion con X" o "que quedo pendiente de X".
+description: Resumen de una reunion con contexto, definiciones con su porque y pendientes por responsable; si se pide, carga los pendientes en Asana. Para "resumi la reunion con X" o "que quedo pendiente de X".
 ---
 
 # resumen-reunion
