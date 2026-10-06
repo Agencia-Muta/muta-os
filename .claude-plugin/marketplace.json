@@ -33,11 +33,6 @@
       "name": "docs-y-resumenes",
       "source": "./plugins/docs-y-resumenes",
       "description": "Material crudo convertido en documentos ejecutables: muta-sop arma SOPs y guias desde un proceso hablado, y resumen-reunion convierte la transcripcion de una reunion en un resumen con contexto y pendientes separados por lado; si se pide, carga los pendientes en Asana."
-    },
-    {
-      "name": "reuniones-muta",
-      "source": "./plugins/reuniones-muta",
-      "description": "OBSOLETO. Desinstalar."
     }
   ]
 }
