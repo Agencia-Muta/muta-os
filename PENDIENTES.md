@@ -1,35 +1,31 @@
 # Pendientes
 
-## pipeline-venta (muta-ventas)
+## A. pipeline-venta: prospecto que tuvo reunión y no hay fit
 
-**Cambio:** sumar una rama para cuando el prospecto no es apto.
+**Cambio:** sumar una rama en `pipeline-venta` (muta-ventas) para cuando, después de la reunión, se ve que no hay fit (criterio: paso 0, `precios-y-fit.md`).
 
-- Si no es apto, igual se lleva una asesoría gratis.
-- Al mandarle el documento En Limpio, agregar un mensaje tipo:
+- Igual se lleva una asesoría gratis: se le manda el En Limpio.
+- En el mail del En Limpio se agrega algo como:
   > "Si la reunión te aportó valor aunque no avancemos en un presupuesto, nos serviría mucho que nos dejes un comentario en Google."
-- Incluir el link de calificación de Google.
+- Con el link de reseña de Google de Muta.
 
-**Falta definir:** link de reseña de Google de Muta, y si el mensaje va en el mail, en el WhatsApp o dentro del En Limpio.
+**Falta definir:** link de reseña de Google; si va en el mail o por WhatsApp.
 
-## pipeline-venta: mail automático al pasar a "No apto"
+## B. Leads del formulario web que no califican (sin reunión)
 
-**Cambio:** cuando un prospecto se mueve a la etapa "No apto", que se genere el borrador de un mail de cierre. Es el mismo mail que lleva el En Limpio (asesoría gratis) y el pedido de reseña en Google del punto anterior.
+**Problema:** llegan leads por el formulario que no califican de entrada (ej.: casa de empanadas, emprendedor que vende bidones). Mati los marca "No apto" en Mavia y no les responde nada.
 
-**Borrador base:**
+**Flujo deseado:** Mati dice "mandá los mails de rechazo a los no aptos" → buscar en Mavia (pipeline "Ventas Muta") las oportunidades en la etapa No apto sin nota de "rechazo enviado" → un borrador por lead desde admin@ → Mati los manda → nota en el contacto para no repetir. Sin reunión, sin En Limpio, sin pedido de reseña, sin consejos.
 
-> Asunto: Gracias por la charla, [Nombre]
+**Mail definitivo (fijo, sin variables):**
+
+> Asunto: Sobre tu consulta a Muta
 >
-> Hola [Nombre],
+> Hola! Recibimos tu formulario de contacto en Muta y, por el tipo de proyecto, el momento en el que están y el enfoque con el que estamos trabajando hoy, creemos que no somos la agencia indicada para acompañarlos.
 >
-> Gracias por el tiempo de la reunión. Nos quedamos pensando en [negocio] y queremos ser honestos: por cómo trabajamos hoy, no somos el equipo que más te conviene en esta etapa. Nuestros servicios están pensados para negocios con [criterio: inversión mensual, equipo, facturación] y no queremos venderte algo que todavía no te va a rendir.
+> De todas formas, gracias por habernos tenido en cuenta y por tomarse el tiempo de escribirnos.
 >
-> Igual no queríamos dejarte con las manos vacías. Acá tenés el resumen de lo que hablamos, con recomendaciones concretas para que avances por tu cuenta: [link En Limpio].
->
-> Cuando [negocio] crezca y quieras dar el siguiente paso, escribinos y lo retomamos.
->
-> Si la reunión te aportó valor, nos ayudaría mucho que nos dejes un comentario en Google: [link reseña].
->
-> Un abrazo,
 > Matías
+> Muta Digital
 
-**Falta definir:** cuál es el criterio real de "no apto" (para completar el corchete) y dónde vive la etapa (Asana, planilla, CRM) para disparar el borrador.
+**Falta definir:** si va como skill propia (`rechazo-no-aptos`, recomendado) o como sección de `pipeline-venta`; ID de la etapa "No apto" en Mavia; dónde se editan las skills de muta-ventas (la copia en Claude Code está sincronizada desde claude.ai y se pisa); confirmar el asunto.
