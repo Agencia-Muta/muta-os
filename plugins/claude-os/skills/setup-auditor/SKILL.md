@@ -1,134 +1,178 @@
 ---
 name: setup-auditor
-description: Audit your CLAUDE.md, skills, hooks and subagents against Anthropic's current published guidance for the model you are actually on, and get a delete / keep / rewrite verdict on every instruction. Use when the user says "audit my setup", "audit my CLAUDE.md", "is my CLAUDE.md out of date", "what should I delete", "check my skills against the new model", or after any new Claude model ships.
+description: Audita CLAUDE.md, reglas, skills, hooks y memoria contra la guía vigente de Anthropic para el modelo en uso: veredicto por regla con fuente, y conflictos entre capas. Para 'auditá mi setup'.
 ---
 
 # Setup Auditor
 
-Most Claude setups are archaeology. Every instruction in a CLAUDE.md was written to fix a problem some *earlier* model had, and nobody ever goes back and removes it once the model stops having that problem. The instructions stay, they cost tokens, and several of them now make output actively worse.
+Un setup de Claude es arqueología. Cada instrucción del CLAUDE.md se escribió para arreglar un problema que tenía un modelo *anterior*, y nadie vuelve a sacarla cuando el modelo deja de tener ese problema. Las instrucciones quedan, cuestan tokens y varias ahora empeoran el resultado.
 
-Anthropic's own team ran this exact clean-up: when Opus 5 shipped they deleted more than 80% of Claude Code's system prompt and it performed better without it. Their published advice is to try deleting your CLAUDE.md, your skills and your hooks every six months and see what the model does on its own.
+Anthropic hizo esta limpieza con su propio producto: al salir Opus 5 borraron más del 80% del system prompt de Claude Code y anduvo mejor sin eso. Su consejo publicado es probar cada seis meses qué pasa sin el CLAUDE.md, sin las skills y sin los hooks.
 
-This skill does that audit properly instead of guessing: it reads what you actually have, fetches what Anthropic actually recommends for the model you are actually on, and gives you a verdict per instruction with the source line behind it.
+Esta skill hace esa auditoría en serio en vez de adivinar: lee lo que hay, baja lo que Anthropic recomienda hoy para el modelo que está corriendo, y da un veredicto por instrucción con la línea de la fuente atrás.
 
-## The rule that makes this skill work
+## Las dos reglas que hacen que esto funcione
 
-**Never hardcode the guidance. Always fetch it live.**
+**1. Nunca hardcodear la guía. Siempre bajarla en vivo.** El consejo por modelo cambia cada vez que sale uno. Una skill con las reglas adentro se convierte en el mismo artefacto viejo que vino a encontrar. Por eso el paso 2 siempre va y lee las páginas actuales.
 
-Model-specific advice changes every time a model ships. A skill with the rules baked in becomes exactly the stale artefact it was built to find. So step 2 below always goes and reads the current pages.
+**2. La introspección del modelo no es evidencia.** "¿Ya harías esto sin que te lo digan?" la contesta el mismo modelo que va a decir que sí a casi todo. Una regla que suena obvia suele ser cicatriz de una falla real. La única forma honesta de saber si sobra es sacarla y ver si falla. Por eso acá la pregunta no es "¿lo harías igual?" sino "¿nació de una falla documentada?", y las que no tienen falla atrás van a una lista de prueba, no a la basura.
 
-## Safety
+## Seguridad
 
-- **Never delete or edit anything without explicit confirmation.** Propose, show the diff, wait.
-- Back up every file you are about to change first: `cp <file> <file>.pre-audit`.
-- A rule that looks redundant may exist because of a real failure the user hit. When a DELETE candidate looks deliberate, say so and ask rather than assuming it is cruft.
-- Never touch files outside the ones the user named or the standard locations in step 1.
+- **Nunca borrar, archivar ni editar nada en la sesión de auditoría.** Esta skill produce un informe. Lo que se aplica se aplica en otra sesión, fila por fila, con confirmación explícita.
+- Si en la sesión siguiente se aplica algo: backup primero (`cp <archivo> <archivo>.pre-audit`), nada se borra de forma permanente, todo lo que sale va a una carpeta `_archivo/` dentro de la misma estación.
+- Una regla que parece redundante puede existir por una falla real. Cuando una candidata a BORRAR parece deliberada, decirlo y preguntar en vez de asumir que es basura.
+- No tocar archivos fuera de los que el usuario nombró o de las ubicaciones estándar del paso 1.
 
-## Step 1 — Find what they actually have
+## Paso 1. Inventario
 
-Look in these locations. Report what exists before analysing anything.
+Buscar en estas ubicaciones y reportar qué existe antes de analizar nada.
 
 ```bash
-# Memory / instruction files
-ls -la ~/.claude/CLAUDE.md ./CLAUDE.md ./AGENTS.md ./.claude/CLAUDE.md 2>/dev/null
-wc -l ~/.claude/CLAUDE.md ./CLAUDE.md 2>/dev/null
+# Instrucciones
+ls -la ~/.claude/CLAUDE.md ./CLAUDE.md ./AGENTS.md ./.claude/CLAUDE.md ./.claude/rules/ 2>/dev/null
+wc -lw ~/.claude/CLAUDE.md ./CLAUDE.md 2>/dev/null
 
-# Skills, agents, hooks
+# Memoria (persiste entre sesiones y también es instrucción)
+ls ~/.claude/projects/*/memory/MEMORY.md 2>/dev/null
+wc -l ~/.claude/projects/*/memory/MEMORY.md 2>/dev/null
+
+# Skills, agentes, hooks
 ls -d ~/.claude/skills/*/ ./.claude/skills/*/ 2>/dev/null | wc -l
 ls -d ~/.claude/agents/*/ ~/.claude/agents/*.md 2>/dev/null
 grep -l "hooks" ~/.claude/settings.json ./.claude/settings.json 2>/dev/null
 ```
 
-Report a table: artefact, path, size in lines. Size matters — a 400-line CLAUDE.md is the strongest signal that an audit is overdue.
+Reportar una tabla: artefacto, ruta, líneas y palabras. El tamaño importa: un CLAUDE.md de 400 líneas es la señal más fuerte de que la auditoría está atrasada. Esos números son el "antes" del paso 4.
 
-## Step 2 — Fetch the current guidance (never skip, never cache)
+Las skills se auditan por su `description` y por las instrucciones de comportamiento que llevan adentro, no por sus referencias de datos.
 
-Find out which model they are on first (`/model`, or ask). Then fetch:
+## Paso 2. Bajar la guía vigente (nunca saltear, nunca cachear)
 
-1. `https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices` — the living cross-model reference
-2. The model-specific page for their model, linked from that page. One exists per current model, for example `.../prompt-engineering/prompting-claude-opus-5`
-3. `https://claude.com/blog/best-practices-for-prompt-engineering` — the general craft post
+Primero saber en qué modelo se está (`/model`, o preguntar). Después bajar:
 
-If a fetch fails, say so and mark the affected checks NOT RUN. Never substitute remembered guidance for a failed fetch.
+1. `https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices`, la referencia viva entre modelos
+2. La página específica del modelo en uso, linkeada desde la anterior. Hay una por modelo vigente, por ejemplo `.../prompt-engineering/prompting-claude-opus-5`
+3. `https://claude.com/blog/best-practices-for-prompt-engineering`, el post general
 
-## Step 3 — Run the checks
+Si una bajada falla, decirlo y marcar los chequeos afectados como NO CORRIDO. Nunca reemplazar una bajada fallida por guía recordada.
 
-Two passes. The delete pass first, because it is where the wins are.
+## Paso 3. Los chequeos
 
-### DELETE candidates
+Cuatro pasadas, en este orden. La de borrado va primera porque es donde está la ganancia.
 
-Search their files for each pattern. Quote the line you found and the guidance line that condemns it.
+### 3a. Candidatas a BORRAR (contra la guía bajada)
 
-| # | Look for | Why it goes |
+Buscar cada patrón en los archivos. Citar la línea encontrada y la línea de la guía que la condena.
+
+| # | Buscar | Por qué se va |
 | --- | --- | --- |
-| 1 | Explicit verification steps: "verify before done", "include a final verification step", "use a subagent to verify", "prove it works" | Anthropic: remove these on Opus 5, they cause over-verification and waste tokens with no quality gain. Applies to harness scaffolding that adds a separate verify step too |
-| 2 | Re-check instructions: "double-check your answer", "re-verify before responding", "challenge your own work" | The model already self-corrects. These compound with its own behaviour and add cost without improving results |
-| 3 | Any rule telling the model not to think or not to reason | Increases internal-tag leakage into visible output. Remove it |
-| 4 | Review prompts saying "only report high-severity issues" or "be conservative" | Taken literally, so it reports less. Ask for everything and filter in a second pass instead |
-| 5 | Vision workarounds tuned for an older model | Re-validate. They are often no longer needed |
-| 6 | Effort defaults carried over from a previous model | Re-run an effort sweep. `low` and `medium` now hold quality at a fraction of the cost |
-| 7 | XML-tag scaffolding and heavy role-play treated as mandatory structure | Once recommended, now optional. Keep where it genuinely disambiguates mixed content, drop where it is ceremony |
+| 1 | Pasos de verificación explícitos: "verificá antes de terminar", "incluí un paso final de verificación", "usá un subagente para verificar", "probá que anda" | Anthropic: sacarlos en Opus 5 y posteriores, causan sobre-verificación y gastan tokens sin ganancia de calidad. Aplica también a scaffolding del harness que agrega un paso de verificación aparte |
+| 2 | Instrucciones de re-chequeo: "revisá dos veces tu respuesta", "re-verificá antes de responder", "cuestioná tu propio trabajo" | El modelo ya se autocorrige. Estas se suman a su comportamiento y agregan costo sin mejorar nada |
+| 3 | Cualquier regla que le diga al modelo que no piense o no razone | Aumenta la filtración de tags internos al output visible. Sacarla |
+| 4 | Prompts de revisión que digan "reportá solo problemas graves" o "sé conservador" | Lo toma literal y reporta menos. Pedir todo y filtrar en una segunda pasada |
+| 5 | Workarounds de visión afinados para un modelo viejo | Re-validar. Casi nunca hacen falta ya |
+| 6 | Defaults de esfuerzo heredados de un modelo anterior | Re-correr un barrido de esfuerzo. `low` y `medium` sostienen la calidad a una fracción del costo |
+| 7 | Scaffolding de tags XML y role-play pesado tratados como estructura obligatoria | Antes recomendado, hoy opcional. Mantener donde desambigua contenido mixto de verdad, sacar donde es ceremonia |
 
-**False-positive guard on check 4.** "Only report work you can point to evidence for" is a TRUTHFULNESS rule, not a severity filter. Same for any "only claim what you verified" line. Those are KEEP. Check 4 fires only on instructions that narrow what gets reported *by severity or confidence*, never on ones that forbid fabrication. Getting this wrong makes the setup worse, not better.
+**Guardia contra falsos positivos en el chequeo 1 y el 4.** "Antes de decir que un fix anda, probá el comportamiento real" o "reportá solo lo que podés señalar con evidencia" son reglas de VERACIDAD, no de verificación ceremonial ni de filtro por severidad. Lo mismo para cualquier línea que prohíba inventar o reportar como hecho algo no visto. Esas son MANTENER. El chequeo 1 dispara solo sobre pasos de verificación agregados por encima del trabajo ya hecho; el 4 solo sobre instrucciones que achican lo reportado *por severidad o confianza*. Equivocarse acá empeora el setup en vez de mejorarlo.
 
-### ADD candidates
+### 3b. Debilidad vieja (por regla, sin fuente externa)
 
-Newer models are more verbose and more eager. Check whether they have each of these, and flag the gap.
+Para cada regla que sobrevivió 3a, contestar una sola pregunta: **¿corrige una debilidad que el modelo actual ya no tiene?**
 
-| # | Missing instruction | Why it is needed now |
+No se contesta por introspección ("yo ya haría esto"). Se contesta así:
+
+- **Tiene falla documentada atrás** (un MEMORY.md con el episodio, un comentario en el archivo, el usuario lo recuerda, o la regla lleva su porqué escrito): MANTENER, aunque suene obvia. Es cicatriz.
+- **No tiene falla rastreable** y describe un comportamiento que la guía bajada en el paso 2 dice que el modelo actual tiene por defecto: PARKEAR. Va a una lista de prueba: se saca una semana y vuelve solo si falla.
+- **No tiene falla rastreable y la guía no dice nada**: MANTENER, y anotar que la guía no la cubre.
+
+Un veredicto PARKEAR nunca se aplica en esta sesión. Es una hipótesis a probar, no una decisión.
+
+### 3c. Conflictos entre capas
+
+Las instrucciones viven en varias capas que se cargan juntas: CLAUDE.md global, CLAUDE.md de proyecto, archivos de reglas, MEMORY.md, descripciones de skills, hooks. Nadie las lee en conjunto, así que se contradicen sin que nadie lo note, y el modelo resuelve la contradicción de forma distinta cada sesión.
+
+Cruzar todas las capas y reportar cada par que choque: misma situación, instrucción distinta. Ejemplos del tipo de cosa que aparece: un CLAUDE.md que dice que "doc" es un Google Doc y una memoria que dice que "documento" es un .docx local; una regla que manda publicar los mockups como Artifact y una memoria que dice que Artifact nunca va por default.
+
+Por cada conflicto: las dos líneas, sus archivos, y cuál parece más nueva (fecha del MEMORY.md, historial de git si hay). No resolverlo: eso lo decide el usuario. Si una de las dos ya está cubierta por la otra sin chocar, es duplicado, no conflicto: va a una lista aparte de candidatas a unificar, y tampoco se unifica en esta sesión.
+
+### 3d. Candidatas a AGREGAR
+
+Los modelos nuevos son más verbosos y más ansiosos. Revisar si el setup tiene cada una y marcar el hueco. Si ya la tiene en cualquier capa, no proponerla.
+
+| # | Instrucción faltante | Por qué hace falta ahora |
 | --- | --- | --- |
-| 1 | An explicit conciseness instruction | Default responses run longer than prior models. Effort controls thinking, not output length, so length has to be prompted for |
-| 2 | Written-deliverable length calibration | Files written to disk come out longer and padded unless calibrated |
-| 3 | Narration cadence for agentic work | The model announces what it is about to do. Describe the cadence you want, with positive examples rather than prohibitions |
-| 4 | A task-scope constraint | It expands scope and adds unrequested steps. Constrain it explicitly for narrow tasks |
-| 5 | A subagent delegation cap | It delegates readily, which multiplies cost on small tasks |
+| 1 | Una instrucción explícita de concisión | Las respuestas por defecto salen más largas que en modelos anteriores. El esfuerzo controla el razonamiento, no el largo del output, así que el largo hay que pedirlo |
+| 2 | Calibración de largo para entregables escritos | Los archivos a disco salen más largos y rellenados si no se calibra |
+| 3 | Cadencia de narración en trabajo agéntico | El modelo anuncia lo que va a hacer. Describir la cadencia que se quiere, con ejemplos positivos y no con prohibiciones |
+| 4 | Un límite de alcance por tarea | Expande el alcance y agrega pasos no pedidos. Acotarlo explícito para tareas chicas |
+| 5 | Un tope de delegación a subagentes | Delega fácil, y eso multiplica el costo en tareas chicas |
 
-## Step 4 — Output
+## Paso 4. Salida
 
-Give them this, in this order.
+Entregar esto, en este orden.
 
-1. **One-line verdict.** `Your CLAUDE.md is 412 lines. 9 instructions should go, 4 are missing. Estimated saving: N lines.`
-2. **The delete table.** One row per hit: the line, its file and line number, which check caught it, and the source sentence from Anthropic's docs. No hit means no row — never pad the table to look thorough.
-3. **The add table.** One row per gap, with the exact paste-able text to add.
-4. **The six-month experiment.** Tell them the stronger move plainly: rename the file, run a week without it, and add back only what you actually miss. `mv CLAUDE.md CLAUDE.md.parked`
-5. **What you did not check.** Any failed fetch, any file you could not read, any check that did not run. State it as NOT RUN.
+1. **Veredicto en una línea.** `Tu setup tiene 312 reglas en 2.400 palabras. 9 deberían irse, 6 van a prueba, 3 pares se contradicen, 2 faltan.`
+2. **Tabla de borrado.** Una fila por hit: la línea, archivo y número de línea, qué chequeo la atrapó y la frase de la guía de Anthropic. Sin hit no hay fila: nunca rellenar la tabla para parecer exhaustivo.
+3. **Tabla de parkeo.** Una fila por regla sin falla rastreable: la línea, archivo, y qué dice la guía sobre ese comportamiento por defecto.
+4. **Tabla de conflictos.** Una fila por par: las dos líneas, sus archivos, cuál parece más nueva. Debajo, la lista de duplicados.
+5. **Tabla de agregados.** Una fila por hueco, con el texto exacto para pegar.
+6. **Antes y después proyectado.** Cantidad de reglas y palabras hoy, y cuántas quedarían si se aplicara todo lo propuesto. Es proyección, no resultado.
+7. **El experimento de los seis meses.** Decir la jugada más fuerte sin vueltas: renombrar el archivo, correr una semana sin él, y volver a agregar solo lo que de verdad faltó. `mv CLAUDE.md CLAUDE.md.parked`
+8. **Lo que no se chequeó.** Cualquier bajada fallida, archivo ilegible o chequeo que no corrió. Marcado como NO CORRIDO.
 
-Then stop. Do not apply anything until they say which rows to action.
+Después, parar. No aplicar nada hasta que el usuario diga qué filas se accionan, y aplicarlas en una sesión aparte.
 
-## The paste-able version (no Claude Code needed)
+## Al reescribir una regla
 
-Not everyone runs Claude Code. Give this to anyone who lives in the chat box — they paste their CLAUDE.md or custom instructions in underneath it.
+Si el usuario pide REESCRIBIR, acortar sin perder el porqué. Una regla que dice "las imágenes van adjuntas, nunca embebidas: Gmail bloquea el base64 y queda un cuadrito roto" se puede comprimir, pero el "Gmail bloquea el base64" se queda. Es lo que permite aplicar el criterio en una situación nueva en vez de obedecer el literal. "En la menor cantidad de palabras posible" es un objetivo equivocado: el objetivo es la menor cantidad de palabras que conserve la razón.
+
+## Para después de la auditoría
+
+Una regla nueva entra recién cuando el usuario corrige lo mismo dos veces. Una corrección sola es un caso; dos es un patrón. Si el setup ya tiene esta regla escrita, no duplicarla.
+
+## La versión pegable (sin Claude Code)
+
+No todo el mundo corre Claude Code. Dar esto a quien vive en el chat: pega su CLAUDE.md o sus instrucciones personalizadas debajo.
 
 ```text
-You are auditing my Claude instructions to find what is now out of date.
+Estás auditando mis instrucciones de Claude para encontrar qué quedó viejo.
 
-First, read Anthropic's current guidance:
+Primero leé la guía vigente de Anthropic:
 - platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices
-- the model-specific prompting page linked from it, for the model I am using
+- la página de prompting específica del modelo que estoy usando, linkeada desde la anterior
 - claude.com/blog/best-practices-for-prompt-engineering
 
-Then go through my instructions below, line by line, and give me a table with one row per instruction:
+Después recorré mis instrucciones de abajo, línea por línea, y dame una tabla con una fila por instrucción:
 
-| My instruction | Verdict | Why | Anthropic's line |
+| Mi instrucción | Veredicto | Por qué | La línea de Anthropic |
 
-Verdict is DELETE, KEEP or REWRITE.
+El veredicto es BORRAR, MANTENER, REESCRIBIR o PARKEAR.
 
-Be specific about why. For every DELETE and REWRITE, quote the sentence from Anthropic's own guidance that justifies it. If you cannot find one, mark it KEEP and say the guidance does not cover it. Do not guess and do not invent a source.
+Para cada BORRAR y REESCRIBIR, citá la frase de la guía de Anthropic que lo justifica. Si no la encontrás, marcá MANTENER y decí que la guía no lo cubre. No adivines y no inventes una fuente.
 
-Pay particular attention to instructions that tell you to verify your work, double-check your answers, be conservative, or not to think. Those were written for older models and now make output worse.
+PARKEAR es para reglas que describen un comportamiento que, según la guía, el modelo actual ya tiene por defecto, y que no llevan escrito el porqué ni una falla atrás. No contestes "yo ya haría esto" por introspección: eso no es evidencia. Si la regla lleva su porqué o parece nacida de una falla real, es MANTENER aunque suene obvia.
 
-Then tell me the four or five instructions I am missing that the newest models actually need, and give me the exact wording to add.
+Prestá atención especial a instrucciones que te piden verificar tu trabajo, revisar dos veces, ser conservador o no pensar. Esas se escribieron para modelos viejos y hoy empeoran el output. Pero "no inventes" y "probá antes de decir que anda" son reglas de veracidad, no de verificación: esas se mantienen.
 
-Report everything you find. I will decide what to cut.
+Después buscá pares de instrucciones que se contradigan entre sí (misma situación, instrucción distinta) y listalos sin resolverlos.
 
-My instructions:
-[paste here]
+Por último, decime las cuatro o cinco instrucciones que me faltan y que los modelos nuevos necesitan, con el texto exacto para agregar.
+
+Reportá todo lo que encuentres. Yo decido qué se corta. No reescribas nada que no te pida.
+
+Mis instrucciones:
+[pegar acá]
 ```
 
-## Failure modes to avoid
+## Fallas a evitar
 
-- **Reporting a clean audit you did not run.** If a fetch failed or a file was unreadable, say NOT RUN. Never a green tick by default.
-- **Inventing a source line.** Every DELETE must quote real text from a page you actually fetched this run.
-- **Padding the table.** Nine real findings beat twenty with eleven maybes.
-- **Deleting a rule that earned its place.** Scar tissue is not always cruft. Flag it and ask.
-- **Caching the guidance.** Fetch every run. A stale auditor is the problem, not the fix.
+- **Reportar una auditoría limpia que no se corrió.** Si una bajada falló o un archivo no se pudo leer, decir NO CORRIDO. Nunca un tilde verde por defecto.
+- **Inventar una línea de fuente.** Cada BORRAR cita texto real de una página bajada en esta corrida.
+- **Contestar por introspección.** "Esto ya lo haría solo" no es un veredicto, es la falla que esta skill existe para evitar.
+- **Rellenar la tabla.** Nueve hallazgos reales valen más que veinte con once dudosos.
+- **Borrar una regla que se ganó el lugar.** La cicatriz no siempre es basura. Marcar y preguntar.
+- **Comprimir hasta perder el porqué.** Una regla sin razón se obedece literal y falla en el caso nuevo.
+- **Cachear la guía.** Bajar en cada corrida. Un auditor viejo es el problema, no la solución.
+- **Aplicar en la misma sesión.** Auditar y archivar son dos actos distintos, con una confirmación entre medio.
