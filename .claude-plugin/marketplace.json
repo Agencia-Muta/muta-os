@@ -7,7 +7,7 @@
     {
       "name": "meta-ads-muta",
       "source": "./plugins/meta-ads-muta",
-      "description": "Analisis tecnico multinivel de campanas de Meta Ads."
+      "description": "Analisis tecnico multinivel de campanas de Meta Ads y reglas de seguridad para leer o tocar cuentas."
     },
     {
       "name": "creacion-contenido",

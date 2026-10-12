@@ -1,6 +1,8 @@
 {
   "name": "meta-ads-muta",
-  "version": "1.0.1",
-  "description": "Analisis tecnico multinivel de campanas de Meta Ads (ROAS, CPL, CPM, fatiga, embudo).",
-  "author": { "name": "Matias Cardoselli" }
+  "version": "1.1.0",
+  "description": "Meta Ads para Muta: analisis tecnico multinivel de campanas (ROAS, CPL, CPM, fatiga, embudo) y las reglas de seguridad para leer o tocar cuentas.",
+  "author": {
+    "name": "Matias Cardoselli"
+  }
 }
