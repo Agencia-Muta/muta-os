@@ -29,12 +29,13 @@ Convertís ideas, guiones o contenidos en carruseles con estructura probada. El 
 | Paso | "Paso N:" + qué hacer + por qué funciona (1 oración) |
 | Contraste | Forma incorrecta → forma correcta, en dos líneas |
 | Dato | Número sorprendente + insight de una oración |
+| Golpe | La idea central en una línea, por contraste (usá `→`). Es la slide con menos texto del carrusel. Nunca con la plantilla "no es X, es Y" |
 
 ## Flujo de trabajo
 
 ```
 1. ¿Qué hay? (tema / contenido largo a adaptar / guion existente)
-2. Objetivo y funnel (guardados / leads / venta → define fórmula y CTA)
+2. Objetivo y funnel (guardados / leads / venta / cambiar una creencia → define fórmula y CTA)
 3. Elegir fórmula y mapearla a slides (tabla de abajo)
 4. Escribir slide por slide
 5. Auditar con el checklist
@@ -49,12 +50,31 @@ Si el contenido viene de un guion de video, no lo pegues cortado: re-estructural
 | **PAS** | 5-6 | S1 portada=Problema (hook) · S2-3 Agitación · S4-5 Solución · S6 CTA |
 | **AIDA** | 6-8 | S1 Atención · S2-3 Interés · S4-6 Deseo · última Acción |
 | **BAB** | 6-7 | S1-2 Antes · S3-4 Después · S5-6 Puente · S7 CTA |
-| **Lista / Tips** | n+3 | S1 portada ("N errores/claves de X") · S2..n+1 un ítem por slide · S n+2 síntesis o giro · última CTA |
+| **Lista / Tips** | n+4 (3 a 5 ítems) | S1 portada ("N errores/claves de X") · S2 reframe que le da sentido a la lista · S3..n+2 un ítem por slide, todos con el mismo molde · S n+3 síntesis que conecta los ítems con una idea mayor · última CTA |
+| **Reframe de creencia** | 8-10 | S1 hook indirecto · S2 tesis · S3 conductas reconocibles · S4 creencia falsa · S5 golpe · S6 mecanismo · S7 peor escenario · S8 giro de identidad · S9 nueva regla · S10 CTA |
 | **PASTOR** | 8-10 | S1 Problema · S2 Amplificar · S3-4 Historia · S5-6 Testimonio · S7-8 Oferta · última Respuesta/CTA |
 | **Tutorial** | pasos+3 | S1 promesa del resultado · un paso por slide con resultado parcial · cierre con resultado final · CTA |
 | **Narrativo (historia)** | 6-8 | S1 momento cumbre o conflicto · desarrollo con un beat por slide (therefore/but) · payoff · CTA |
 
 Detalles, templates y errores de cada fórmula: `references/../../estructuras-copy/references/manual-estructuras.md` (manual completo de la skill estructuras-copy). Consultalo si la fórmula elegida no te resulta familiar.
+
+### Lista: el molde de cada ítem
+
+Todos los ítems repiten el mismo molde, sin variar el orden: (1) la acción o señal concreta, como título; (2) por qué falla lo que se hace por defecto, en una línea; (3) qué hacer en su lugar. El lector aprende el patrón en el primer ítem y después escanea. Sin la slide de reframe antes de la lista y la síntesis después, se lee como tips sueltos.
+
+### Reframe de creencia
+
+Para cambiar una forma de pensar instalada en la audiencia. Busca identificación y guardados, no conversión inmediata (para leads, PAS o BAB).
+
+- **S1 hook indirecto:** la portada no nombra el dolor. Abre con una anécdota de un tercero, una pregunta frecuente o una comparación contraintuitiva. Esta regla vale solo para esta fórmula: en PAS la portada sí es el problema.
+- **S3 conductas reconocibles:** comportamientos puntuales del avatar, que se vea reflejado.
+- **S4 creencia falsa:** se nombra explícitamente la creencia a romper. Es la bisagra del carrusel.
+- **S5 golpe:** patrón Golpe.
+- **S6 mecanismo:** por qué el reframe es cierto, explicado paso a paso. Nunca se pasa del golpe al giro de identidad sin esta slide.
+- **S7 peor escenario:** confirma el miedo real sin resolverlo todavía.
+- **S8 giro de identidad:** resignifica ese miedo en una afirmación de valor.
+- **S9 nueva regla:** la nueva forma de pensar o actuar, en síntesis. Es el payoff.
+- **CTA de baja fricción:** guardar o compartir.
 
 ## Especificaciones por plataforma
 
@@ -109,5 +129,10 @@ Visual: [...]
 - ¿El corte de cada slide deja tensión para el swipe?
 - ¿El payoff está en la anteúltima slide?
 - ¿La última slide pide una sola acción alineada al objetivo?
+- ¿La slide de mayor impacto es también la más corta?
+- ¿El mecanismo detrás de cada afirmación está explicado, no asumido?
+- ¿Las afirmaciones de identidad o de regla van en forma categórica, no condicional?
+- En una lista: ¿todos los ítems siguen el mismo molde?
+- En Reframe de creencia: ¿la portada evita nombrar el dolor, y hay una slide que nombra la creencia falsa antes de romperla?
 - ¿La caption suma (contexto, historia o CTA reforzado) en vez de repetir?
-- ¿Cero frases prohibidas? ("el secreto que nadie te cuenta", "no te lo pierdas", superlativos vacíos)
+- ¿Cero frases prohibidas? ("el secreto que nadie te cuenta", "no te lo pierdas", "no es X, es Y", superlativos vacíos)
