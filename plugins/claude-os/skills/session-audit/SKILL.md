@@ -41,7 +41,7 @@ La define el `CLAUDE.md` raíz (sección "Memoria"). En resumen: prescriptivo (r
 Una regla vive en el nivel más bajo donde sigue siendo verdadera.
 
 1. **Global**: verdadero siempre, en cualquier estación. Comportamiento e identidad de marca.
-2. **Estación**: verdadero solo para ese tipo de trabajo. Aplica a cualquier profundidad: si una estación tiene sub-estaciones o proyectos adentro (`Herramientas-web/muta-sessions/`, `Clientes/Raices-Ypora/`), la misma prueba corre entre padre e hijo. Una regla que vale para un solo proyecto no vive en el `CLAUDE.md` del padre.
+2. **Estación**: verdadero solo para ese tipo de trabajo. Aplica a cualquier profundidad: si una estación tiene sub-estaciones o proyectos adentro (`Diseno-web/web-muta-digital/`, `Clientes/Raices-Ypora/`), la misma prueba corre entre padre e hijo. Una regla que vale para un solo proyecto no vive en el `CLAUDE.md` del padre.
 3. **Pieza**: verdadero solo para ese tipo de documento (presupuesto, informe, presentación, SOP).
 4. **Medio de salida**: verdadero solo al exportar a cierto formato.
 
