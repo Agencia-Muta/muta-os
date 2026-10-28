@@ -238,6 +238,18 @@ pierde cuál es la buena.
 
 ---
 
+## Publicar
+
+Cuando el usuario da el documento por cerrado, se publica. No termina hasta que están los tres pasos:
+
+1. **Drive.** Va como Google Doc a la carpeta de Documentación que corresponde a su Área y Sub-Área. Si ninguna encaja, proponé la más cercana; no se crea una categoría nueva para un solo documento. Si el documento tiene capturas, van adentro del Doc, cada una en su paso.
+2. **Índice de Documentación y Guías.** Una fila nueva con el nombre linkeado al Doc, y Área, Sub-Área, Relevante para y Tipo de Documento elegidos solo entre las opciones de la planilla.
+3. **NotebookLM.** El Doc se suma al cuaderno de Documentación como fuente de Google Drive, no como texto pegado.
+
+Si tenés conexión a Drive y NotebookLM, hacelo vos y confirmá con los links. Si no, dejale al usuario todo listo para hacerlo a mano: la carpeta exacta, la fila del índice lista para copiar y pegar, y el recordatorio de "Agregar fuente › Google Drive" en NotebookLM.
+
+---
+
 ## Después del documento
 
 Como nota directa al usuario (fuera del cuerpo del documento):
