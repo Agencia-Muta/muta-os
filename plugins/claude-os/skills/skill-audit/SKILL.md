@@ -20,6 +20,7 @@ Audita el **registro** de skills: cuáles están instaladas, cuánto pesa cada d
 |---|---|---|
 | El listado de skills de esta sesión | sí | está siempre en el prompt del sistema; si no aparece, frenar y decirlo |
 | `~/.claude/skills/manifest.json` | sí | sin él no hay campo `source` ni se puede separar lo editable de lo intocable; frenar |
+| `skillUsage` en `~/.claude.json` | sí | sin él no se puede explicar por qué una skill llega truncada; frenar |
 | Las carpetas de `~/.claude/skills/` | no | sin ellas no se pueden comparar cuerpos y el análisis de superposición queda afuera; avisarlo |
 | Clon local de los repos de plugins propios | no | sin él las skills de plugin se pueden diagnosticar pero no editar; avisarlo |
 
@@ -32,10 +33,10 @@ Audita el **registro** de skills: cuáles están instaladas, cuánto pesa cada d
 Contar, no estimar:
 
 - Cuántas skills llegaron **con** descripción y cuántas **solo con el nombre**. Las que llegan sin descripción están truncadas: el ruteo automático no las puede elegir.
-- Los caracteres de cada `description:` de las skills sueltas, sumados.
-- Dónde cae el corte: cuál es la última skill que conservó su descripción.
+- Los caracteres de cada `description:` que **sí** llegó, separando propias de terceros. Esas son las que llenan el tope.
+- El uso de cada skill: leer `skillUsage` en `~/.claude.json`, que guarda `usageCount` y `lastUsedAt` (en milisegundos) por skill, las de plugin como `plugin:skill`. Algunas quedaron registradas sin prefijo: si no aparece con él, buscarla por el nombre solo. Cruzarlo con el listado y separar tres grupos: con descripción, con uso pero sin descripción, y nunca usadas.
 
-Nunca reportar de memoria ni comparar contra una medición vieja de otra sesión: el orden de carga cambia entre sesiones.
+Nunca reportar de memoria ni comparar contra una medición vieja de otra sesión: el uso cambia todos los días, y una skill que se usó hoy puede llegar con descripción en la sesión siguiente.
 
 ### 2. Clasificar por origen
 
@@ -52,9 +53,13 @@ Lo que está en disco y no figura en el manifest es del sistema, no de Mati: no 
 
 ### 3. Separar lo que cuesta de lo que no
 
-Un dato que invierte el orden intuitivo: **una skill que ya llega truncada no está consumiendo presupuesto.** Recortarle la descripción no libera nada. Y las skills sueltas se cargan antes que las de plugin, así que una skill propia dentro de un plugin es siempre la primera en caer.
+Quién conserva la descripción se decide por uso, no por posición ni por origen (ver Referencia). De ahí salen tres datos que invierten el orden intuitivo:
 
-Consecuencia: lo único que libera presupuesto es **sacar o recortar skills sueltas que hoy sí muestran descripción**. Ordenar los hallazgos por eso, no por tamaño.
+- **Una skill sin usar cuesta solo su nombre.** Ya llega truncada: sacarla libera ese nombre y nada más, y recortarle la descripción no libera nada.
+- **Lo que consume el tope son las descripciones largas de las skills de terceros que sí se usan.** Lo único que libera presupuesto es sacar o recortar skills que hoy llegan con descripción, sueltas o de plugin, según lo que permita su origen (paso 2).
+- **Las propias de uso raro no se rescatan recortando.** Lo que se libera lo ocupa otra skill con uso, no la que uno elige. Esas dependen del ruteo de los CLAUDE.md de cada estación (mapa en `~/Claude/00-recursos/mapa-enrutamiento.md`): en TUYAS QUE NO ESTÁN LLEGANDO, decir si el CLAUDE.md de su estación la nombra. Si no la nombra ninguno, ese es el hallazgo.
+
+Ordenar los hallazgos por eso, no por tamaño.
 
 ### 4. Analizar superposición antes de proponer bajas
 
@@ -71,6 +76,7 @@ Contar también los archivos: una skill con `scripts/` o `references/` casi nunc
 Máximo 200 caracteres, según `Skills-Lab/plantilla-skill.md`. No es cortar: es reescribir.
 
 - Si dos skills compiten por el mismo pedido, la frontera va escrita adentro de los 200 caracteres de las dos.
+- Un "no" sin destino deja el pedido sin skill: la frontera dice qué hace la vecina.
 - Si la skill tiene modos o alcances que la descripción vieja no nombraba, la nueva los nombra: el largo no es la única falla posible.
 - Nunca renombrar una skill para arreglar su ruteo: renombrar resetea su contador de uso.
 
@@ -86,7 +92,7 @@ Mostrar el reporte completo antes de tocar nada. Nada se modifica sin confirmaci
 
 ### 8. Cerrar diciendo cómo se verifica
 
-El listado de skills llega al arrancar la sesión y no se refresca. **Esta auditoría no se puede verificar en su propia corrida.** Cerrar siempre con la prueba concreta: abrir una sesión nueva y preguntar por la descripción de una skill que estaba truncada.
+El listado de skills llega al arrancar la sesión y no se refresca. **Esta auditoría no se puede verificar en su propia corrida.** Cerrar siempre con la prueba concreta: abrir una sesión nueva y preguntar por la descripción de una skill con uso registrado que estaba truncada. Una nunca usada va a seguir sin descripción aunque haya lugar.
 
 ---
 
@@ -97,8 +103,8 @@ AUDITORÍA DE SKILLS — [fecha]
 
 ESTADO
 [N] skills cargadas · [N] con descripción · [N] truncadas (solo nombre)
-Descripciones sueltas: [N] caracteres
-El corte cae después de: [nombre de la última que conservó descripción]
+Descripciones que llegan: [N] caracteres ([N] propias · [N] de terceros)
+Con uso y sin descripción: [N] · Nunca usadas: [N]
 
 TUYAS QUE NO ESTÁN LLEGANDO
 → [skill] — [qué se pierde por no tener descripción]
@@ -121,7 +127,7 @@ ORDEN DE EJECUCIÓN
 3. [el resto]
 
 VERIFICACIÓN
-Sesión nueva → "¿qué descripción tenés de [skill que estaba truncada]?"
+Sesión nueva → "¿qué descripción tenés de [skill con uso que estaba truncada]?"
 ```
 
 ---
@@ -130,11 +136,18 @@ Sesión nueva → "¿qué descripción tenés de [skill que estaba truncada]?"
 
 ### Cómo funciona el presupuesto
 
-El `description:` del frontmatter se carga en **todas** las sesiones, para todas las skills instaladas. El cuerpo, los `scripts/` y las `references/` **no se cargan hasta que la skill se invoca**, y ahí entran completos sin tope. Por eso recortar una descripción no saca capacidad: en una skill típica la descripción es entre el 1% y el 5% del archivo.
+El nombre de cada skill instalada llega en **todas** las sesiones. El `description:` del frontmatter llega solo si entra en el tope. El cuerpo, los `scripts/` y las `references/` **no se cargan hasta que la skill se invoca**, y ahí entran completos sin tope. Por eso recortar una descripción no saca capacidad: en una skill típica la descripción es entre el 1% y el 5% del archivo.
 
-El listado tiene un tope de contexto del 1% de la ventana (~10k tokens sobre 1M). Al pasarlo, el sistema no saca skills: les corta la descripción y deja solo el nombre. Sin descripción el ruteo automático elige a ciegas, que es la causa de que agarre la skill equivocada o ninguna.
+El listado tiene un tope que ronda los 29.000 caracteres en total: medido el 5/11/2026, dio 28.914 antes de sacar 6 skills y 28.921 después. Sacar skills no achica el listado: el espacio libre lo vuelve a ocupar otra. Al pasar el tope el sistema no saca skills: les corta la descripción y deja solo el nombre. Sin descripción el ruteo automático elige a ciegas, que es la causa de que agarre la skill equivocada o ninguna.
 
-El corte es **posicional**, no por tamaño: se llena hasta agotar el presupuesto y lo que sigue queda sin descripción. Las sueltas van antes que las de plugin.
+El reparto es **por uso**, no posicional: `skillUsage`, en `~/.claude.json`, guarda cuántas veces se usó cada skill y cuándo fue la última. Lo medido el 5/11/2026:
+
+- Todas las skills instaladas que llegaron con descripción tenían uso registrado. Las nunca usadas llegaron solo con el nombre, sueltas o de plugin. Las integradas de Claude Code (`loop`, `run`, `simplify` y similares) llegan con descripción aunque no se hayan usado nunca.
+- Ser de plugin no manda al final: `muta-ventas:pipeline-venta` y `marketing-skills:ads` llegan con descripción, mientras que skills sueltas sin usar llegan sin ella.
+- Tres skills de `muta-ventas` ganaron la descripción en el día, después de usarse.
+- Tener uso no alcanza: `meta-ads-muta:meta-ads-analysismd` (5 usos, el último hace 27 días) y `muta-ventas:mail-presupuesto` (3 usos, hace 29 días) llegaron sin descripción.
+
+La fórmula exacta no se conoce, pero no es solo recencia: `ponytail` conserva la suya con más de 90 días sin uso. Nunca prometer que una skill puntual va a llegar con descripción después de una baja o un recorte: se mide en sesión nueva.
 
 ### Síntomas que disparan la auditoría
 
