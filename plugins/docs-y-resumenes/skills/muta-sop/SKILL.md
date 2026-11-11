@@ -90,6 +90,8 @@ corrige una forma distinta de volverlo ilegible:
 - Si hay una herramienta o una pantalla involucrada, no asumas que el lector la conoce.
 - Cada paso fluye naturalmente hacia el siguiente: hay un orden lógico, no una lista de tareas
   sueltas.
+- Todos los pasos llevan el mismo nivel de detalle: el que necesita alguien sin experiencia previa
+  en Muta para ejecutarlos.
 - Usá ejemplos concretos del contexto cuando eliminen ambigüedad.
 - Sin negritas dentro del cuerpo de los pasos, solo en los títulos.
 
@@ -215,17 +217,6 @@ Estructura: `[TIPO]_[Nombre Descriptivo]`
 - `GI_Criterios Escalado Campañas`
 - `GC_Colaboraciones Creadores`
 - `PL_Nombres Estandarizados Ads`
-
----
-
-## Antes de entregar
-
-Verificá estos cuatro puntos y corregí antes de responder si encontrás algún problema:
-
-1. ¿Cada paso tiene el mismo nivel de detalle que los otros?
-2. ¿La secuencia es lógica, cada paso conduce naturalmente al siguiente?
-3. ¿Alguien sin experiencia previa en Muta podría ejecutar esto?
-4. ¿El nombre sigue la convención de tipos?
 
 ---
 
