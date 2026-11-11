@@ -7,7 +7,7 @@ description: Audita CLAUDE.md, reglas, skills, hooks y memoria contra la guía v
 
 Un setup de Claude es arqueología. Cada instrucción del CLAUDE.md se escribió para arreglar un problema que tenía un modelo *anterior*, y nadie vuelve a sacarla cuando el modelo deja de tener ese problema. Las instrucciones quedan, cuestan tokens y varias ahora empeoran el resultado.
 
-Anthropic hizo esta limpieza con su propio producto: al salir Opus 5 borraron más del 80% del system prompt de Claude Code y anduvo mejor sin eso. Su consejo publicado es probar cada seis meses qué pasa sin el CLAUDE.md, sin las skills y sin los hooks.
+La guía de prompting de Anthropic lo dice para los modelos actuales: las instrucciones heredadas de prompts afinados para modelos anteriores pueden empeorar el resultado. El caso que nombra son las de verificación, que causan sobre-verificación y suman tokens y latencia.
 
 Esta skill hace esa auditoría en serio en vez de adivinar: lee lo que hay, baja lo que Anthropic recomienda hoy para el modelo que está corriendo, y da un veredicto por instrucción con la línea de la fuente atrás.
 
@@ -37,13 +37,26 @@ wc -lw ~/.claude/CLAUDE.md ./CLAUDE.md 2>/dev/null
 ls ~/.claude/projects/*/memory/MEMORY.md 2>/dev/null
 wc -l ~/.claude/projects/*/memory/MEMORY.md 2>/dev/null
 
-# Skills, agentes, hooks
+# Instrucciones por carpeta (estaciones, subproyectos): se cargan al trabajar ahí
+find . -mindepth 2 \( -name "CLAUDE.md" -o -name "MEMORY.md" -o -name "AGENTS.md" \) \
+  -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "./_archivo/*" \
+  -exec wc -l {} + 2>/dev/null
+
+# Skills sueltas y skills de plugins (la mayoría suele estar en plugins)
 ls -d ~/.claude/skills/*/ ./.claude/skills/*/ 2>/dev/null | wc -l
+ls -d ~/.claude/skills/synced/*/*/ 2>/dev/null | wc -l
+ls -d ~/.claude/plugins/cache/*/*/*/skills/*/ ~/.claude/plugins/synced/*/*/skills/*/ 2>/dev/null | wc -l
+
+# Agentes, hooks
 ls -d ~/.claude/agents/*/ ~/.claude/agents/*.md 2>/dev/null
 grep -l "hooks" ~/.claude/settings.json ./.claude/settings.json 2>/dev/null
 ```
 
 Reportar una tabla: artefacto, ruta, líneas y palabras. El tamaño importa: un CLAUDE.md de 400 líneas es la señal más fuerte de que la auditoría está atrasada. Esos números son el "antes" del paso 4.
+
+**Si las instrucciones por carpeta pasan de 20 archivos**, no entran todas en una pasada y un informe que parece completo sin serlo es peor que uno parcial. Auditar siempre el global, el raíz y la memoria; de las carpetas, preguntar cuáles entran en esta corrida (por defecto, las de más líneas) y listar el resto en "Lo que no se chequeó".
+
+De las skills de plugins se auditan las propias (las del marketplace del usuario). Las de terceros se cuentan pero no se auditan: no se pueden editar y el update las pisa.
 
 Las skills se auditan por su `description` y por las instrucciones de comportamiento que llevan adentro, no por sus referencias de datos.
 
@@ -120,7 +133,7 @@ Entregar esto, en este orden.
 5. **Tabla de agregados.** Una fila por hueco, con el texto exacto para pegar.
 6. **Antes y después proyectado.** Cantidad de reglas y palabras hoy, y cuántas quedarían si se aplicara todo lo propuesto. Es proyección, no resultado.
 7. **El experimento de los seis meses.** Decir la jugada más fuerte sin vueltas: renombrar el archivo, correr una semana sin él, y volver a agregar solo lo que de verdad faltó. `mv CLAUDE.md CLAUDE.md.parked`
-8. **Lo que no se chequeó.** Cualquier bajada fallida, archivo ilegible o chequeo que no corrió. Marcado como NO CORRIDO.
+8. **Lo que no se chequeó.** Cualquier bajada fallida, archivo ilegible, carpeta que quedó fuera de la corrida o chequeo que no corrió. Marcado como NO CORRIDO.
 
 Después, parar. No aplicar nada hasta que el usuario diga qué filas se accionan, y aplicarlas en una sesión aparte.
 
