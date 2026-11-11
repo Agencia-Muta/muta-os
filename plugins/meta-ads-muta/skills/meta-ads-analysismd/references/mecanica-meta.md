@@ -50,6 +50,16 @@ El error más común de interpretación: ver en un reporte que un segmento, ubic
 
 ---
 
+## Reparto forzado de presupuesto dentro de una CBO
+
+Meta **no respeta el gasto mínimo por conjunto, pero sí respeta el máximo.**
+
+Cuando hace falta que un anuncio concreto consuma presupuesto sí o sí (una colaboración, una acción con influencer, un contenido que tiene que mostrarse aunque el sistema prefiera otro), el camino es **poner tope máximo a los conjuntos que no queremos que se coman el presupuesto**, no poner mínimo al que queremos empujar. Para un reparto 50/50 entre dos conjuntos, tope máximo del 50% en cada uno: el sistema se mueve dentro de ese margen y lo que no puede gastar de un lado se va al otro.
+
+Caso típico donde aparece: en campañas de tráfico, un anuncio en colaboración compite contra anuncios que salen solo desde la cuenta propia, y el sistema tiende a posicionar los de la cuenta propia. Abrir una campaña nueva para separarlos resuelve el reparto pero rompe el tracking, porque quedan dos campañas midiendo lo mismo. Antes de partir la campaña, evaluar el tope.
+
+---
+
 ## Learning Phase
 
 Cuando un adset es nuevo o recibió ediciones significativas, entra en fase de aprendizaje:
