@@ -3,10 +3,10 @@ name: session-audit
 description: Audita la sesion o el sistema del Claude OS y guarda lo aprendido en el archivo dueño. Usar ante 'audita la sesion', 'guarda lo que aprendimos' o al cerrar un trabajo con correcciones.
 ---
 
-# session-audit — Auditoría del Claude OS
-*v5 — 12 de noviembre de 2026*
+# session-audit: Auditoría del Claude OS
+*v5, 12 de noviembre de 2026*
 
-## PASO PREVIO — Fijar la raíz del sistema (obligatorio, ambos modos)
+## PASO PREVIO: Fijar la raíz del sistema (obligatorio, ambos modos)
 
 Ubicá la carpeta del Claude OS: la que contiene `CLAUDE.md`, `MEMORY.md` y las estaciones. Guardá su ruta absoluta y usala en todos los comandos de acá en adelante.
 
@@ -100,11 +100,11 @@ Antes de mostrar el PASO 4 o el SYS-PASO 3, releé cada entrada y borrá toda or
 
 ---
 
-# SECCIÓN A — MODO SESIÓN
+# SECCIÓN A: MODO SESIÓN
 
 ---
 
-## PASO 0 — Leer el sistema antes de escanear
+## PASO 0: Leer el sistema antes de escanear
 
 1. **Descubrí las estaciones desde el filesystem**, para saber qué destinos existen:
 
@@ -122,7 +122,7 @@ El estado del Mapa de Enrutamiento no se audita en este modo. Detectar carpetas 
 
 ---
 
-## PASO 1 — Escanear la conversación
+## PASO 1: Escanear la conversación
 
 Recorrés la conversación completa buscando estas cinco señales:
 
@@ -151,7 +151,7 @@ Mati tomó una decisión que afecta trabajo futuro: eligió una opción, fijó u
 
 **Ejemplo:** "Usemos el formato de propuesta corta para clientes nuevos." / "El contrato de Baguette arranca en julio."
 
-→ Va a **MEMORY.md** (es factual, puede cambiar) — con prefijo `[YYYY-MM]`
+→ Va a **MEMORY.md** (es factual, puede cambiar): con prefijo `[YYYY-MM]`
 
 ---
 
@@ -160,7 +160,7 @@ Mati compartió información sobre su negocio, equipo, clientes o proyectos. Dat
 
 **Ejemplo:** "David es el dueño de Baguette, Maru lleva las redes." / "Luciano ahora está a cargo de los informes mensuales."
 
-→ Va a **MEMORY.md** (es factual) — con prefijo `[YYYY-MM]`
+→ Va a **MEMORY.md** (es factual): con prefijo `[YYYY-MM]`
 
 ---
 
@@ -184,7 +184,7 @@ En la sesión se ejecutó un proceso que probablemente se repita: armar un tipo 
 
 ---
 
-## PASO 2 — Routing: ¿dónde va cada hallazgo?
+## PASO 2: Routing: ¿dónde va cada hallazgo?
 
 Para cada hallazgo, aplicá este árbol de decisión **en orden**:
 
@@ -239,7 +239,7 @@ Si un hallazgo entra por la rama de estación y además tiene condición de form
 
 ---
 
-## PASO 3 — Detección de escala
+## PASO 3: Detección de escala
 
 Antes de proponer dónde guardar, chequeá estas dos condiciones:
 
@@ -271,7 +271,7 @@ La estructura exacta está en `00-recursos/plantilla-estacion.md`. Seguila al pi
 
 ---
 
-## PASO 4 — Presentar el análisis antes de escribir
+## PASO 4: Presentar el análisis antes de escribir
 
 Mostrá todo lo que encontraste ANTES de modificar cualquier archivo.
 
@@ -282,7 +282,7 @@ El destino incluye siempre la sección, no solo el archivo: es parte de lo que s
 ```
 HALLAZGOS DE LA SESIÓN
 
-RECOMIENDO — la regla es clara y el destino no admite discusión
+RECOMIENDO: la regla es clara y el destino no admite discusión
 
 1. [destino] → [archivo] → [sección]
    → [contenido exacto que se va a agregar]
@@ -290,18 +290,18 @@ RECOMIENDO — la regla es clara y el destino no admite discusión
 2. [destino] → [archivo] → [sección]
    → [contenido exacto que se va a agregar]
 
-TU DECISIÓN — hay un juicio de por medio, dos destinos posibles,
+TU DECISIÓN: hay un juicio de por medio, dos destinos posibles,
 o la redacción admite varias formas
 
 3. [destino] → [archivo] → [sección]
    → [contenido exacto que se va a agregar]
    → [la duda concreta, en una línea]
 
-🌐 GLOBAL: [si los hay — van al CLAUDE.md global privado, Mati los agrega a mano]
-⚔️ CONFLICTOS: [si los hay — qué dice el archivo vs. qué dice la sesión, y cuál gana]
-🧩 SIN DESTINO: [si los hay — reglas de pieza o de exportación sin sección donde vivir]
-📋 CANDIDATOS A SOP: [si los hay — proceso detectado + sugerencia de documentarlo con muta-sop]
-📈 ESCALA: [si las hay — archivos sobre el umbral, con el número de líneas]
+🌐 GLOBAL: [si los hay: van al CLAUDE.md global privado, Mati los agrega a mano]
+⚔️ CONFLICTOS: [si los hay: qué dice el archivo vs. qué dice la sesión, y cuál gana]
+🧩 SIN DESTINO: [si los hay: reglas de pieza o de exportación sin sección donde vivir]
+📋 CANDIDATOS A SOP: [si los hay: proceso detectado + sugerencia de documentarlo con muta-sop]
+📈 ESCALA: [si las hay: archivos sobre el umbral, con el número de líneas]
 📁 ESTACIONES O ARCHIVOS DUEÑOS NUEVOS SUGERIDOS: [si los hay, con la acción que cubren y qué reglas sueltas se mueven ahí]
 ```
 
@@ -309,7 +309,7 @@ Esperá confirmación. Mati puede aprobar todo, parte o nada, por número. Nada 
 
 ---
 
-## PASO 5 — Escribir en los archivos correctos
+## PASO 5: Escribir en los archivos correctos
 
 Según la confirmación:
 
@@ -326,9 +326,9 @@ Al terminar, confirmar qué se escribió y en qué archivo.
 
 - **Nunca escribir sin mostrar primero** lo que se va a agregar y esperar confirmación
 - **Nivel más bajo donde la regla sigue siendo verdadera.** Si es verdadera fuera de la carpeta, sube.
-- **No duplicar** — si algo ya está en el archivo o en el nivel de arriba, no agregarlo de nuevo
-- **No apilar contradicciones** — un conflicto se resuelve preguntando, no agregando la regla nueva al lado de la vieja
-- **Sé quirúrgico** — solo lo genuinamente nuevo de esta sesión
+- **No duplicar**: si algo ya está en el archivo o en el nivel de arriba, no agregarlo de nuevo
+- **No apilar contradicciones**: un conflicto se resuelve preguntando, no agregando la regla nueva al lado de la vieja
+- **Sé quirúrgico**: solo lo genuinamente nuevo de esta sesión
 - Si la sesión no generó nada nuevo: decirlo directo ("No encontré nada nuevo para guardar")
 - Si se crea una estación nueva: actualizar el Mapa de Enrutamiento en raíz como parte del mismo cambio
 

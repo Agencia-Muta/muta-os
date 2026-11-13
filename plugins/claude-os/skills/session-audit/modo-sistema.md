@@ -38,10 +38,10 @@ Terminadas las rondas, corré una **ronda de cierre** sobre el índice acumulado
 
 ---
 
-## SYS-PASO 1 — Relevamiento del sistema
+## SYS-PASO 1: Relevamiento del sistema
 
-1. `CLAUDE.md` raíz — contá líneas con `wc -l`, identificá secciones
-2. `MEMORY.md` raíz — contá líneas con `wc -l`, identificá secciones
+1. `CLAUDE.md` raíz: contá líneas con `wc -l`, identificá secciones
+2. `MEMORY.md` raíz: contá líneas con `wc -l`, identificá secciones
 3. Para cada `CLAUDE.md`/`MEMORY.md` que devolvió el `find`: leelo y contá líneas con `wc -l`
 4. Para cada archivo de referencia de la tabla del raíz: leelo y contá líneas
 5. Listá el nivel raíz de la carpeta (`ls`) y anotá los archivos sueltos que no sean CLAUDE.md, MEMORY.md o archivo-historico.md
@@ -58,12 +58,12 @@ CLAUDE.md (raíz)               |  ___   |  200   |  ✅/⚠️
 MEMORY.md (raíz)               |  ___   |  150   |  ✅/⚠️
 [estación]/CLAUDE.md           |  ___   |  200   |  ✅/⚠️
 [estación]/MEMORY.md           |  ___   |  150   |  ✅/⚠️
-[archivo de referencia]        |  ___   |   —    |  ✅/⚠️
+[archivo de referencia]        |  ___   |  :    |  ✅/⚠️
 ```
 
 ---
 
-## SYS-PASO 2 — Diagnóstico de contenido
+## SYS-PASO 2: Diagnóstico de contenido
 
 Con los archivos leídos, buscá estos doce problemas. El primero es el que más degrada el sistema: buscalo antes que los demás.
 
@@ -177,13 +177,13 @@ Dos estaciones que cubren territorio parecido o que podrían fusionarse.
 
 ---
 
-## SYS-PASO 3 — Reporte de salud del sistema
+## SYS-PASO 3: Reporte de salud del sistema
 
 Mostrá el diagnóstico completo antes de proponer cualquier cambio. Formato:
 
 ```
 ╔══════════════════════════════════╗
-║   REPORTE DE SALUD — CLAUDE OS   ║
+║   REPORTE DE SALUD: CLAUDE OS   ║
 ╚══════════════════════════════════╝
 
 ESTADO DE ARCHIVOS
@@ -215,7 +215,7 @@ Esperá confirmación de Mati antes de modificar cualquier archivo.
 
 ---
 
-## SYS-PASO 4 — Ejecutar los cambios confirmados
+## SYS-PASO 4: Ejecutar los cambios confirmados
 
 Por cada cambio aprobado:
 
