@@ -237,7 +237,7 @@ Si un hallazgo entra por la rama de estación y además tiene condición de form
 - Empieza con "en toda herramienta", "en cualquier", "siempre que"
 - Mati lo enunció como instrucción global del OS ("de ahora en adelante, en todo...")
 
-**Antes de escribir en una estación:** verificá que la regla no sea verdadera fuera de esa carpeta. Si lo es, va al dueño de la acción; sube a raíz solo si no es de ninguna acción en particular (cómo tratar a Mati, cómo reportar, credenciales).
+**Antes de escribir en una estación:** verificá que la regla no sea verdadera fuera de esa carpeta. Si lo es, va al dueño de la acción; sube a raíz solo si no es de ninguna acción en particular (cómo tratar a Mati, cómo reportar) o si es una prohibición que protege algo caro en cualquier tarea.
 
 ---
 
