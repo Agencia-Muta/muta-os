@@ -1,10 +1,10 @@
 ---
 name: session-audit
-description: Audita la sesion o el sistema de archivos del Claude OS y guarda lo aprendido en el archivo correcto. Usar ante 'audita la sesion', 'guarda lo que aprendimos' o 'antes de cerrar guarda'.
+description: Audita la sesion o el sistema del Claude OS y guarda lo aprendido en el archivo dueño. Usar ante 'audita la sesion', 'guarda lo que aprendimos' o al cerrar un trabajo con correcciones.
 ---
 
 # session-audit — Auditoría del Claude OS
-*v4 — 10 de noviembre de 2026*
+*v5 — 12 de noviembre de 2026*
 
 ## PASO PREVIO — Fijar la raíz del sistema (obligatorio, ambos modos)
 
@@ -37,6 +37,11 @@ Con la raíz fijada, elegí el modo:
 **Regla de destino (aplica a ambos modos):**
 La define el `CLAUDE.md` raíz (sección "Memoria"). En resumen: prescriptivo (reglas de comportamiento) → `CLAUDE.md`; factual (estado, decisiones, contactos, datos que cambian) → `MEMORY.md`. Ante un cambio de criterio, gana lo que diga el raíz.
 
+**Regla de dueño (aplica a ambos modos, se aplica antes que la de nivel):**
+Cada acción o herramienta tiene sus reglas en un solo archivo, su dueño: el que declara el `CLAUDE.md` raíz en la sección "Memoria" o en la tabla de Referencias (mails y mensajes, una plataforma de anuncios, el gestor de tareas, el almacenamiento, un tipo de documento). Toda regla, trampa de una herramienta o aprendizaje sobre esa acción va a su dueño, sin importar en qué estación apareció ni qué tan local parezca: "el mail del resumen de una reunión va pegado en el cuerpo" vive en el archivo de mails, no en la estación de reuniones. La regla de nivel decide solo para lo que no tiene dueño. Si una acción que se repite en varias estaciones no tiene dueño todavía, no se reparte: se propone crearlo (📁 en el PASO 4). Motivo: con la regla de nivel sola, cada estación guardaba "su" parte como verdadera solo para ella, y las reglas de mandar un mail terminaron repartidas en la raíz, tres estaciones, un archivo de herramientas y ocho entradas de memoria automática.
+
+**La memoria automática no es un destino.** Claude Code guarda por su cuenta correcciones en `~/.claude/projects/<proyecto>/memory/` durante la sesión, y Cowork no las ve. Ninguna regla se propone para ahí; las que ya estén ahí se migran a su dueño (ver PASO 1, filtro de duplicados).
+
 **Regla de nivel (aplica a ambos modos):**
 
 Una regla vive en el nivel más bajo donde sigue siendo verdadera.
@@ -60,7 +65,7 @@ Si dudás, preguntá. Nunca asumir raíz por defecto.
 Toda entrada nueva en cualquier `MEMORY.md` se prefija con `[YYYY-MM]` (ej: `[2026-07] El contrato de Baguette arranca en julio 2026.`). Sin el prefijo no hay forma de detectar datos viejos en futuras auditorías. Las reglas de `CLAUDE.md` no se fechan.
 
 **Umbrales (aplican a ambos modos):**
-- `CLAUDE.md` (raíz o estación) → **250 líneas**
+- `CLAUDE.md` (raíz o estación) → **200 líneas** (la guía de Anthropic: "target under 200 lines per CLAUDE.md file", https://code.claude.com/docs/en/memory). Un archivo de dueño que se lee bajo demanda no tiene umbral de líneas: su tope es el de caracteres de la misma guía.
 - `MEMORY.md` (raíz o estación) → **150 líneas**
 - **Contá siempre con `wc -l`. Nunca estimes a ojo.**
 - Si `MEMORY.md` raíz supera su umbral, el procedimiento definido en el raíz es: comprimir y mover lo viejo a `archivo-historico.md`. Proponé esa compresión (mostrando qué se movería) en vez de solo avisar.
@@ -109,8 +114,9 @@ find "$RAIZ" \( -name "CLAUDE.md" -o -name "MEMORY.md" \) \
 ```
 
 2. **Leé `CLAUDE.md` y `MEMORY.md` raíz.** Contá líneas con `wc -l` y compará contra los umbrales.
-3. **Leé los archivos de referencia que se usaron en esta sesión.** Están en la tabla de Referencias del `CLAUDE.md` raíz: leé esa tabla y tomá de ahí los que apliquen a lo que se trabajó hoy. No leas los seis siempre: leé los que la sesión tocó, más el que sea destino tentativo de algún hallazgo.
-4. Los `CLAUDE.md` de las estaciones no se leen todavía. Solo los que resulten destino de un hallazgo (ver filtro del PASO 1).
+3. **Leé los archivos de referencia que se usaron en esta sesión.** Están en la tabla de Referencias del `CLAUDE.md` raíz: leé esa tabla y tomá de ahí los que apliquen a lo que se trabajó hoy. No los leas todos siempre: leé los que la sesión tocó, más el dueño de cada acción que aparezca en un hallazgo.
+4. **Listá lo que la memoria automática guardó en esta sesión**, si la sesión la tiene: `find ~/.claude/projects/*/memory -name "*.md" -newermt "$(date +%Y-%m-%d)"`. Cada archivo nuevo o modificado hoy es una corrección que Claude Code guardó por su cuenta: entra al PASO 1 como hallazgo, aunque la conversación no la muestre. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
+5. Los `CLAUDE.md` de las estaciones no se leen todavía. Solo los que resulten destino de un hallazgo (ver filtro del PASO 1).
 
 El estado del Mapa de Enrutamiento no se audita en este modo. Detectar carpetas sin mapear es trabajo del Modo Sistema: acá solo generaría una lista fija que se repite en cada sesión y no tiene dónde ir.
 
@@ -169,10 +175,10 @@ En la sesión se ejecutó un proceso que probablemente se repita: armar un tipo 
 
 **Filtro de duplicados y contradicciones (antes de continuar):**
 
-1. Para cada hallazgo, identificá su destino tentativo según la regla de nivel.
+1. Para cada hallazgo, identificá su destino tentativo: primero la regla de dueño; la de nivel solo si la acción no tiene dueño.
 2. **Leé el archivo destino real.** Si el destino es una estación, leé su `CLAUDE.md`/`MEMORY.md` ahora. Sin leer el destino no podés deduplicar.
 3. **Leé también el nivel de arriba.** Si el hallazgo va a una estación, chequeá que la regla no exista ya en raíz o en un archivo de referencia. Una regla que ya está arriba no se copia abajo.
-4. **Chequeá la memoria automática de Code**, si la sesión la tiene (el índice `MEMORY.md` de `~/.claude/projects/<proyecto>/memory/`, que ya viene cargado en el contexto). Es un tercer lugar donde se guardan correcciones, y la misma regla en dos lados se desincroniza. Si el hallazgo ya está ahí, no se copia al OS: va a TU DECISIÓN con la nota "ya está en memoria automática: ¿se pasa al OS y se borra de allá, o se deja donde está?". En Cowork esa carpeta no se ve: decilo en una línea y seguí.
+4. **Chequeá la memoria automática de Code**, si la sesión la tiene (el índice `MEMORY.md` de `~/.claude/projects/<proyecto>/memory/`, que ya viene cargado en el contexto, más lo que listó el PASO 0). Toda regla que esté ahí, nueva de hoy o vieja que el hallazgo toca, va a RECOMIENDO como migración: el contenido completo (condiciones, números, casos y motivo, sin resumir de más) pasa al dueño, el archivo de memoria se mueve a `_to_delete/` y su línea sale del índice. Dejarla en los dos lados es lo que desincroniza: la memoria automática la vuelve a cargar en cada sesión de Code mientras Cowork no la ve. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
 5. **Duplicado:** si el hallazgo ya está escrito (igual o equivalente), descartalo. Solo surfaceás lo genuinamente nuevo.
 6. **Contradicción:** si el hallazgo contradice una regla o dato existente (ej: el archivo dice "sin negritas" y Mati pidió negritas en títulos esta sesión), NO lo agregues como regla nueva. Marcalo como ⚔️ CONFLICTO y presentalo así en el PASO 4: qué dice el archivo, qué dice la sesión, y preguntá cuál gana. La resolución típica es reemplazar la regla vieja, no apilar las dos.
 
@@ -185,30 +191,42 @@ Para cada hallazgo, aplicá este árbol de decisión **en orden**:
 ```
 ¿Aplica a TODO Claude, más allá de esta carpeta/OS?
   → SÍ: marcarlo 🌐 GLOBAL (solo avisar, no escribir en el OS)
-  → NO: ¿Aplica solo cuando se trabaja en un dominio o proyecto específico?
-      → SÍ: ¿Existe una estación para ese dominio?
-          → SÍ: va a [estación]/CLAUDE.md o [estación]/MEMORY.md.
-                Si la estación tiene sub-estaciones, bajá hasta la más
-                profunda donde la regla siga siendo verdadera.
-          → NO: anotarlo como "candidato a estación nueva" (ver PASO 3)
-      → NO: ¿Aplica solo a un tipo de documento o solo al exportar
-             a cierto formato?
-          → SÍ: va al archivo que gobierna ese formato (el sistema de
-                diseño declarado en la tabla de Referencias del raíz),
-                en su sección de ese nivel, con la condición adelante.
-                Si esa sección no existe, marcalo 🧩 SIN DESTINO y
-                preguntá antes de escribir.
-          → NO: ¿Aplica realmente en cualquier tarea sin importar el contexto?
-              → SÍ: va a raíz
-              → NO: preguntá a Mati antes de decidir
+  → NO: ¿Es sobre una acción o herramienta que tiene dueño (regla de dueño)?
+      → SÍ: va a ese archivo, en la sección que corresponda, aunque la
+            sesión haya sido en otra estación.
+      → NO: ¿Es sobre una acción o herramienta que se usa desde dos o más
+             estaciones (mandar mensajes, cargar tareas, subir archivos,
+             una plataforma)?
+          → SÍ: 📁 proponer su archivo dueño. No va a la estación de hoy
+                ni a raíz.
+          → NO: ¿Aplica solo cuando se trabaja en un dominio o proyecto específico?
+              → SÍ: ¿Existe una estación para ese dominio?
+                  → SÍ: va a [estación]/CLAUDE.md o [estación]/MEMORY.md.
+                        Si la estación tiene sub-estaciones, bajá hasta la más
+                        profunda donde la regla siga siendo verdadera.
+                  → NO: anotarlo como "candidato a estación nueva" (ver PASO 3)
+              → NO: ¿Aplica solo a un tipo de documento o solo al exportar
+                     a cierto formato?
+                  → SÍ: va al archivo que gobierna ese formato (el sistema de
+                        diseño declarado en la tabla de Referencias del raíz),
+                        en su sección de ese nivel, con la condición adelante.
+                        Si esa sección no existe, marcalo 🧩 SIN DESTINO y
+                        preguntá antes de escribir.
+                  → NO: ¿Aplica realmente en cualquier tarea sin importar el contexto?
+                      → SÍ: va a raíz
+                      → NO: preguntá a Mati antes de decidir
 ```
 
 Si un hallazgo entra por la rama de estación y además tiene condición de formato, no vuelvas a subirlo: queda en la estación con la condición escrita adelante.
 
+**Señales de que algo pertenece al dueño de una acción, no a la estación de hoy ni a raíz:**
+- Menciona una herramienta o canal concreto (una plataforma de anuncios, el gestor de tareas, una planilla, el mail, el chat del equipo)
+- Describe cómo se hace una acción que también se hace desde otras estaciones (mandar un mail, cargar una tarea, subir un archivo, armar un anuncio)
+- Es una trampa o un límite de un conector o una API
+
 **Señales de que algo pertenece a una estación específica:**
-- Menciona un canal concreto (Meta Ads, Asana, Sheets, Gmail, etc.)
-- Refiere a un tipo de tarea específica (redactar mails, analizar campañas, armar scripts)
-- Aplica solo dentro de ese dominio
+- Refiere a un tipo de trabajo que solo se hace ahí (armar un guion, editar un video, costear un plan)
+- Aplica solo dentro de ese dominio y no nombra una herramienta compartida
 - La estación ya tiene secciones relacionadas en su CLAUDE.md
 
 **Señales de que algo va genuinamente a raíz:**
@@ -217,7 +235,7 @@ Si un hallazgo entra por la rama de estación y además tiene condición de form
 - Empieza con "en toda herramienta", "en cualquier", "siempre que"
 - Mati lo enunció como instrucción global del OS ("de ahora en adelante, en todo...")
 
-**Antes de escribir en una estación:** verificá que la regla no sea verdadera fuera de esa carpeta. Si lo es, sube.
+**Antes de escribir en una estación:** verificá que la regla no sea verdadera fuera de esa carpeta. Si lo es, va al dueño de la acción; sube a raíz solo si no es de ninguna acción en particular (cómo tratar a Mati, cómo reportar, credenciales).
 
 ---
 
@@ -227,7 +245,7 @@ Antes de proponer dónde guardar, chequeá estas dos condiciones:
 
 ### 3A. ¿Raíz se está inflando?
 
-- Si `CLAUDE.md` raíz supera **250 líneas**: emitilo como 📈 ESCALA en el PASO 4 y preguntá si Mati quiere que identifiques qué secciones podrían moverse a una estación antes de agregar más. No guardes nada en raíz hasta que confirme.
+- Si `CLAUDE.md` raíz supera **200 líneas**: emitilo como 📈 ESCALA en el PASO 4 y preguntá si Mati quiere que identifiques qué secciones podrían moverse a una estación antes de agregar más. No guardes nada en raíz hasta que confirme.
 - Si `MEMORY.md` raíz supera **150 líneas**: emitilo como 📈 ESCALA y proponé comprimir y mover lo viejo a `archivo-historico.md`, mostrando qué entradas se moverían. Guardá lo nuevo recién después de resolver la compresión.
 
 ### 3B. ¿Hay candidatos para una estación nueva?
@@ -284,7 +302,7 @@ o la redacción admite varias formas
 🧩 SIN DESTINO: [si los hay — reglas de pieza o de exportación sin sección donde vivir]
 📋 CANDIDATOS A SOP: [si los hay — proceso detectado + sugerencia de documentarlo con muta-sop]
 📈 ESCALA: [si las hay — archivos sobre el umbral, con el número de líneas]
-📁 ESTACIONES NUEVAS SUGERIDAS: [si las hay]
+📁 ESTACIONES O ARCHIVOS DUEÑOS NUEVOS SUGERIDOS: [si los hay, con la acción que cubren y qué reglas sueltas se mueven ahí]
 ```
 
 Esperá confirmación. Mati puede aprobar todo, parte o nada, por número. Nada se escribe hasta que lo diga explícitamente, incluidos los del bloque RECOMIENDO.

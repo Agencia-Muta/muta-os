@@ -19,8 +19,9 @@ find "$RAIZ" \( -name "CLAUDE.md" -o -name "MEMORY.md" \) \
 
 Auditá todos los que devuelva, más:
 
-1. Los archivos de referencia listados en la tabla de Referencias del `CLAUDE.md` raíz
-2. El nivel raíz de la carpeta, para detectar archivos sueltos
+1. Los archivos de referencia listados en la tabla de Referencias del `CLAUDE.md` raíz, incluidos los archivos dueños de cada acción
+2. La memoria automática de Code, si la superficie la ve: el índice `MEMORY.md` y los archivos de `~/.claude/projects/<proyecto>/memory/`. Ahí Claude Code guarda correcciones por su cuenta, así que es donde más reglas sueltas se acumulan
+3. El nivel raíz de la carpeta, para detectar archivos sueltos
 
 Se audita todo `CLAUDE.md` y todo `MEMORY.md` que devuelva ese comando, sin importar en qué carpeta esté. Lo que no se audita es el **contenido**: los datos de las carpetas personales y los archivos de trabajo por cliente.
 
@@ -53,9 +54,9 @@ Construí internamente esta tabla antes de continuar:
 ```
 ARCHIVO                        | LÍNEAS | UMBRAL | ESTADO
 -------------------------------|--------|--------|--------
-CLAUDE.md (raíz)               |  ___   |  250   |  ✅/⚠️
+CLAUDE.md (raíz)               |  ___   |  200   |  ✅/⚠️
 MEMORY.md (raíz)               |  ___   |  150   |  ✅/⚠️
-[estación]/CLAUDE.md           |  ___   |  250   |  ✅/⚠️
+[estación]/CLAUDE.md           |  ___   |  200   |  ✅/⚠️
 [estación]/MEMORY.md           |  ___   |  150   |  ✅/⚠️
 [archivo de referencia]        |  ___   |   —    |  ✅/⚠️
 ```
@@ -64,14 +65,24 @@ MEMORY.md (raíz)               |  ___   |  150   |  ✅/⚠️
 
 ## SYS-PASO 2 — Diagnóstico de contenido
 
-Con los archivos leídos, buscá estos once problemas:
+Con los archivos leídos, buscá estos doce problemas. El primero es el que más degrada el sistema: buscalo antes que los demás.
+
+### 🔴 Reglas de una misma acción repartidas
+Las reglas de una acción o herramienta (mandar un mail o un mensaje, cargar una tarea, subir o compartir un archivo, armar o analizar un anuncio, armar un tipo de documento) viven en más de un archivo: raíz, estaciones, archivos de herramientas, MEMORY.md, memoria automática.
+
+**Cómo se busca:** armá la lista de acciones que aparecen en el índice de reglas y, por cada una, grepeá su herramienta y sus verbos en todo el sistema y en la memoria automática. Contá en cuántos archivos aparecen reglas (no menciones incidentales) de esa acción.
+
+**Acción:** si la acción tiene dueño (regla de dueño de `SKILL.md`), proponer mover cada regla suelta a su dueño, con el contenido completo, y dejar en el origen una línea de remisión solo si el origen es un flujo que necesita saber que existe. Si no tiene dueño y aparece en dos o más archivos, proponer crearlo y sumar su fila en Referencias del raíz. Lo de la memoria automática se mueve a `_to_delete/` y sale del índice.
+
+---
+
 
 ### 🔴 Contenido mal ubicado en raíz
 Reglas o datos en `CLAUDE.md`/`MEMORY.md` raíz que pertenecen a una estación existente.
 
-**Señal:** el contenido menciona un dominio específico (Meta Ads, Asana, mails, etc.) y existe una estación para ese dominio.
+**Señal:** el contenido menciona un dominio específico (una herramienta, un canal, un tipo de pieza) y existe una estación o un archivo dueño para ese dominio.
 
-**Acción:** proponer moverlo a la estación correspondiente.
+**Acción:** proponer moverlo al dueño de la acción si lo tiene; si no, a la estación correspondiente.
 
 ---
 
@@ -80,7 +91,7 @@ Una regla escrita en un `CLAUDE.md` de estación que es verdadera en cualquier o
 
 **Señal:** dice "en toda herramienta", "siempre", "nunca", o describe cómo tratar a Mati, cómo reportar, o cómo manejar credenciales y accesos. También: la misma regla aparece en tres estaciones distintas.
 
-**Acción:** proponer subirla, dejando en la estación solo la parte específica del dominio.
+**Acción:** si es sobre una acción con dueño, proponer moverla a su dueño; si no es de ninguna acción en particular, subirla a raíz. En los dos casos, en la estación queda solo la parte específica del dominio.
 
 ---
 
