@@ -26,16 +26,18 @@ Esta skill hace esa auditoría en serio en vez de adivinar: lee lo que hay, baja
 
 ## Paso 1. Inventario
 
-Buscar en estas ubicaciones y reportar qué existe antes de analizar nada.
+Buscar en estas ubicaciones y reportar qué existe antes de analizar nada. Los comandos con `./` se corren desde la carpeta raíz del proyecto: desde otra carpeta devuelven archivos de más o de menos sin dar error.
 
 ```bash
 # Instrucciones
 ls -la ~/.claude/CLAUDE.md ./CLAUDE.md ./AGENTS.md ./.claude/CLAUDE.md ./.claude/rules/ 2>/dev/null
 wc -lw ~/.claude/CLAUDE.md ./CLAUDE.md 2>/dev/null
 
-# Memoria (persiste entre sesiones y también es instrucción)
+# Memoria automática (persiste entre sesiones y también es instrucción).
+# El índice se carga siempre; las reglas viven en los archivos sueltos de al lado.
 ls ~/.claude/projects/*/memory/MEMORY.md 2>/dev/null
 wc -l ~/.claude/projects/*/memory/MEMORY.md 2>/dev/null
+ls ~/.claude/projects/*/memory/*.md 2>/dev/null | wc -l
 
 # Instrucciones por carpeta (estaciones, subproyectos): se cargan al trabajar ahí
 find . -mindepth 2 \( -name "CLAUDE.md" -o -name "MEMORY.md" -o -name "AGENTS.md" \) \
@@ -60,6 +62,8 @@ De las skills de plugins se auditan las propias (las del marketplace del usuario
 
 Las skills se auditan por su `description` y por las instrucciones de comportamiento que llevan adentro, no por sus referencias de datos.
 
+Los archivos sueltos de la memoria automática se auditan como reglas, igual que un CLAUDE.md: Claude Code los escribe solo cuando el usuario lo corrige, así que suelen tener reglas que también viven, completas o en parte, en otra capa.
+
 ## Paso 2. Bajar la guía vigente (nunca saltear, nunca cachear)
 
 Primero saber en qué modelo se está (`/model`, o preguntar). Después bajar:
@@ -67,12 +71,13 @@ Primero saber en qué modelo se está (`/model`, o preguntar). Después bajar:
 1. `https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices`, la referencia viva entre modelos
 2. La página específica del modelo en uso, linkeada desde la anterior. Hay una por modelo vigente, por ejemplo `.../prompt-engineering/prompting-claude-opus-5`
 3. `https://claude.com/blog/best-practices-for-prompt-engineering`, el post general
+4. `https://code.claude.com/docs/en/memory`, cómo se cargan los CLAUDE.md, la memoria automática y las reglas por carpeta: tamaño recomendado, qué se carga siempre y qué bajo demanda, y por qué los imports no ahorran contexto. Es la fuente del chequeo 3e
 
 Si una bajada falla, decirlo y marcar los chequeos afectados como NO CORRIDO. Nunca reemplazar una bajada fallida por guía recordada.
 
 ## Paso 3. Los chequeos
 
-Cuatro pasadas, en este orden. La de borrado va primera porque es donde está la ganancia.
+Cinco pasadas, en este orden. La de borrado va primera porque es donde está la ganancia.
 
 ### 3a. Candidatas a BORRAR (contra la guía bajada)
 
@@ -110,6 +115,12 @@ Cruzar todas las capas y reportar cada par que choque: misma situación, instruc
 
 Por cada conflicto: las dos líneas, sus archivos, y cuál parece más nueva (fecha del MEMORY.md, historial de git si hay). No resolverlo: eso lo decide el usuario. Si una de las dos ya está cubierta por la otra sin chocar, es duplicado, no conflicto: va a una lista aparte de candidatas a unificar, y tampoco se unifica en esta sesión.
 
+### 3e. Reglas de una acción repartidas
+
+Un duplicado y un conflicto se ven comparando pares. Lo que no se ve así son reglas distintas, que no chocan, sobre una misma acción o herramienta (mandar un mail, cargar una tarea, subir un archivo, armar un anuncio) repartidas entre el CLAUDE.md global o raíz, las instrucciones de varias carpetas, archivos de referencia y la memoria automática. Cada una nació donde se corrigió, y el resultado es que para hacer esa acción bien hay que cargar cuatro archivos que nadie carga juntos: se cumple la regla del archivo que se leyó y se viola la del que no.
+
+Armá la lista de acciones que aparecen en las reglas y, por cada una, contá en cuántos archivos hay reglas sobre ella (no menciones de paso). Reportá cada acción que aparezca en dos o más, con la lista de archivos y líneas, y proponé un único archivo dueño: el que ya tenga más de esas reglas, o uno nuevo que se lea bajo demanda desde una fila de referencia del raíz (la guía del paso 2 explica qué se carga siempre y qué no). Tampoco se mueve nada en esta sesión.
+
 ### 3d. Candidatas a AGREGAR
 
 Los modelos nuevos son más verbosos y más ansiosos. Revisar si el setup tiene cada una y marcar el hueco. Si ya la tiene en cualquier capa, no proponerla.
@@ -130,6 +141,7 @@ Entregar esto, en este orden.
 2. **Tabla de borrado.** Una fila por hit: la línea, archivo y número de línea, qué chequeo la atrapó y la frase de la guía de Anthropic. Sin hit no hay fila: nunca rellenar la tabla para parecer exhaustivo.
 3. **Tabla de parkeo.** Una fila por regla sin falla rastreable: la línea, archivo, y qué dice la guía sobre ese comportamiento por defecto.
 4. **Tabla de conflictos.** Una fila por par: las dos líneas, sus archivos, cuál parece más nueva. Debajo, la lista de duplicados.
+4b. **Tabla de acciones repartidas.** Una fila por acción: en cuántos archivos tiene reglas, cuáles (con línea) y el archivo dueño propuesto.
 5. **Tabla de agregados.** Una fila por hueco, con el texto exacto para pegar.
 6. **Antes y después proyectado.** Cantidad de reglas y palabras hoy, y cuántas quedarían si se aplicara todo lo propuesto. Es proyección, no resultado.
 7. **El experimento de los seis meses.** Decir la jugada más fuerte sin vueltas: renombrar el archivo, correr una semana sin él, y volver a agregar solo lo que de verdad faltó. `mv CLAUDE.md CLAUDE.md.parked`
@@ -143,7 +155,7 @@ Si el usuario pide REESCRIBIR, acortar sin perder el porqué. Una regla que dice
 
 ## Para después de la auditoría
 
-Una regla nueva entra recién cuando el usuario corrige lo mismo dos veces. Una corrección sola es un caso; dos es un patrón. Si el setup ya tiene esta regla escrita, no duplicarla.
+Una regla nueva entra recién cuando el usuario corrige lo mismo dos veces. Una corrección sola es un caso; dos es un patrón. Si el setup ya tiene esta regla escrita, no duplicarla. Entra en el archivo dueño de esa acción, no en el de la carpeta donde se trabajaba ni en la memoria automática.
 
 ## La versión pegable (sin Claude Code)
 
