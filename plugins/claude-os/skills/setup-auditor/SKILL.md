@@ -71,7 +71,7 @@ Primero saber en qué modelo se está (`/model`, o preguntar). Después bajar:
 1. `https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices`, la referencia viva entre modelos
 2. La página específica del modelo en uso, linkeada desde la anterior. Hay una por modelo vigente, por ejemplo `.../prompt-engineering/prompting-claude-opus-5`
 3. `https://claude.com/blog/best-practices-for-prompt-engineering`, el post general
-4. `https://code.claude.com/docs/en/memory`, cómo se cargan los CLAUDE.md, la memoria automática y las reglas por carpeta: tamaño recomendado, qué se carga siempre y qué bajo demanda, y por qué los imports no ahorran contexto. Es la fuente del chequeo 3e
+4. `https://code.claude.com/docs/en/memory`, cómo se cargan los CLAUDE.md, la memoria automática y las reglas por carpeta: tamaño recomendado, qué se carga siempre y qué bajo demanda, y por qué los imports no ahorran contexto. Es la fuente del chequeo 3d
 
 Si una bajada falla, decirlo y marcar los chequeos afectados como NO CORRIDO. Nunca reemplazar una bajada fallida por guía recordada.
 
@@ -115,13 +115,13 @@ Cruzar todas las capas y reportar cada par que choque: misma situación, instruc
 
 Por cada conflicto: las dos líneas, sus archivos, y cuál parece más nueva (fecha del MEMORY.md, historial de git si hay). No resolverlo: eso lo decide el usuario. Si una de las dos ya está cubierta por la otra sin chocar, es duplicado, no conflicto: va a una lista aparte de candidatas a unificar, y tampoco se unifica en esta sesión.
 
-### 3e. Reglas de una acción repartidas
+### 3d. Reglas de una acción repartidas
 
 Un duplicado y un conflicto se ven comparando pares. Lo que no se ve así son reglas distintas, que no chocan, sobre una misma acción o herramienta (mandar un mail, cargar una tarea, subir un archivo, armar un anuncio) repartidas entre el CLAUDE.md global o raíz, las instrucciones de varias carpetas, archivos de referencia y la memoria automática. Cada una nació donde se corrigió, y el resultado es que para hacer esa acción bien hay que cargar cuatro archivos que nadie carga juntos: se cumple la regla del archivo que se leyó y se viola la del que no.
 
 Armá la lista de acciones que aparecen en las reglas y, por cada una, contá en cuántos archivos hay reglas sobre ella (no menciones de paso). Reportá cada acción que aparezca en dos o más, con la lista de archivos y líneas, y proponé un único archivo dueño: el que ya tenga más de esas reglas, o uno nuevo que se lea bajo demanda desde una fila de referencia del raíz (la guía del paso 2 explica qué se carga siempre y qué no). Tampoco se mueve nada en esta sesión.
 
-### 3d. Candidatas a AGREGAR
+### 3e. Candidatas a AGREGAR
 
 Los modelos nuevos son más verbosos y más ansiosos. Revisar si el setup tiene cada una y marcar el hueco. Si ya la tiene en cualquier capa, no proponerla.
 
