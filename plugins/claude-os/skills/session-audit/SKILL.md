@@ -233,7 +233,7 @@ Si un hallazgo entra por la rama de estación y además tiene condición de form
 
 **Señales de que algo va genuinamente a raíz:**
 - Aplica independientemente de la tarea (tono general de respuesta, idioma, formato de confirmaciones)
-- Describe cómo tratar a Mati, cómo reportarle, o cómo manejar credenciales y accesos
+- Describe cómo tratar a Mati o cómo reportarle, o es una prohibición que protege algo caro en cualquier tarea (no filtrar una credencial). Lo procedimental de esa misma acción va a su dueño si lo tiene.
 - Empieza con "en toda herramienta", "en cualquier", "siempre que"
 - Mati lo enunció como instrucción global del OS ("de ahora en adelante, en todo...")
 
