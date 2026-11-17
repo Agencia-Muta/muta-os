@@ -8,12 +8,10 @@ description: >
 
 El monigote es la persona de palitos de las historias de Muta: cabeza redonda, ojos de punto, cuerpo de un palo, brazos y piernas de dos tramos. Vive en el motor de personajes del repo `Agencia-Muta/muta-recursos`, carpeta `personajes-animados/`. Esta skill no trae código: todo sale de ese repo, así cada mejora del motor le llega a quien haga `git pull`.
 
-Lo que hace que un monigote se vea vivo y no un robot, en orden de impacto:
-1. **Momentos encadenados.** Si dos momentos van seguidos, el cuerpo pasa de uno al otro sin volver a la pose de parado entre medio.
-2. **Nunca congelado.** En las pausas respira, mece apenas la cabeza y parpadea.
-3. **Poses que fluyen.** Cuando un movimiento sigue en el mismo sentido, no frena en cada pose. Si cambia de sentido (la preparación antes de señalar), frena, como un cuerpo real.
-
-Las tres cosas ya las hace el motor; la escena solo tiene que pedirlas (paso 4).
+Lo que hace que un monigote se vea vivo y no un robot, y que el motor ya resuelve si la escena lo pide (paso 4):
+1. **Momentos encadenados.** Si dos momentos van seguidos, el cuerpo pasa de uno al otro sin volver a la pose de parado entre medio. Si una mano tendría que cruzar el pecho, atravesar la cara o pasar por el hombro, hace un paso corto por afuera, como lo haría una persona.
+2. **Nunca congelado.** En las pausas respira (el torso y la cabeza se mueven unos píxeles), y parpadea. Si una mano toca la cara, se mueve con la cabeza; con la cabeza apoyada en una pared, no se mece.
+3. **Poses que fluyen** (`fluye`): solo cambia algo cuando escribís claves a mano que siguen en el mismo sentido sin pausa. Con los momentos de la biblioteca casi no se nota, y está bien: donde la mano cambia de sentido, frenar es lo correcto.
 
 ## 1. Tener el repo al día
 
@@ -33,7 +31,11 @@ En `personajes-animados/`, en este orden:
 
 ## 3. Planear los momentos con la persona
 
-Antes de escribir código, proponé la escena como una lista de momentos con su segundo: "0,6 s duda (sostiene 0,6 s) → señala → se queda señalando". Los momentos que existen están en `MG_MOMENTOS` (`monigote/codigo/monigote.js`) y en la lámina `--escena=monigote-momentos`. Pedí el OK de la lista y el formato (9:16 para reel, 4:5 para feed).
+Antes de escribir código, proponé la escena como una lista de momentos con su segundo: "0,6 s duda (sostiene 0,6 s) → presenta → se queda señalando". Pedí el OK de la lista y el formato (9:16 para reel, 4:5 para feed).
+
+Los momentos que existen (`MG_MOMENTOS` en `monigote/codigo/monigote.js`, y en video con `--escena=monigote-momentos`): espera, presenta, duda, no-entiende, se-entera, se-desinfla, angustia, no-puede-mas, desconfia, lee, muestra-cartel, encoge-hombros, festeja, carga, trato, asiente, niega, saluda, camina, corre. Lo que la persona pide en palabras se traduce a esos nombres: **señalar o mostrar algo es `presenta`**, pensar es `duda`, rascarse la cabeza es `no-entiende`. Un nombre que no existe corta con un error que lista los que hay.
+
+Lo que conviene saber al encadenar: `festeja` termina parado (cae del salto), y arrancar a correr (`corre`) justo después de otro momento es brusco a propósito.
 
 Si la escena pide algo que el monigote no sabe hacer, el momento nuevo se suma a `MG_MOMENTOS` (con su preparación, su acción y su asentado, desde una pose de `MG_POSES`), nunca dentro de la escena. Una pose nueva se muestra antes de usarla.
 
@@ -60,8 +62,8 @@ Una escena es un archivo `monigote/escenas/monigote-<id>.js` más su fila en `mo
 ## 5. Medir una referencia (si hay un video para copiar el movimiento)
 
 Desde `motor/`, con el video bajado:
-- `bash tools/sheet.sh ref.mp4 <inicio> <duración> <recorte W:H:X:Y>`: hoja de todos los cuadros del tramo, para ver el timing.
-- `python3 -I tools/track_edges.py ref.mp4 --start S --dur D --fps <fps del video> --crop W:H:X:Y --colors RRGGBB --cols C1,C2 --row R`: dónde están los bordes del sujeto en cada cuadro. Ahí se ve lo que el ojo no ve: cuánto se balancea, respira o se aplasta, y cada cuánto.
+- `bash tools/sheet.sh ref.mp4 <inicio> <duración> <ancho:alto:x:y>`: hoja de todos los cuadros del tramo, para ver el timing. Ojo: este recorte va **ancho:alto:x:y** (el orden de ffmpeg).
+- `python3 -I tools/track_edges.py ref.mp4 --start S --dur D --fps <fps del video> --crop x:y:ancho:alto --colors RRGGBB --cols C1,C2 --row R`: dónde están los bordes del sujeto en cada cuadro. Ahí se ve lo que el ojo no ve: cuánto se balancea, respira o se aplasta, y cada cuánto. Ojo: acá el recorte va **x:y:ancho:alto**, al revés que `sheet.sh`. Si todas las columnas salen "-", el recorte o el color están mal.
 - `python3 -I tools/sample_colors.py ref.mp4 --at <segundo> X,Y`: el color exacto de un punto.
 
 Pasá lo medido a la escena como números (cuánto dura cada momento, cuánto sostiene) y explicale a la persona qué tomaste de la referencia. Se copia el movimiento, nunca el dibujo ni el personaje de otro.
@@ -70,14 +72,16 @@ Pasá lo medido a la escena como números (cuánto dura cada momento, cuánto so
 
 Desde `motor/`:
 - Hoja de cuadros sueltos: `node render.mjs --escena=monigote-<id> --sheet=0.5,1.2,2.4,3.3 --out=out/check/<id>.jpg`. Mirala vos antes de seguir.
+- Si la salida del render muestra `[page error]`, frená: la escena no cargó y lo que salió es otra cosa (la demo del kit), aunque el comando termine bien. Leé el error, arreglá la escena y volvé a renderizar.
 - Tramo cuadro por cuadro (contactos, cambios de pose): `node render.mjs --escena=monigote-<id> --strip=2.0:3.0 --out=out/check/tramo.jpg`.
 - Video: `node render.mjs --escena=monigote-<id> --clip --out=out/<id>.mp4`.
 - Imágenes fijas para un carrusel: `node render.mjs --escena=monigote-<id> --stills=1.2,3.3 --transparente --out=out/fijas`.
 
 Antes de mostrar, chequeá en la hoja:
 - Cada pose se lee sin cara (tapá la cabeza: si no se entiende, la pose no está).
-- Nunca vuelve a parado entre dos momentos seguidos.
-- En las pausas no hay dos cuadros iguales.
+- Nunca vuelve a parado entre dos momentos seguidos (salvo después de `festeja`).
+- En las pausas se lo ve respirar: compará dos cuadros de la misma pausa separados un segundo y medio, el torso y la cabeza tienen que estar en otro lugar.
+- Los brazos no se cruzan por delante del pecho ni atraviesan la cara al pasar de un momento a otro (`--strip` del cambio).
 - Las manos tocan de verdad lo que agarran.
 
 Entregá el video de `motor/out/` y una línea con qué hace el monigote y qué quedó sin mirar.
