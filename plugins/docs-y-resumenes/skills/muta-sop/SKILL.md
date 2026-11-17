@@ -237,6 +237,8 @@ Cuando el usuario da el documento por cerrado, se publica. No termina hasta que 
 2. **Índice de Documentación y Guías.** Una fila nueva con el nombre linkeado al Doc, y Área, Sub-Área, Relevante para y Tipo de Documento elegidos solo entre las opciones de la planilla.
 3. **NotebookLM.** El Doc se suma al cuaderno de Documentación como fuente de Google Drive, no como texto pegado.
 
+Si el documento reemplaza a otro, la fila vieja del índice se tacha en A:F y queda en la planilla, y el Doc viejo lleva arriba de todo, en negrita, "Esta guía quedó obsoleta. La versión actualizada está acá: <link>". Así quien llega por un link viejo encuentra la vigente.
+
 Si tenés conexión a Drive y NotebookLM, hacelo vos y confirmá con los links. Si no, dejale al usuario todo listo para hacerlo a mano: la carpeta exacta, la fila del índice lista para copiar y pegar, y el recordatorio de "Agregar fuente › Google Drive" en NotebookLM.
 
 ---
