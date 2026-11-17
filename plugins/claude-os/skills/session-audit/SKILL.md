@@ -320,6 +320,8 @@ Según la confirmación:
 - **Regla de pieza o de medio de salida:** va al archivo que gobierna ese formato, en la sección de ese nivel, con la condición adelante. Si no existe la sección, no la improvises en otro lado: quedó marcada como 🧩 SIN DESTINO y se resuelve con Mati.
 - **Si se crea una estación nueva:** crearla con la estructura de `00-recursos/plantilla-estacion.md` y **agregar la fila al Mapa de Enrutamiento del raíz en el mismo acto** (la fila ya fue mostrada y aprobada en PASO 4). No delegar esa actualización a Mati.
 
+Lo aprobado se escribe completo antes de arrancar cualquier pedido nuevo que llegue en el mismo mensaje: el 17/11, con la auditoría a medio aplicar, otra sesión reescribió `reglas-metricool.md` en el medio y hubo que reconciliar.
+
 Al terminar, confirmar qué se escribió y en qué archivo.
 
 ---
