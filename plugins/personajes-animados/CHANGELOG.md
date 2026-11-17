@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.2 (2026-11-17)
+- animar-monigote: describe el encadenado como queda en el motor (la mano que haría algo raro baja al costado; momentos sin pose siguen en la anterior), los contactos que respeta `vive` y que los objetos sostenidos se ubican desde `g.manos`; lo que sigue pendiente al salir de `duda` y al arrancar a correr.
+
 ## 0.1.1 (2026-11-17)
 - animar-monigote: lista de momentos y "señalar es presenta"; orden del recorte de track_edges.py (x:y:ancho:alto) distinto del de sheet.sh; frenar ante `[page error]`; `fluye` descripto como lo que hace; chequeos de respiración y de brazos que no se cruzan.
 

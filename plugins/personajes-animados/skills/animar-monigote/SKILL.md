@@ -9,8 +9,8 @@ description: >
 El monigote es la persona de palitos de las historias de Muta: cabeza redonda, ojos de punto, cuerpo de un palo, brazos y piernas de dos tramos. Vive en el motor de personajes del repo `Agencia-Muta/muta-recursos`, carpeta `personajes-animados/`. Esta skill no trae código: todo sale de ese repo, así cada mejora del motor le llega a quien haga `git pull`.
 
 Lo que hace que un monigote se vea vivo y no un robot, y que el motor ya resuelve si la escena lo pide (paso 4):
-1. **Momentos encadenados.** Si dos momentos van seguidos, el cuerpo pasa de uno al otro sin volver a la pose de parado entre medio. Si una mano tendría que cruzar el pecho, atravesar la cara o pasar por el hombro, hace un paso corto por afuera, como lo haría una persona.
-2. **Nunca congelado.** En las pausas respira (el torso y la cabeza se mueven unos píxeles), y parpadea. Si una mano toca la cara, se mueve con la cabeza; con la cabeza apoyada en una pared, no se mece.
+1. **Momentos encadenados.** Si dos momentos van seguidos, el cuerpo pasa de uno al otro sin volver a la pose de parado entre medio. Si una mano tendría que cruzar el pecho, atravesar la cara o pasar por el hombro, esa mano sola baja un instante al costado y después sigue, como lo haría una persona. Un momento sin pose propia (espera, asiente, niega) sigue en la pose del anterior.
+2. **Nunca congelado.** En las pausas respira (el torso y la cabeza se mueven unos píxeles) y parpadea. Una mano que toca la cara o se rasca la cabeza se mueve con ella; con la cabeza apoyada en una pared o un brazo pegado a la cabeza, casi no se mece; las manos que sostienen algo arriba (cajas, cartel) o dan un apretón no respiran por su cuenta. Si dibujás un objeto que la mano sostiene, ubicalo desde las manos que devuelve `monigote(...)` (`g.manos`), no en un lugar fijo, o se despega.
 3. **Poses que fluyen** (`fluye`): solo cambia algo cuando escribís claves a mano que siguen en el mismo sentido sin pausa. Con los momentos de la biblioteca casi no se nota, y está bien: donde la mano cambia de sentido, frenar es lo correcto.
 
 ## 1. Tener el repo al día
@@ -35,7 +35,7 @@ Antes de escribir código, proponé la escena como una lista de momentos con su 
 
 Los momentos que existen (`MG_MOMENTOS` en `monigote/codigo/monigote.js`, y en video con `--escena=monigote-momentos`): espera, presenta, duda, no-entiende, se-entera, se-desinfla, angustia, no-puede-mas, desconfia, lee, muestra-cartel, encoge-hombros, festeja, carga, trato, asiente, niega, saluda, camina, corre. Lo que la persona pide en palabras se traduce a esos nombres: **señalar o mostrar algo es `presenta`**, pensar es `duda`, rascarse la cabeza es `no-entiende`. Un nombre que no existe corta con un error que lista los que hay.
 
-Lo que conviene saber al encadenar: `festeja` termina parado (cae del salto), y arrancar a correr (`corre`) justo después de otro momento es brusco a propósito.
+Lo que conviene saber al encadenar: `festeja` termina parado (cae del salto); arrancar a correr (`corre`) justo después de otro momento es brusco; y al salir de `duda` el brazo pasa uno o dos cuadros por delante de la cara (lo hace la pose, también sin encadenar).
 
 Si la escena pide algo que el monigote no sabe hacer, el momento nuevo se suma a `MG_MOMENTOS` (con su preparación, su acción y su asentado, desde una pose de `MG_POSES`), nunca dentro de la escena. Una pose nueva se muestra antes de usarla.
 
