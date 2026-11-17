@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.3 (2026-11-17)
+- animar-monigote: la pose `duda` pasa a ser la de pensar (codo abajo, la otra mano lo sostiene); ya no cruza la cara al salir.
+
 ## 0.1.2 (2026-11-17)
 - animar-monigote: describe el encadenado como queda en el motor (la mano que haría algo raro baja al costado; momentos sin pose siguen en la anterior), los contactos que respeta `vive` y que los objetos sostenidos se ubican desde `g.manos`; lo que sigue pendiente al salir de `duda` y al arrancar a correr.
 

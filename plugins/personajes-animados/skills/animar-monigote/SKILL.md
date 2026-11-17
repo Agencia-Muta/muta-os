@@ -35,7 +35,7 @@ Antes de escribir código, proponé la escena como una lista de momentos con su 
 
 Los momentos que existen (`MG_MOMENTOS` en `monigote/codigo/monigote.js`, y en video con `--escena=monigote-momentos`): espera, presenta, duda, no-entiende, se-entera, se-desinfla, angustia, no-puede-mas, desconfia, lee, muestra-cartel, encoge-hombros, festeja, carga, trato, asiente, niega, saluda, camina, corre. Lo que la persona pide en palabras se traduce a esos nombres: **señalar o mostrar algo es `presenta`**, pensar es `duda`, rascarse la cabeza es `no-entiende`. Un nombre que no existe corta con un error que lista los que hay.
 
-Lo que conviene saber al encadenar: `festeja` termina parado (cae del salto); arrancar a correr (`corre`) justo después de otro momento es brusco; y al salir de `duda` el brazo pasa uno o dos cuadros por delante de la cara (lo hace la pose, también sin encadenar).
+Lo que conviene saber al encadenar: `festeja` termina parado (cae del salto); arrancar a correr (`corre`) justo después de otro momento es brusco.
 
 Si la escena pide algo que el monigote no sabe hacer, el momento nuevo se suma a `MG_MOMENTOS` (con su preparación, su acción y su asentado, desde una pose de `MG_POSES`), nunca dentro de la escena. Una pose nueva se muestra antes de usarla.
 
