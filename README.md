@@ -19,6 +19,9 @@ Marketplace de skills de Claude Code de Muta Digital, para equipo y amigos.
   4. `skill-audit` — **manual, con `/skill-audit`.** Audita el registro de skills instaladas: presupuesto de descripciones, cuáles llegan truncadas, y un plan ordenado de bajas y recortes.
   5. `skill-a-prompt` — **cuando hay que sacar una skill del ecosistema.** Convierte una skill (su SKILL.md y sus archivos de referencia) en un prompt de texto pegable en ChatGPT, en un GPT personalizado o al arrancar cualquier chat, para quien necesite ese criterio en una herramienta que no tiene skills.
 
+- **personajes-animados**: animación de los personajes de Muta con el motor propio, que vive en el repo privado `Agencia-Muta/muta-recursos` (hace falta acceso a la organización).
+  - `animar-monigote`: arma, renderiza y revisa una escena del monigote de palitos: momentos encadenados, pausas que respiran y parpadean, y medición de un video de referencia antes de animar.
+
 Los dos últimos se complementan: `metodologia-fv` define qué decir, `creacion-contenido` lo escribe. Cada skill funciona por separado.
 
 ## Instalar
@@ -31,6 +34,7 @@ Los dos últimos se complementan: `metodologia-fv` define qué decir, `creacion-
 /plugin install meta-ads-muta@muta-os
 /plugin install claude-os@muta-os
 /plugin install docs-y-resumenes@muta-os
+/plugin install personajes-animados@muta-os
 ```
 
 **App Claude (web/desktop/Cowork):**

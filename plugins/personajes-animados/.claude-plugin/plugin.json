@@ -1,0 +1,9 @@
+{
+  "name": "personajes-animados",
+  "version": "0.1.0",
+  "description": "Animación de los personajes de Muta con el motor propio: arranca con animar-monigote, la persona de palitos de las historias, encadenando momentos sin que se congele.",
+  "author": {
+    "name": "Muta Digital"
+  },
+  "keywords": ["animación", "monigote", "personajes", "video", "reels", "motion"]
+}
