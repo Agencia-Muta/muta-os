@@ -173,6 +173,8 @@ En la sesión se ejecutó un proceso que probablemente se repita: armar un tipo 
 
 → No va a CLAUDE.md ni MEMORY.md. Se marca como **candidato a SOP** y se sugiere documentarlo con la skill `muta-sop` (o como skill nueva si es un proceso de Claude). Solo marcarlo si el proceso tiene 3+ pasos y va a repetirse: un one-off no califica.
 
+Si la tarea ya se hizo dos o más veces (buscá en la memoria, las estaciones o sesiones anteriores), marcala además como **candidata a automatizar**: cómo correría sola (tarea programada, hook o skill), qué parte sigue necesitando a la persona y cuántas horas libera, con la evidencia de las veces anteriores. El objetivo es subir el VHN: una tarea que se automatiza deja de pedir horas.
+
 ---
 
 **Filtro de duplicados y contradicciones (antes de continuar):**
