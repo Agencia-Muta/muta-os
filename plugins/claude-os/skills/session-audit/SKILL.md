@@ -4,7 +4,6 @@ description: Audita la sesion o el sistema del Claude OS y guarda lo aprendido e
 ---
 
 # session-audit: Auditoría del Claude OS
-*v5, 12 de noviembre de 2026*
 
 ## PASO PREVIO: Fijar la raíz del sistema (obligatorio, ambos modos)
 
@@ -38,7 +37,7 @@ Con la raíz fijada, elegí el modo:
 La define el `CLAUDE.md` raíz (sección "Memoria"). En resumen: prescriptivo (reglas de comportamiento) → `CLAUDE.md`; factual (estado, decisiones, contactos, datos que cambian) → `MEMORY.md`. Ante un cambio de criterio, gana lo que diga el raíz.
 
 **Regla de dueño (aplica a ambos modos, se aplica antes que la de nivel):**
-Cada acción o herramienta tiene sus reglas en un solo archivo, su dueño: el que declara el `CLAUDE.md` raíz (buscá la lista de acciones con su archivo, esté en la sección que esté; si no hay lista, la tabla de Referencias). Ejemplos de acción: mails y mensajes, una plataforma de anuncios, el gestor de tareas, el almacenamiento, credenciales, un tipo de documento. Toda regla, trampa de una herramienta o aprendizaje sobre esa acción va a su dueño, sin importar en qué estación apareció ni qué tan local parezca: "el mail del resumen de una reunión va pegado en el cuerpo" vive en el archivo de mails, no en la estación de reuniones. La regla de nivel decide solo para lo que no tiene dueño.
+Cada acción o herramienta tiene sus reglas en un solo archivo, su dueño: el que declara el `CLAUDE.md` raíz (buscá la lista de acciones con su archivo, esté en la sección que esté; si no hay lista, la tabla de Referencias). Ejemplos de acción: mails y mensajes, una plataforma de anuncios, el gestor de tareas, el almacenamiento, credenciales, un tipo de documento. Toda regla, trampa de una herramienta o aprendizaje sobre esa acción que pase el filtro previo va a su dueño, sin importar en qué estación apareció ni qué tan local parezca: "el mail del resumen de una reunión va pegado en el cuerpo" vive en el archivo de mails, no en la estación de reuniones. La regla de nivel decide solo para lo que no tiene dueño.
 
 Si la acción la ejecuta una skill propia (un mail que arma una skill, un documento que genera otra) y la corrección toca algo que esa skill define, el destino es la fuente de la skill en su repo, que se versiona y se publica: si la regla va al dueño pero la skill dice otra cosa, la skill gana en cada corrida y la corrección no sirve. Si la skill no define ese punto, va al dueño. Si una acción que se repite en varias estaciones no tiene dueño todavía, no se reparte: se propone crearlo (📁 en el PASO 4). Motivo: con la regla de nivel sola, cada estación guardaba "su" parte como verdadera solo para ella, y las reglas de mandar un mail terminaron repartidas en la raíz, tres estaciones, un archivo de herramientas y ocho entradas de memoria automática.
 
@@ -76,12 +75,12 @@ Toda entrada nueva en cualquier `MEMORY.md` se prefija con `[YYYY-MM]` (ej: `[20
 
 ## Cómo se escribe cada entrada (aplica a ambos modos)
 
-**Filtro previo.** Una regla se propone solo si pasa las dos:
+**Filtro previo.** Una regla se propone solo si pasa estos cuatro puntos:
 
 1. ¿Un asistente competente lo haría igual sin que se lo digan? → no se escribe.
 2. ¿Ya lo dicen las instrucciones globales, las preferencias personales de Mati, o una regla que ya está en un nivel superior? → no se escribe.
-
-3. ¿Es una corrección puntual que Mati hizo una sola vez, sin enunciarla como preferencia? → no va como regla en RECOMIENDO. Se extrae el criterio de fondo y va a TU DECISIÓN con la nota "corregido una vez". Convertir cada corrección en regla es lo que infla los archivos; la regla se justifica cuando corrige lo mismo por segunda vez o lo dice como norma ("siempre", "nunca", "de ahora en adelante").
+3. ¿Es un tropiezo técnico que resolviste solo durante la ejecución (un parámetro que la API ignora, un permiso bloqueado, un comando o una herramienta que hubo que cambiar) sin que Mati interviniera? → no se escribe: la próxima sesión lo encuentra y lo resuelve igual, y anotarlo llena el dueño de trampas que nadie iba a volver a pisar. Se escribe solo si costó algo que Mati notó o va a notar: él tuvo que hacer algo, se le dijo algo que resultó falso, algo salió mal, o el límite cambia qué se le puede prometer o cómo decide. Prueba: si la próxima sesión no lo supiera, ¿Mati lo notaría? Si no, no va.
+4. ¿Es una corrección puntual que Mati hizo una sola vez, sin enunciarla como preferencia? → no va como regla en RECOMIENDO. Se extrae el criterio de fondo y va a TU DECISIÓN con la nota "corregido una vez". Convertir cada corrección en regla es lo que infla los archivos; la regla se justifica cuando corrige lo mismo por segunda vez o lo dice como norma ("siempre", "nunca", "de ahora en adelante").
 
 Los hechos que van a `MEMORY.md` pasan un filtro propio: ¿cambia cómo se trabaja la próxima vez? Una decisión que condiciona trabajo futuro, un contacto, un rol o una spec de canon, sí. El estado de un proyecto, qué se hizo, dónde quedó un archivo o un dato suelto que se desactualiza, no: eso vive en el LEEME o el HANDOFF del proyecto y acá sería una anécdota.
 
@@ -117,7 +116,7 @@ find "$RAIZ" \( -name "CLAUDE.md" -o -name "MEMORY.md" \) \
 
 2. **Leé `CLAUDE.md` y `MEMORY.md` raíz.** Contá líneas con `wc -l` y compará contra los umbrales.
 3. **Leé los archivos de referencia que se usaron en esta sesión.** Están en la tabla de Referencias del `CLAUDE.md` raíz: leé esa tabla y tomá de ahí los que apliquen a lo que se trabajó hoy. No los leas todos siempre: leé los que la sesión tocó, más el dueño de cada acción que aparezca en un hallazgo.
-4. **Listá lo que la memoria automática guardó en esta sesión**, si la sesión la tiene: `find ~/.claude/projects/*/memory -name "*.md" -newermt "$(date +%Y-%m-%d)"`. Cada archivo nuevo o modificado hoy es una corrección que Claude Code guardó por su cuenta: entra al PASO 1 como hallazgo, aunque la conversación no la muestre. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
+4. **Listá lo que la memoria automática guardó en esta sesión**, si la sesión la tiene. Buscá solo en la carpeta de memoria de este proyecto (Code la nombra en sus instrucciones de sistema, en la sección de memoria), no en `~/.claude/projects/*`, que trae las de todos los proyectos. Tomá desde la fecha en que arrancó la sesión (la que figura al principio del contexto), no desde hoy, para no perder lo guardado antes de la medianoche: `find "<carpeta de memoria del proyecto>" -name "*.md" -newermt "<fecha de inicio>"`. Cada archivo que aparece es algo que Claude Code guardó por su cuenta: entra al PASO 1 como hallazgo, aunque la conversación no lo muestre, y pasa el mismo filtro previo que el resto. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
 5. Los `CLAUDE.md` de las estaciones no se leen todavía. Solo los que resulten destino de un hallazgo (ver filtro del PASO 1).
 
 El estado del Mapa de Enrutamiento no se audita en este modo. Detectar carpetas sin mapear es trabajo del Modo Sistema: acá solo generaría una lista fija que se repite en cada sesión y no tiene dónde ir.
@@ -129,7 +128,7 @@ El estado del Mapa de Enrutamiento no se audita en este modo. Detectar carpetas 
 Recorrés la conversación completa buscando estas cinco señales:
 
 ### A. Correcciones
-Mati corrigió algo que Claude produjo: cambió una palabra, reescribió una sección, ajustó un formato, o dijo "no, hacelo así". Una corrección muestra un criterio, no necesariamente una regla: pasa por el punto 3 del filtro previo.
+Mati corrigió algo que Claude produjo: cambió una palabra, reescribió una sección, ajustó un formato, o dijo "no, hacelo así". Una corrección muestra un criterio, no necesariamente una regla: pasa por el punto 4 del filtro previo.
 
 **Qué buscar:** Momentos donde editó, rechazó o reescribió el output. Preguntate: ¿qué criterio de fondo motivó el cambio, y ya lo había corregido antes (en esta sesión, o figura en los archivos o en la memoria automática)?
 
@@ -177,12 +176,14 @@ Si la tarea ya se hizo dos o más veces (buscá en la memoria, las estaciones o 
 
 ---
 
+Un hallazgo técnico que no viene de ninguna de estas cinco señales entra solo si pasa el punto 3 del filtro previo.
+
 **Filtro de duplicados y contradicciones (antes de continuar):**
 
 1. Para cada hallazgo, identificá su destino tentativo: primero la regla de dueño; la de nivel solo si la acción no tiene dueño.
 2. **Leé el archivo destino real**, y si la acción la ejecuta una skill propia, también su `SKILL.md` (ver regla de dueño). Si el destino es una estación, leé su `CLAUDE.md`/`MEMORY.md` ahora. Sin leer el destino no podés deduplicar.
 3. **Leé también el nivel de arriba.** Si el hallazgo va a una estación, chequeá que la regla no exista ya en raíz o en un archivo de referencia. Una regla que ya está arriba no se copia abajo.
-4. **Chequeá la memoria automática de Code**, si la sesión la tiene (el índice `MEMORY.md` de `~/.claude/projects/<proyecto>/memory/`, que ya viene cargado en el contexto, más lo que listó el PASO 0). Toda regla que esté ahí, nueva de hoy o vieja que el hallazgo toca, va a RECOMIENDO como migración: el contenido completo (condiciones, números, casos y motivo, sin resumir de más) pasa al dueño; si el dueño ya tiene la regla pero con menos datos que la memoria, se completa el dueño con lo que falta. Después el archivo de memoria se mueve a `_to_delete/` de la raíz del OS y su línea sale del índice. Dejarla en los dos lados es lo que desincroniza: la memoria automática la vuelve a cargar en cada sesión de Code mientras Cowork no la ve. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
+4. **Chequeá la memoria automática de Code**, si la sesión la tiene (el índice `MEMORY.md` de `~/.claude/projects/<proyecto>/memory/`, que ya viene cargado en el contexto, más lo que listó el PASO 0). Toda regla que esté ahí, nueva de esta sesión o vieja que el hallazgo toca, pasa el filtro previo. Si no lo pasa (lo típico: una trampa técnica que se resolvió sola), no se migra: va a RECOMIENDO como limpieza, el archivo se mueve a `_to_delete/` y su línea sale del índice. Si lo pasa, va a RECOMIENDO como migración: el contenido completo (condiciones, números, casos y motivo, sin resumir de más) pasa al dueño; si el dueño ya tiene la regla pero con menos datos que la memoria, se completa el dueño con lo que falta. Después el archivo de memoria se mueve a `_to_delete/` de la raíz del OS y su línea sale del índice. Dejarla en los dos lados es lo que desincroniza: la memoria automática la vuelve a cargar en cada sesión de Code mientras Cowork no la ve. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
 5. **Duplicado:** si el hallazgo ya está escrito (igual o equivalente), descartalo. Solo surfaceás lo genuinamente nuevo.
 6. **Contradicción:** si el hallazgo contradice una regla o dato existente (ej: el archivo dice "sin negritas" y Mati pidió negritas en títulos esta sesión), NO lo agregues como regla nueva. Marcalo como ⚔️ CONFLICTO y presentalo así en el PASO 4: qué dice el archivo, qué dice la sesión, y preguntá cuál gana. La resolución típica es reemplazar la regla vieja, no apilar las dos.
 
@@ -226,7 +227,7 @@ Si un hallazgo entra por la rama de estación y además tiene condición de form
 **Señales de que algo pertenece al dueño de una acción, no a la estación de hoy ni a raíz:**
 - Menciona una herramienta o canal concreto (una plataforma de anuncios, el gestor de tareas, una planilla, el mail, el chat del equipo)
 - Describe cómo se hace una acción que también se hace desde otras estaciones (mandar un mail, cargar una tarea, subir un archivo, armar un anuncio)
-- Es una trampa o un límite de un conector o una API
+- Es una trampa o un límite de un conector o una API que pasó el punto 3 del filtro previo
 
 **Señales de que algo pertenece a una estación específica:**
 - Refiere a un tipo de trabajo que solo se hace ahí (armar un guion, editar un video, costear un plan)
