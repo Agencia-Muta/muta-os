@@ -14,7 +14,9 @@ find "$RAIZ" \( -name "CLAUDE.md" -o -name "MEMORY.md" \) \
   -not -path "$RAIZ/_archivo/*" \
   -not -path "$RAIZ/_to_delete/*" \
   -not -path "$RAIZ/Artifacts/*" \
-  -not -path "$RAIZ/Scheduled/*"
+  -not -path "$RAIZ/Scheduled/*" \
+  -not -path "*/Edicion-de-video/proyectos/*" \
+  -not -path "$RAIZ/00-recursos/repo-muta-recursos/personajes-animados/*"
 ```
 
 Auditá todos los que devuelva, más:
@@ -45,7 +47,7 @@ Terminadas las rondas, corré una **ronda de cierre** sobre el índice acumulado
 3. Para cada `CLAUDE.md`/`MEMORY.md` que devolvió el `find`: leelo y contá líneas con `wc -l`
 4. Para cada archivo de referencia de la tabla del raíz: leelo y contá líneas
 5. Listá el nivel raíz de la carpeta (`ls`) y anotá los archivos sueltos que no sean CLAUDE.md, MEMORY.md o archivo-historico.md
-6. Listá **todas las carpetas del sistema, a cualquier profundidad**, tengan o no `CLAUDE.md`, y compará contra el Mapa de Enrutamiento: anotá qué carpetas están en disco y no en el mapa, y qué filas del mapa apuntan a carpetas que no existen. Las sub-estaciones cuentan: una carpeta con `CLAUDE.md` propio dentro de otra estación necesita su fila igual.
+6. Listá **todas las carpetas del sistema, a cualquier profundidad**, tengan o no `CLAUDE.md`, y compará contra el Mapa de Enrutamiento: anotá qué carpetas están en disco y no en el mapa, y qué filas del mapa apuntan a carpetas que no existen. Las sub-estaciones cuentan: una carpeta con `CLAUDE.md` propio dentro de otra estación necesita su fila igual, o estar declarada en la tabla de Recursos de su estación madre.
 
    **La infraestructura no se enruta y no es hallazgo:** `_archivo/`, `_to_delete/`, `Artifacts/`, `Scheduled/` y `00-recursos/`. No son estaciones de trabajo, no van al Mapa de Enrutamiento, y reportarlas cada vez es ruido permanente.
 
