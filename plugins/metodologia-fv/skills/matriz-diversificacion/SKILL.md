@@ -1,7 +1,6 @@
 ---
 name: matriz-diversificacion
-description: >
-  Genera una matriz de diversificación creativa para anuncios: cruza los deseos humanos de la audiencia (16 Deseos de Reiss) con los 5 niveles de conciencia de Schwartz para producir 30 hooks con sus ángulos estratégicos, listos para campañas de Meta Ads. Usá esta skill cuando el usuario diga "matriz de diversificación", "diversificá los ángulos", "hooks por nivel de conciencia", "ángulos para la campaña", "matriz de hooks", "necesito variedad de ángulos para los ads", o quiera cubrir prospección fría y retargeting con creatividades distintas. Basada en la metodología de Felipe Vergara.
+description: Cruza los 16 deseos de Reiss con los 5 niveles de conciencia de Schwartz y entrega 30 hooks con su ángulo para Meta Ads. Usar ante 'matriz de diversificación' o 'diversificá los ángulos'.
 ---
 
 # Matriz de Diversificación Creativa

@@ -34,10 +34,10 @@ Con la raíz fijada, elegí el modo:
 ```
 
 **Regla de destino (aplica a ambos modos):**
-La define el `CLAUDE.md` raíz (sección "Memoria"). En resumen: prescriptivo (reglas de comportamiento) → `CLAUDE.md`; factual (estado, decisiones, contactos, datos que cambian) → `MEMORY.md`. Ante un cambio de criterio, gana lo que diga el raíz.
+La define el `CLAUDE.md` raíz (su sección de memoria). En resumen: prescriptivo (reglas de comportamiento) → `CLAUDE.md`; factual (estado, decisiones, contactos, datos que cambian) → `MEMORY.md`. Ante un cambio de criterio, gana lo que diga el raíz.
 
 **Regla de dueño (aplica a ambos modos, se aplica antes que la de nivel):**
-Cada acción o herramienta tiene sus reglas en un solo archivo, su dueño: el que declara el `CLAUDE.md` raíz (buscá la lista de acciones con su archivo, esté en la sección que esté; si no hay lista, la tabla de Referencias). Ejemplos de acción: mails y mensajes, una plataforma de anuncios, el gestor de tareas, el almacenamiento, credenciales, un tipo de documento. Toda regla, trampa de una herramienta o aprendizaje sobre esa acción que pase el filtro previo va a su dueño, sin importar en qué estación apareció ni qué tan local parezca: "el mail del resumen de una reunión va pegado en el cuerpo" vive en el archivo de mails, no en la estación de reuniones. La regla de nivel decide solo para lo que no tiene dueño.
+Cada acción o herramienta tiene sus reglas en un solo archivo, su dueño: el que declara el `CLAUDE.md` raíz (buscá la lista de acciones con su archivo, esté en la sección que esté; si no hay lista, la tabla de Referencias). Ejemplos de acción: mails y mensajes, una plataforma de anuncios, el gestor de tareas, el almacenamiento, credenciales, un tipo de documento. Toda regla, trampa de una herramienta o aprendizaje sobre esa acción que pase el filtro previo va a su dueño, sin importar en qué estación apareció ni qué tan local parezca: "el mail del resumen de una reunión va pegado en el cuerpo" vive en el archivo de mails, no en la estación de reuniones. Si el dueño remite una parte a otro archivo (el de mails manda la voz a un archivo de voz), el destino de esa parte es ese archivo. La regla de nivel decide solo para lo que no tiene dueño.
 
 Si la acción la ejecuta una skill propia (un mail que arma una skill, un documento que genera otra) y la corrección toca algo que esa skill define, el destino es la fuente de la skill en su repo, que se versiona y se publica: si la regla va al dueño pero la skill dice otra cosa, la skill gana en cada corrida y la corrección no sirve. Si la skill no define ese punto, va al dueño. Si una acción que se repite en varias estaciones no tiene dueño todavía, no se reparte: se propone crearlo (📁 en el PASO 4). Motivo: con la regla de nivel sola, cada estación guardaba "su" parte como verdadera solo para ella, y las reglas de mandar un mail terminaron repartidas en la raíz, tres estaciones, un archivo de herramientas y ocho entradas de memoria automática.
 
@@ -80,7 +80,7 @@ Toda entrada nueva en cualquier `MEMORY.md` se prefija con `[YYYY-MM]` (ej: `[20
 1. ¿Un asistente competente lo haría igual sin que se lo digan? → no se escribe.
 2. ¿Ya lo dicen las instrucciones globales, las preferencias personales de Mati, o una regla que ya está en un nivel superior? → no se escribe.
 3. ¿Es un tropiezo técnico que resolviste solo durante la ejecución (un parámetro que la API ignora, un permiso bloqueado, un comando o una herramienta que hubo que cambiar) sin que Mati interviniera? → no se escribe: la próxima sesión lo encuentra y lo resuelve igual, y anotarlo llena el dueño de trampas que nadie iba a volver a pisar. Se escribe solo si costó algo que Mati notó o va a notar: él tuvo que hacer algo, se le dijo algo que resultó falso, algo salió mal, o el límite cambia qué se le puede prometer o cómo decide. Prueba: si la próxima sesión no lo supiera, ¿Mati lo notaría? Si no, no va.
-4. ¿Es una corrección puntual que Mati hizo una sola vez, sin enunciarla como preferencia? → no va como regla en RECOMIENDO. Se extrae el criterio de fondo y va a TU DECISIÓN con la nota "corregido una vez". Convertir cada corrección en regla es lo que infla los archivos; la regla se justifica cuando corrige lo mismo por segunda vez o lo dice como norma ("siempre", "nunca", "de ahora en adelante").
+4. ¿Es una corrección puntual que Mati hizo una sola vez, sin enunciarla como preferencia? → no se guarda ni se pregunta una por una. Se extrae el criterio de fondo, y todas las correcciones únicas de la sesión van juntas en la línea "Corregiste una sola vez" del reporte (PASO 4). Si de la corrección no sale un criterio que sirva para otro caso ("más corto", "cambiá esta palabra"), no se lista. Convertir cada corrección en regla es lo que infla los archivos; la regla se justifica cuando corrige lo mismo por segunda vez o lo dice como norma ("siempre", "nunca", "de ahora en adelante").
 
 Los hechos que van a `MEMORY.md` pasan un filtro propio: ¿cambia cómo se trabaja la próxima vez? Una decisión que condiciona trabajo futuro, un contacto, un rol o una spec de canon, sí. El estado de un proyecto, qué se hizo, dónde quedó un archivo o un dato suelto que se desactualiza, no: eso vive en el LEEME o el HANDOFF del proyecto y acá sería una anécdota.
 
@@ -95,7 +95,7 @@ Los hechos que van a `MEMORY.md` pasan un filtro propio: ¿cambia cómo se traba
 - Sin fecha ni autoría en `CLAUDE.md`. Las entradas de `MEMORY.md` llevan `[YYYY-MM]` y un breve contexto para remitir al hecho.
 - Si una regla nueva se parece a una existente, se reescribe la existente. No se apilan dos.
 
-Antes de mostrar el PASO 4 o el SYS-PASO 3, releé cada entrada y borrá toda oración que no sea la instrucción o su motivo.
+Antes de escribir una entrada o de mostrarla (PASO 4, SYS-PASO 3), releela y borrá toda oración que no sea la instrucción o su motivo.
 
 **No fabriques hallazgos.** Una auditoría que no encuentra nada es un resultado válido y frecuente. Inventar una regla para que el reporte se vea productivo ensucia los archivos con ruido que después hay que sacar, y es peor que no haber corrido la auditoría.
 
@@ -116,7 +116,7 @@ find "$RAIZ" \( -name "CLAUDE.md" -o -name "MEMORY.md" \) \
 
 2. **Leé `CLAUDE.md` y `MEMORY.md` raíz.** Contá líneas con `wc -l` y compará contra los umbrales.
 3. **Leé los archivos de referencia que se usaron en esta sesión.** Están en la tabla de Referencias del `CLAUDE.md` raíz: leé esa tabla y tomá de ahí los que apliquen a lo que se trabajó hoy. No los leas todos siempre: leé los que la sesión tocó, más el dueño de cada acción que aparezca en un hallazgo.
-4. **Listá lo que la memoria automática guardó en esta sesión**, si la sesión la tiene. Buscá solo en la carpeta de memoria de este proyecto (Code la nombra en sus instrucciones de sistema, en la sección de memoria), no en `~/.claude/projects/*`, que trae las de todos los proyectos. Tomá desde la fecha en que arrancó la sesión (la que figura al principio del contexto), no desde hoy, para no perder lo guardado antes de la medianoche: `find "<carpeta de memoria del proyecto>" -name "*.md" -newermt "<fecha de inicio>"`. Cada archivo que aparece es algo que Claude Code guardó por su cuenta: entra al PASO 1 como hallazgo, aunque la conversación no lo muestre, y pasa el mismo filtro previo que el resto. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
+4. **Listá lo que la memoria automática guardó en esta sesión**, si la sesión la tiene. Buscá solo en la carpeta de memoria de este proyecto (Code la nombra en sus instrucciones de sistema, en la sección de memoria), no en `~/.claude/projects/*`, que trae las de todos los proyectos. Tomá desde la fecha en que arrancó la sesión (la que figura al principio del contexto), no desde hoy, para no perder lo guardado antes de la medianoche: `find "<carpeta de memoria del proyecto>" -name "*.md" -newermt "<fecha de inicio>"`. Si el archivo trae el id de la sesión que lo creó, entran solo los de esta sesión (si no lo trae, entra por fecha): los de otras sesiones abiertas el mismo día los audita cada una, y traerlos acá repite el mismo ítem en cada reporte. Cada archivo que queda es algo que Claude Code guardó por su cuenta: entra al PASO 1 como hallazgo, aunque la conversación no lo muestre, y pasa el mismo filtro previo que el resto. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
 5. Los `CLAUDE.md` de las estaciones no se leen todavía. Solo los que resulten destino de un hallazgo (ver filtro del PASO 1).
 
 El estado del Mapa de Enrutamiento no se audita en este modo. Detectar carpetas sin mapear es trabajo del Modo Sistema: acá solo generaría una lista fija que se repite en cada sesión y no tiene dónde ir.
@@ -172,7 +172,7 @@ En la sesión se ejecutó un proceso que probablemente se repita: armar un tipo 
 
 → No va a CLAUDE.md ni MEMORY.md. Se marca como **candidato a SOP** y se sugiere documentarlo con la skill `muta-sop` (o como skill nueva si es un proceso de Claude). Solo marcarlo si el proceso tiene 3+ pasos y va a repetirse: un one-off no califica.
 
-Si la tarea ya se hizo dos o más veces (buscá en la memoria, las estaciones o sesiones anteriores), marcala además como **candidata a automatizar**: cómo correría sola (tarea programada, hook o skill), qué parte sigue necesitando a la persona y cuántas horas libera, con la evidencia de las veces anteriores. El objetivo es subir el VHN: una tarea que se automatiza deja de pedir horas.
+Si la tarea ya se hizo dos o más veces (buscá en la memoria, las estaciones o sesiones anteriores), marcala además como **candidata a automatizar**: cómo correría sola (tarea programada, hook o skill), qué parte sigue necesitando a la persona y cuántas horas libera, con la evidencia de las veces anteriores. Sin esa evidencia queda solo como candidato a SOP. El objetivo es subir el VHN: una tarea que se automatiza deja de pedir horas.
 
 ---
 
@@ -183,9 +183,9 @@ Un hallazgo técnico que no viene de ninguna de estas cinco señales entra solo 
 1. Para cada hallazgo, identificá su destino tentativo: primero la regla de dueño; la de nivel solo si la acción no tiene dueño.
 2. **Leé el archivo destino real**, y si la acción la ejecuta una skill propia, también su `SKILL.md` (ver regla de dueño). Si el destino es una estación, leé su `CLAUDE.md`/`MEMORY.md` ahora. Sin leer el destino no podés deduplicar.
 3. **Leé también el nivel de arriba.** Si el hallazgo va a una estación, chequeá que la regla no exista ya en raíz o en un archivo de referencia. Una regla que ya está arriba no se copia abajo.
-4. **Chequeá la memoria automática de Code**, si la sesión la tiene (el índice `MEMORY.md` de `~/.claude/projects/<proyecto>/memory/`, que ya viene cargado en el contexto, más lo que listó el PASO 0). Toda regla que esté ahí, nueva de esta sesión o vieja que el hallazgo toca, pasa el filtro previo. Si no lo pasa (lo típico: una trampa técnica que se resolvió sola), no se migra: va a RECOMIENDO como limpieza, el archivo se mueve a `_to_delete/` y su línea sale del índice. Si lo pasa, va a RECOMIENDO como migración: el contenido completo (condiciones, números, casos y motivo, sin resumir de más) pasa al dueño; si el dueño ya tiene la regla pero con menos datos que la memoria, se completa el dueño con lo que falta. Después el archivo de memoria se mueve a `_to_delete/` de la raíz del OS y su línea sale del índice. Dejarla en los dos lados es lo que desincroniza: la memoria automática la vuelve a cargar en cada sesión de Code mientras Cowork no la ve. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
+4. **Chequeá la memoria automática de Code**, si la sesión la tiene (el índice `MEMORY.md` de `~/.claude/projects/<proyecto>/memory/`, que ya viene cargado en el contexto, más lo que listó el PASO 0). Toda regla que esté ahí, nueva de esta sesión o vieja que el hallazgo toca, pasa el filtro previo. Si no lo pasa (lo típico: una trampa técnica que se resolvió sola), no se migra: es una limpieza, y todas las limpiezas de la sesión van juntas en una sola línea de TU DECISIÓN; con el sí, cada archivo se mueve a `_to_delete/` y su línea sale del índice. Si lo pasa, es una migración y sigue el PASO 4 como cualquier hallazgo: el contenido completo (condiciones, números, casos y motivo, sin resumir de más) pasa al dueño; si el dueño ya tiene la regla pero con menos datos que la memoria, se completa el dueño con lo que falta. Después el archivo de memoria se mueve a `_to_delete/` de la raíz del OS y su línea sale del índice. Dejarla en los dos lados es lo que desincroniza: la memoria automática la vuelve a cargar en cada sesión de Code mientras Cowork no la ve. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
 5. **Duplicado:** si el hallazgo ya está escrito (igual o equivalente), descartalo. Solo surfaceás lo genuinamente nuevo.
-6. **Contradicción:** si el hallazgo contradice una regla o dato existente (ej: el archivo dice "sin negritas" y Mati pidió negritas en títulos esta sesión), NO lo agregues como regla nueva. Marcalo como ⚔️ CONFLICTO y presentalo así en el PASO 4: qué dice el archivo, qué dice la sesión, y preguntá cuál gana. La resolución típica es reemplazar la regla vieja, no apilar las dos.
+6. **Contradicción:** un dato que Mati actualiza de forma explícita ("ahora", "ya no", "cambió": el contacto es otro, la fecha se movió) no es un conflicto: reemplaza al viejo (ver PASO 4). Fuera de ese caso, si el hallazgo contradice una regla o dato existente (ej: el archivo dice "sin negritas" y Mati pidió negritas en títulos esta sesión), NO lo agregues como regla nueva. Marcalo como ⚔️ CONFLICTO y llevalo a TU DECISIÓN: qué dice el archivo, qué dice la sesión, y preguntá cuál gana. La resolución típica es reemplazar la regla vieja, no apilar las dos.
 
 ---
 
@@ -206,7 +206,9 @@ Para cada hallazgo, aplicá este árbol de decisión **en orden**:
                 ni a raíz.
           → NO: ¿Aplica solo cuando se trabaja en un dominio o proyecto específico?
               → SÍ: ¿Existe una estación para ese dominio?
-                  → SÍ: va a [estación]/CLAUDE.md o [estación]/MEMORY.md.
+                  → SÍ: va a [estación]/CLAUDE.md o [estación]/MEMORY.md, o al
+                        archivo que esa estación declare para ese tipo de dato
+                        (una ficha de cliente, un perfil).
                         Si la estación tiene sub-estaciones, bajá hasta la más
                         profunda donde la regla siga siendo verdadera.
                   → NO: anotarlo como "candidato a estación nueva" (ver PASO 3)
@@ -257,95 +259,98 @@ Antes de proponer dónde guardar, chequeá estas dos condiciones:
 
 Si del PASO 2 quedaron **2 o más hallazgos** marcados como "candidato a estación nueva" en el mismo dominio:
 
-→ Proponé crear la estación antes de guardar. Formato de propuesta:
-
-```
-📁 ESTACIÓN SUGERIDA: [Nombre-estacion]/
-   ├── CLAUDE.md                → Identidad, Recursos, Flujo de trabajo, Reglas editoriales
-   ├── MEMORY.md                → Contactos y Decisiones clave del dominio
-   └── Recursos de [Nombre]/    → (vacía por ahora)
-
-Hallazgos que irían acá:
-→ [hallazgo 1]
-→ [hallazgo 2]
-
-¿Creamos la estación primero y después guardamos ahí?
-```
+→ Proponé crear la estación antes de guardar esos hallazgos: va a TU DECISIÓN como un solo ítem 📁, con el nombre de la carpeta y los hallazgos que irían ahí, uno por línea.
 
 La estructura exacta está en `00-recursos/plantilla-estacion.md`. Seguila al pie de la letra, incluida la convención de nombre de carpeta.
 
 ---
 
-## PASO 4: Presentar el análisis antes de escribir
+## PASO 4: Guardar lo claro y preguntar solo lo que necesita a Mati
 
-Mostrá todo lo que encontraste ANTES de modificar cualquier archivo.
+Mati no revisa lo que ya dijo: revisa problemas, conflictos y dudas. Un reporte que le hace aprobar una por una las cosas obvias de la conversación lo obliga a leer todo con lupa o a aprobar en bloque, y las dos cosas hacen que deje de correr la auditoría.
 
-Numerá los hallazgos y separalos en dos grupos. La distinción le ahorra a Mati leer con la misma atención lo que es obvio y lo que no: si todo viene mezclado, o revisa todo con lupa o aprueba todo en bloque, y las dos cosas son malas. Los números son para que pueda aprobar parcial ("va el 1 y el 4, el 2 no").
+Separá los hallazgos que pasaron los filtros en dos grupos.
 
-El destino incluye siempre la sección, no solo el archivo: es parte de lo que se está aprobando.
+**Se guarda directo, sin preguntar**, el hallazgo que cumple las cuatro condiciones:
+
+1. Salió de Mati sin interpretación: una norma que enunció ("siempre", "nunca", "de ahora en adelante") o un hecho que dio como cierto (una decisión tomada, un contacto, un rol, un dato). Una idea que está evaluando ("creo que", "capaz", "estoy pensando en") no es un hecho y no se guarda. Una segunda corrección sin norma enunciada va directo solo si las dos fueron sobre el mismo tipo de pieza y la regla se escribe acotada a esa pieza; si hay que generalizarla, es decisión.
+2. El destino sale sin duda de la regla de dueño o de la de nivel, y el archivo y la sección ya existen.
+3. Es un agregado: no reemplaza, no borra ni contradice nada de lo ya escrito, y no deja un `CLAUDE.md` o un `MEMORY.md` sobre su umbral. La única excepción es el dato que Mati actualiza de forma explícita: reemplaza al viejo y en el reporte se muestra lo que decía antes.
+4. El destino está dentro del OS y no sale de la máquina por otro camino: no es la fuente de una skill, no está dentro de una carpeta `repo-` y no es la copia local de un documento cuyo original vive afuera (un Doc de Drive). Esos archivos se publican o los lee el equipo. El `CLAUDE.md` global privado lo edita Mati.
+
+Aunque cumpla las cuatro, va a decisión todo dato sensible de una persona (sueldo, desempeño, salud, una desvinculación). Una clave, un token o una contraseña no se guarda en ningún archivo: se sigue la regla de credenciales del raíz.
+
+Una migración de la memoria automática va directo si el archivo de memoria cita una norma textual de Mati o un hecho que dio él, y el dueño todavía no tiene una regla sobre eso: el contenido pasa completo al dueño, el archivo de memoria se mueve a `_to_delete/` (no se borra) y su línea sale del índice. Si nació de una sola corrección, o si hay que completar o reescribir una regla que el dueño ya tiene, es decisión.
+
+**Va a TU DECISIÓN** todo lo demás: motivo que falta cuando el caso concreto no alcanza para entender cuándo aplica, dos destinos posibles, redacción que cambia el sentido según cómo se escriba, regla existente que habría que reescribir, y todo ⚔️ CONFLICTO, 🌐 GLOBAL, 🧩 SIN DESTINO, 📈 ESCALA, 📁 estación o archivo dueño nuevo, cambio en un archivo que se publica, limpieza de memoria automática y candidato a SOP o a automatizar. Si dudás entre los dos grupos, es decisión.
+
+Antes de escribir, evaluá si corresponde ofrecer el Modo Sistema (ver el final de esta sección A): si corresponde, es un ítem más de TU DECISIÓN.
+
+Escribí los directos (PASO 5) y después mostrá este reporte, que es todo lo que Mati lee:
 
 ```
-HALLAZGOS DE LA SESIÓN
+Guardé [N]:
+1. [archivo › sección] [la entrada tal como quedó escrita]
+2. [archivo › sección] [la entrada tal como quedó escrita] (antes decía: "[el dato viejo]")
 
-RECOMIENDO: la regla es clara y el destino no admite discusión
+Necesito que decidas [M]:
+3. [la duda, en una línea]
+   → [archivo › sección] [el texto exacto que se escribiría]
+4. ⚔️ [archivo] dice "[cita]" y hoy pediste "[cita]". ¿Cuál queda?
+   → si gana lo de hoy queda: "[texto exacto]" y sale: "[texto que se borra]"
+5. 📋 [proceso que se repitió] ¿Lo documentamos como SOP?
 
-1. [destino] → [archivo] → [sección]
-   → [contenido exacto que se va a agregar]
+Corregiste una sola vez: [criterio], [criterio]. No lo guardé; si alguna es norma, decime cuál.
 
-2. [destino] → [archivo] → [sección]
-   → [contenido exacto que se va a agregar]
-
-TU DECISIÓN: hay un juicio de por medio, dos destinos posibles, falta el motivo,
-o la redacción admite varias formas
-
-3. [destino] → [archivo] → [sección]
-   → [contenido exacto que se va a agregar]
-   → [la duda concreta, en una línea]
-
-🌐 GLOBAL: [si los hay: van al CLAUDE.md global privado, Mati los agrega a mano]
-⚔️ CONFLICTOS: [si los hay: qué dice el archivo vs. qué dice la sesión, y cuál gana]
-🧩 SIN DESTINO: [si los hay: reglas de pieza o de exportación sin sección donde vivir]
-📋 CANDIDATOS A SOP: [si los hay: proceso detectado + sugerencia de documentarlo con muta-sop]
-📈 ESCALA: [si las hay: archivos sobre el umbral, con el número de líneas]
-📁 ESTACIONES O ARCHIVOS DUEÑOS NUEVOS SUGERIDOS: [si los hay, con la acción que cubren y qué reglas sueltas se mueven ahí]
+Si algo de lo guardado no va, decime el número y lo saco.
 ```
 
-Esperá confirmación. Mati puede aprobar todo, parte o nada, por número. Nada se escribe hasta que lo diga explícitamente, incluidos los del bloque RECOMIENDO.
+Reglas del reporte:
+
+- Entra solo lo que se guardó y lo que Mati tiene que decidir. Queda afuera lo descartado por los filtros, los duplicados, los archivos leídos, los umbrales que están en orden, el método y el porqué de cada destino: nada de eso cambia lo que él hace.
+- Un grupo sin ítems no aparece, tampoco la línea de correcciones únicas, y la línea final de deshacer va solo si hay algo guardado. Sin hallazgos, el reporte entero es una línea: "No encontré nada nuevo para guardar."
+- Cada ítem de TU DECISIÓN se contesta con sí, no o una opción. Si lo que se aprueba es una escritura, lleva el texto exacto y el destino con su sección; si aprobarlo borra o cambia texto que ya está, muestra también qué sale. Un conflicto que toca más de una regla las cita todas.
+- La marca (⚔️ 🌐 🧩 📈 📁 📋) va adelante solo si aplica. Un 🌐 GLOBAL lleva el texto listo para pegar en su `CLAUDE.md` global; un 📈 las líneas del archivo y su umbral; un 📁 la acción que cubre y qué reglas se mueven ahí; la limpieza de memoria nombra cada archivo; la candidata a automatizar, cómo correría sola y cuántas horas libera.
+- La numeración es corrida entre los dos grupos, para que pueda contestar "va el 3, el 4 gana lo de hoy, sacá el 1". Este reporte es la excepción a preguntarle de a una cosa por vez: son aprobaciones por número.
+- Dudas que se resuelven con una misma respuesta van en un solo ítem; si cada una necesita la suya, un ítem cada una.
+- El nombre del archivo de cada ítem es un link que lo abre; la sección va al lado, en texto.
+
+Lo de TU DECISIÓN no se escribe hasta que Mati conteste. Lo que no conteste queda sin escribir, sin volver a preguntarlo.
 
 ---
 
 ## PASO 5: Escribir en los archivos correctos
 
-Según la confirmación:
+Aplica a los directos (antes del reporte) y a lo que Mati apruebe después:
 
-- **CLAUDE.md** (raíz o estación): agregarlo en la sección aprobada. No duplicar. Si se resolvió un ⚔️ CONFLICTO reemplazando una regla vieja, eliminá la regla vieja al agregar la nueva.
-- **MEMORY.md** (raíz o estación): agregarlo en la sección aprobada con prefijo `[YYYY-MM]`. Verificar con `wc -l` que no supere 150 líneas. Si supera, proponer compresión: la de raíz va a `archivo-historico.md`; la de una estación va a un `archivo-historico.md` propio dentro de esa estación, para no mezclar dominios.
+- **CLAUDE.md** (raíz o estación): agregarlo en la sección que corresponde. No duplicar. Si se resolvió un ⚔️ CONFLICTO reemplazando una regla vieja, eliminá la regla vieja al agregar la nueva.
+- **MEMORY.md** (raíz o estación): agregarlo en la sección que corresponde con prefijo `[YYYY-MM]`. Verificar con `wc -l` que no supere 150 líneas. Si supera, proponer compresión: la de raíz va a `archivo-historico.md`; la de una estación va a un `archivo-historico.md` propio dentro de esa estación, para no mezclar dominios.
 - **Regla de pieza o de medio de salida:** va al archivo que gobierna ese formato, en la sección de ese nivel, con la condición adelante. Si no existe la sección, no la improvises en otro lado: quedó marcada como 🧩 SIN DESTINO y se resuelve con Mati.
-- **Si se crea una estación nueva:** crearla con la estructura de `00-recursos/plantilla-estacion.md` y **agregar la fila al Mapa de Enrutamiento del raíz en el mismo acto** (la fila ya fue mostrada y aprobada en PASO 4). No delegar esa actualización a Mati.
+- **Si se crea una estación nueva:** crearla con la estructura de `00-recursos/plantilla-estacion.md` y **agregar su fila al Mapa de Enrutamiento en el mismo acto**, en el archivo donde el raíz diga que vive el mapa. No delegar esa actualización a Mati.
+- **Si Mati pide sacar algo de lo guardado:** se quita la entrada del archivo (si reemplazó un dato, vuelve el viejo) y, si era una migración, el archivo de memoria vuelve de `_to_delete/` a su carpeta y su línea al índice.
 
 Lo aprobado se escribe completo antes de arrancar cualquier pedido nuevo que llegue en el mismo mensaje: el 17/11, con la auditoría a medio aplicar, otra sesión reescribió `reglas-metricool.md` en el medio y hubo que reconciliar.
 
-Al terminar, confirmar qué se escribió y en qué archivo.
+Lo que se escribe después de su respuesta se confirma en una línea por archivo.
 
 ---
 
 ## Reglas de comportamiento (Modo Sesión)
 
-- **Nunca escribir sin mostrar primero** lo que se va a agregar y esperar confirmación
+- **Sin confirmación se escribe solo lo que cumple las cuatro condiciones del PASO 4.** Todo lo que reemplaza, borra, mueve, crea un archivo o sale del OS espera la respuesta de Mati; las únicas excepciones son el dato que él actualizó de forma explícita y el archivo de memoria automática de una migración directa, que va a `_to_delete/` y sale de su índice
 - **Nivel más bajo donde la regla sigue siendo verdadera.** Si es verdadera fuera de la carpeta, sube.
 - **No duplicar**: si algo ya está en el archivo o en el nivel de arriba, no agregarlo de nuevo
 - **No apilar contradicciones**: un conflicto se resuelve preguntando, no agregando la regla nueva al lado de la vieja
 - **Sé quirúrgico**: solo lo genuinamente nuevo de esta sesión
-- Si la sesión no generó nada nuevo: decirlo directo ("No encontré nada nuevo para guardar")
-- Si se crea una estación nueva: actualizar el Mapa de Enrutamiento en raíz como parte del mismo cambio
+- Si se crea una estación nueva: actualizar el Mapa de Enrutamiento como parte del mismo cambio
 
-**Al finalizar el modo sesión**, evaluá si se cumplen dos o más de estas condiciones:
+**Antes de mostrar el reporte**, evaluá si se cumplen dos o más de estas condiciones:
 - Raíz está cerca o sobre el umbral de líneas
 - Varios hallazgos fueron a raíz porque no había estación disponible
 - Se propuso crear una estación nueva
 - Hubo dudas de nivel que se resolvieron yendo a raíz por defecto
 - Algún hallazgo quedó marcado como 🧩 SIN DESTINO
 
-Si se cumplen dos o más → agregar al final del output:
-> "¿Querés que también haga una auditoría del sistema completo? Encontré señales de que puede haber contenido mal ubicado o que raíz se está inflando."
+Si se cumplen dos o más → sumar un ítem más a TU DECISIÓN:
+> "¿Hago también la auditoría del sistema completo? [la señal concreta, en una frase]"
 

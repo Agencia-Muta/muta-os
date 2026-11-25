@@ -1,10 +1,11 @@
 ---
 name: animar-monigote
-description: >
-  Anima al monigote de palitos de Muta (la persona de las historias que presenta Pupilo) con el motor de personajes del repo muta-recursos: planea los momentos, arma la escena, la renderiza a video o a imágenes fijas y la revisa cuadro por cuadro. Usala cuando alguien pida "animá un monigote", "un monigote que dude y después señale", "una escena con monigotes", "un video de palitos", o quiera copiar cómo se mueve un video de referencia en un monigote. No es para el monigote del estilo Explicador (HyperFrames, cuerpo de óvalo): ese tiene su propio LEEME en monigote-explicador/.
+description: Anima al monigote de palitos de Muta con el motor de personajes del repo muta-recursos y lo renderiza a video o imágenes. Usar ante 'animá un monigote' o 'un video de palitos'. No es el Explicador.
 ---
 
 # Animar un monigote
+
+No es para el monigote del estilo Explicador (HyperFrames, cuerpo de óvalo): ese tiene su propio LEEME en `monigote-explicador/`.
 
 El monigote es la persona de palitos de las historias de Muta: cabeza redonda, ojos de punto, cuerpo de un palo, brazos y piernas de dos tramos. Vive en el motor de personajes del repo `Agencia-Muta/muta-recursos`, carpeta `personajes-animados/`. Esta skill no trae código: todo sale de ese repo, así cada mejora del motor le llega a quien haga `git pull`.
 

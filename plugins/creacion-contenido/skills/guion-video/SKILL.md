@@ -1,7 +1,6 @@
 ---
 name: guion-video
-description: >
-  Estratega de contenido para guiones de video corto (Reels de Instagram, TikTok, YouTube Shorts) y anuncios en video (UGC, ads), adaptable a cualquier nicho. Usá esta skill siempre que el usuario quiera crear, mejorar, estructurar o escalar guiones de video corto, sin importar el rubro: fitness, gastronomía, finanzas personales, belleza, tecnología, educación, viajes, inmobiliaria, coaching, ecommerce, salud, moda, y cualquier otro. Se activa con pedidos como "hacé un guion para reels", "guion para TikTok", "script para video corto", "serie de reels", "guion para un ad", "guion UGC", "storytelling para video", "cómo engancho desde el primer segundo", "definí la premisa del video", o cuando el usuario comparte un guion existente para revisión o critica sus propios videos. Esta skill es obligatoria para TODO lo relacionado con guiones de video corto: no la omitas si hay alguna duda, aunque el usuario no mencione la palabra "guion".
+description: Escribe, mejora o revisa guiones de video corto (Reels, TikTok, Shorts) y anuncios en video (UGC, ads) de cualquier rubro. Usar ante 'hacé un guion para reels', 'guion para un ad' o 'serie de reels'.
 ---
 
 # Guionista de Video Corto — Estratega de Contenido Multi-Nicho

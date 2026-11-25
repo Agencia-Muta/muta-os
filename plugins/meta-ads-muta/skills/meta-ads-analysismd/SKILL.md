@@ -1,7 +1,6 @@
 ---
 name: meta-ads-analysismd
-description: >
-  Ejecuta un análisis técnico profundo y multinivel de campañas de Meta Ads. Usá esta skill SIEMPRE que el usuario pida analizar o revisar campañas de Meta/Facebook/Instagram; diagnosticar por qué una campaña no convierte o está cara; evaluar ROAS, CPL, CPM, CPC, CTR, frecuencia, costo por conversación o costo por resultado; revisar adsets, anuncios o creativos; detectar fatiga de audiencia; auditar el embudo; descubrir qué está pasando y por qué; recomendar qué pausar, escalar u optimizar. Activar también si el usuario dice "analizá mis campañas", "qué está pasando con mis ads", "mirá el rendimiento de Meta", "hay audiencias que se solapan", "los creativos están fatigados", "por qué me sube el CPL", "cómo está el ROAS". Funciona con archivos subidos (CSV, Excel), acceso directo a la cuenta vía token, o MCP activo (Windsor.ai, Supermetrics).
+description: Analiza campañas de Meta Ads por campaña, adset y anuncio, diagnostica por qué rinden así y recomienda qué pausar, escalar u optimizar. Usar ante 'analizá mis campañas' o 'por qué me sube el CPL'.
 ---
 
 # Meta Ads — Framework de Análisis
@@ -38,9 +37,9 @@ Pedirle al usuario que exporte desde el Administrador de Anuncios de Meta. Indic
 
 ## Reglas obligatorias para recomendaciones
 
-- NUNCA recomendar pausar o bajar presupuesto de un segmento solo porque tiene CPA promedio más alto en un reporte de breakdowns.
-- SIEMPRE justificar con evidencia de datos, mecánica del sistema de Meta, e impacto esperado en la campaña completa.
-- CADA insight debe incluir evidencia y explicación. Cada recomendación debe ser accionable y verificable.
+- Nunca recomendar pausar o bajar presupuesto de un segmento solo porque tiene CPA promedio más alto en un reporte de breakdowns.
+- Siempre justificar con evidencia de datos, mecánica del sistema de Meta, e impacto esperado en la campaña completa.
+- Cada insight debe incluir evidencia y explicación. Cada recomendación debe ser accionable y verificable.
 - Nunca usar "clicks" solo — usar "Clicks (all)" o "Link Clicks" para desambiguar.
 - Los cambios de presupuesto o exclusiones de segmentos son tests, no sentencias: siempre con período de evaluación mínimo de 7 días.
 
@@ -90,7 +89,7 @@ Regla de semáforo sobre el objetivo del usuario:
 
 ### Paso 4: Check de learning phase
 
-¿Está el adset en learning? ¿Hubo ediciones recientes? Si sí → caveatar TODOS los findings como preliminares. NUNCA hacer juicios definitivos sobre un adset en learning.
+¿Está el adset en learning? ¿Hubo ediciones recientes? Si sí → caveatar todos los findings como preliminares. Nunca hacer juicios definitivos sobre un adset en learning.
 
 ### Paso 5: Aplicar las 3 Qs
 
@@ -142,7 +141,7 @@ Niveles:
 
 ## Reglas generales
 
-- NUNCA inventar datos. Si un campo no está disponible, decirlo.
+- Nunca inventar datos. Si un campo no está disponible, decirlo.
 - Si una métrica tiene <100 impresiones, marcarla como dato insuficiente.
 - Comparar siempre contra período anterior cuando los datos estén disponibles.
 - Tono: técnico y accionable. Cada sección termina con una conclusión clara y un "¿qué hacemos?".

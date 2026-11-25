@@ -83,9 +83,11 @@ Cinco pasadas, en este orden. La de borrado va primera porque es donde está la 
 
 Buscar cada patrón en los archivos. Citar la línea encontrada y la línea de la guía que la condena.
 
+Las filas de esta tabla y de la 3e son qué buscar, no el veredicto: salieron de la página de un modelo y el consejo cambia de uno a otro. Una fila va a su tabla del paso 4 solo con una cita de la guía bajada en el paso 2 que la sostenga para el modelo en uso: sirve la referencia general o la página propia de ese modelo, y si las dos hablan del tema gana la del modelo. Si ninguna la sostiene, no va a ninguna tabla y se nombra en "Lo que no se chequeó" como NO APLICA A ESTE MODELO. Si la página del modelo dice lo contrario (un modelo que narra de menos en vez de más), la fila cambia de tabla con esa cita: lo que era candidata a agregar pasa a candidata a borrar, o al revés.
+
 | # | Buscar | Por qué se va |
 | --- | --- | --- |
-| 1 | Pasos de verificación explícitos: "verificá antes de terminar", "incluí un paso final de verificación", "usá un subagente para verificar", "probá que anda" | Anthropic: sacarlos en Opus 5 y posteriores, causan sobre-verificación y gastan tokens sin ganancia de calidad. Aplica también a scaffolding del harness que agrega un paso de verificación aparte |
+| 1 | Pasos de verificación explícitos: "verificá antes de terminar", "incluí un paso final de verificación", "usá un subagente para verificar", "probá que anda" | Anthropic, página de Opus 5: sacarlos, causan sobre-verificación y gastan tokens sin ganancia de calidad. Aplica también a scaffolding del harness que agrega un paso de verificación aparte |
 | 2 | Instrucciones de re-chequeo: "revisá dos veces tu respuesta", "re-verificá antes de responder", "cuestioná tu propio trabajo" | El modelo ya se autocorrige. Estas se suman a su comportamiento y agregan costo sin mejorar nada |
 | 3 | Cualquier regla que le diga al modelo que no piense o no razone | Aumenta la filtración de tags internos al output visible. Sacarla |
 | 4 | Prompts de revisión que digan "reportá solo problemas graves" o "sé conservador" | Lo toma literal y reporta menos. Pedir todo y filtrar en una segunda pasada |

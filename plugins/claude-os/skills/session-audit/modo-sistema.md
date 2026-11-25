@@ -181,37 +181,38 @@ Dos estaciones que cubren territorio parecido o que podrían fusionarse.
 
 ## SYS-PASO 3: Reporte de salud del sistema
 
-Mostrá el diagnóstico completo antes de proponer cualquier cambio. Formato:
+Mostrá el diagnóstico antes de cambiar nada: en este modo todo cambio mueve, reemplaza o borra contenido, así que nada se escribe sin la respuesta de Mati.
+
+El reporte trae solo lo que él tiene que decidir. Formato:
 
 ```
-╔══════════════════════════════════╗
-║   REPORTE DE SALUD: CLAUDE OS   ║
-╚══════════════════════════════════╝
+SALUD DEL CLAUDE OS: [N] críticos, [N] mejoras, [N] de mantenimiento. [N] archivos sobre su umbral.
 
-ESTADO DE ARCHIVOS
-[tabla de líneas vs umbrales]
+SOBRE EL UMBRAL
+1. [archivo]: [líneas] de [umbral] → [qué se comprime o se mueve, y a dónde]
 
-PROBLEMAS ENCONTRADOS
+🔴 CRÍTICOS
+2. [problema en una línea] ([archivo])
+   "[cita textual del fragmento]"
+   → [acción propuesta, con el archivo destino]
 
-🔴 CRÍTICOS (mal ubicado, regla atrapada, regla de un solo proyecto, mezcla de
-   dominios, restricción condicional, huérfano, carpeta desordenada)
-→ [problema + archivo + cita textual + acción propuesta]
+🟡 MEJORAS
+3. [problema en una línea] ([archivos])
+   "[cita textual]"
+   → [acción propuesta]
 
-🟡 MEJORAS (duplicación, contradicciones, estaciones solapadas)
-→ [problema + archivos involucrados + cita textual + acción propuesta]
-
-🟢 MANTENIMIENTO (contenido viejo, referencias rotas, mapa)
-→ [problema + acción propuesta]
-
-RESUMEN
-✅ [N] archivos dentro de los umbrales
-⚠️ [N] archivos sobre el límite
-🔴 [N] problemas críticos
-🟡 [N] mejoras sugeridas
-🟢 [N] tareas de mantenimiento
+🟢 MANTENIMIENTO
+4. [problema] → [acción propuesta]
 ```
 
-Cada hallazgo va con la cita textual del fragmento problemático, no con una paráfrasis. Sin la cita, Mati tiene que ir a buscar el fragmento para poder decidir, y una paráfrasis casi siempre suaviza el problema.
+- Numeración corrida entre todos los grupos, para que pueda aprobar por número.
+- Los archivos que están dentro de su umbral no se listan, y un grupo sin hallazgos no aparece. La tabla del SYS-PASO 1 es de trabajo, no va al reporte.
+- Hallazgos del mismo tipo sobre un mismo archivo van en un ítem, con sus citas una debajo de la otra.
+- Los de mantenimiento que se arreglan igual y no piden elegir (varias rutas rotas con un solo destino posible) van agrupados en un ítem por tipo. Lo que necesita una respuesta por caso (una carpeta sin mapear: se agrega, se mueve o se archiva; una entrada vieja: sigue vigente o no) va un ítem por caso, con su cita.
+- Sin hallazgos, el reporte es una línea: "El sistema está en orden: [N] archivos revisados, ninguno sobre su umbral."
+- Sin explicar el método ni qué se revisó y estaba bien. Lo que no se pudo leer o quedó fuera de la corrida sí se dice, en una línea al final: un reporte que parece completo sin serlo es peor que uno parcial.
+
+Cada hallazgo crítico o de mejora va con la cita textual del fragmento problemático, no con una paráfrasis. Sin la cita, Mati tiene que ir a buscar el fragmento para poder decidir, y una paráfrasis casi siempre suaviza el problema.
 
 Esperá confirmación de Mati antes de modificar cualquier archivo.
 
@@ -234,4 +235,4 @@ Por cada cambio aprobado:
 - **Actualizar Mapa de Enrutamiento:** agregar, quitar o reparar filas según corresponda.
 - **Comprimir MEMORY.md sobre umbral:** las entradas viejas del raíz van a `archivo-historico.md`; las de una estación, a un `archivo-historico.md` dentro de esa estación.
 
-Confirmar cada cambio ejecutado con el archivo afectado y las líneas modificadas.
+Al terminar, confirmar en una línea por archivo qué cambió.

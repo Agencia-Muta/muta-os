@@ -1,6 +1,6 @@
 ---
 name: informe-de-mercado
-description: Genera un informe de investigación de mercado para un cliente o prospecto de Muta Digital, replicando el proceso del informe "Antes de Cebar" (Lift). Doble momento de uso en proyectos de identidad de marca: al inicio como base de entendimiento del mercado para el equipo de diseño, y al final como pieza que se entrega al cliente junto con el manual de marca (valor que el cliente no contrató). También sirve suelto, para un prospecto o como regalo de cierre de etapa. Activar cuando alguien de Muta pida "armá el informe de mercado de X", "el panorama de la categoría de X", "la investigación de mercado para el branding de X", "el informe estilo Antes de Cebar para X". Funciona con o sin reunión previa con el cliente. NO es para investigar los compradores de un negocio y armar anuncios (eso es 7-maletas), ni para bajar pendientes de una reunión (eso es reunion-pendientes), ni para documentos de requerimientos web (eso es prd-web-primera-reunion).
+description: Arma el informe de investigación de mercado de la categoría de un cliente o prospecto, para proyectos de branding. Usar ante 'armá el informe de mercado de X' o 'el panorama de la categoría de X'.
 ---
 
 # Informe de Mercado

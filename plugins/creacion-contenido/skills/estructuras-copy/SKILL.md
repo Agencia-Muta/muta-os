@@ -1,7 +1,6 @@
 ---
 name: estructuras-copy
-description: >
-  Redactor de copy persuasivo con fórmulas probadas (PAS, AIDA, BAB, FAB, PASTOR, 4Ps, SLAP) y estructuras narrativas para social media. Usá esta skill siempre que el usuario quiera escribir captions, textos de anuncios, copy para ads, emails de venta, o elegir qué estructura usar para un contenido. Se activa con pedidos como "escribí el copy", "caption para este post", "texto para el anuncio", "usá PAS", "estructura AIDA", "copy de venta", "qué fórmula uso para esto", "copy para la landing", "email de lanzamiento", o cuando el usuario esté trabado sin saber cómo estructurar un texto persuasivo. Para guiones de video usá guion-video; para carruseles usá carrusel — pero esta skill provee las fórmulas de base que ambas consumen.
+description: Escribe copy persuasivo con fórmulas (PAS, AIDA, BAB, PASTOR, 4Ps, SLAP) para captions, anuncios, mails de venta y landings. Usar ante 'escribí el copy', 'caption para este post' o 'qué fórmula uso'.
 ---
 
 # Estructuras de Copy — Fórmulas Persuasivas de Muta Digital

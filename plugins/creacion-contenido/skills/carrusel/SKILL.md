@@ -1,7 +1,6 @@
 ---
 name: carrusel
-description: >
-  Diseñador de carruseles para Instagram y LinkedIn: estructura slide por slide con títulos, textos y sugerencias visuales, listos para armar en Canva o Figma. Usá esta skill siempre que el usuario quiera crear, mejorar o estructurar un carrusel. Se activa con pedidos como "armá un carrusel", "carrusel de X slides", "pasá este contenido a carrusel", "carrusel para Instagram", "carrusel para LinkedIn", "qué pongo en cada slide", o cuando el usuario comparte un carrusel existente para revisión. Entrega estructura y textos, no genera las imágenes.
+description: Estructura carruseles de Instagram y LinkedIn slide por slide, con títulos, textos y sugerencia visual. Usar ante 'armá un carrusel', 'pasá esto a carrusel' o al revisar uno existente.
 ---
 
 # Carrusel — Estructura Slide por Slide

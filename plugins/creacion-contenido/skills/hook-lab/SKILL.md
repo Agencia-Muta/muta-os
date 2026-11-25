@@ -1,7 +1,6 @@
 ---
 name: hook-lab
-description: >
-  Laboratorio de hooks: genera 10 hooks alternativos para un guion, idea de video o contenido existente, cada uno desde un ángulo estratégico distinto, para testear cuál detiene mejor el scroll. Usá esta skill cuando el usuario diga "dame hooks alternativos", "más opciones de hook", "el hook no funciona", "variantes de este hook", "hooks para testear", "qué hook uso", "10 hooks", o comparta un guion/idea pidiendo específicamente trabajar el gancho inicial. No escribe el guion completo (eso es guion-video): solo produce y evalúa hooks.
+description: Genera y evalúa 10 hooks alternativos para un guion, idea o contenido, cada uno desde otro ángulo. Usar ante 'dame hooks alternativos', 'el hook no funciona' o 'hooks para testear'. No arma el guion.
 ---
 
 # Hook Lab — 10 Hooks Alternativos para Testear

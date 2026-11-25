@@ -1,19 +1,6 @@
 ---
 name: detective-angulos
-description: >
-  Análisis profundo de psicología del consumidor para producir insights creativos
-  listos para anuncios y videos de marketing. Activá esta skill SIEMPRE que el
-  usuario quiera entender por qué compran o no compran los clientes de un producto
-  o marca; investigar ángulos de venta; hacer un detective de ángulos; analizar la
-  psicología del cliente; descubrir qué motiva la compra; identificar objeciones
-  reales; encontrar el lenguaje del cliente; generar hooks para anuncios o videos;
-  preparar una guía creativa para paid ads; entender el perfil del comprador;
-  buscar el diferencial emocional de un producto; crear una base creativa para
-  campañas; o cuando alguien diga "qué ángulos usamos", "por qué no convierte",
-  "qué le duele al cliente", "cómo hablo con esta audiencia", "qué hook uso",
-  "insights del cliente", "ángulos de marketing", "guía para video", "brief creativo".
-  También activala cuando el usuario tenga el reporte de 7 Maletas listo y quiera
-  convertirlo en dirección creativa para anuncios.
+description: Analiza la psicología del comprador de un producto o marca y entrega ángulos, objeciones, lenguaje del cliente y hooks para anuncios. Usar ante 'qué ángulos usamos' o 'qué le duele al cliente'.
 ---
 
 # Detective de Ángulos — Psicología del Consumidor para Creatividad Publicitaria
