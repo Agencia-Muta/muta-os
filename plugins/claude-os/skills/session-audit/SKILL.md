@@ -66,10 +66,33 @@ Si dudás, preguntá. Nunca asumir raíz por defecto.
 Toda entrada nueva en cualquier `MEMORY.md` se prefija con `[YYYY-MM]` (ej: `[2026-07] El contrato de Baguette arranca en julio 2026.`). Sin el prefijo no hay forma de detectar datos viejos en futuras auditorías. Las reglas de `CLAUDE.md` no se fechan.
 
 **Umbrales (aplican a ambos modos):**
-- `CLAUDE.md` (raíz o estación) → **200 líneas** (la guía de Anthropic: "target under 200 lines per CLAUDE.md file", https://code.claude.com/docs/en/memory). Un archivo de dueño que se lee bajo demanda no tiene umbral de líneas: su tope es el de caracteres de la misma guía.
+- `CLAUDE.md` (raíz o estación) → **200 líneas o 2.000 palabras, lo que se pase primero** (la guía de Anthropic: "target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence", https://code.claude.com/docs/en/memory). Las palabras se cuentan porque lo que cuesta es el contexto y no los renglones: un raíz de 146 líneas con párrafos largos pesaba 4.638 palabras y pasaba el control de líneas. Las 2.000 equivalen a 200 líneas de unas diez palabras; el número no es de la guía. Un archivo de dueño que se lee bajo demanda no tiene umbral de líneas ni de palabras: su tope es el de caracteres de la misma guía.
 - `MEMORY.md` (raíz o estación) → **150 líneas**
-- **Contá siempre con `wc -l`. Nunca estimes a ojo.**
+- **Contá siempre con `wc -l` y `wc -w`. Nunca estimes a ojo.**
 - Si `MEMORY.md` raíz supera su umbral, el procedimiento definido en el raíz es: comprimir y mover lo viejo a `archivo-historico.md`. Proponé esa compresión (mostrando qué se movería) en vez de solo avisar.
+
+**Cómo se achica un `CLAUDE.md` sobre su umbral (aplica a ambos modos):**
+
+Un `CLAUDE.md` se carga entero en cada sesión que lo alcanza. Achicarlo es sacar cada regla que no vale para toda tarea y llevarla a un lugar que cargue solo cuando hace falta. El lugar lo decide qué dispara la regla:
+
+1. **Se aplica al trabajar con ciertos archivos o carpetas** (una carpeta `repo-`, las piezas de un cliente, los `.html`) → un archivo en `.claude/rules/` de la raíz del OS, con las rutas en el frontmatter. Carga solo cuando se lee o edita un archivo que coincide:
+
+```
+---
+paths:
+  - "**/repo-*/**"
+---
+[las reglas, completas]
+```
+
+2. **Se aplica a una acción que no pasa por un archivo** (mandar un mensaje, operar una plataforma por conector, cargar una tarea) → a su dueño (regla de dueño), o a una skill si es un procedimiento. Acá un rule con `paths` no sirve: se dispara por archivo leído, no por el tema de la conversación, y no cargaría nunca.
+3. **Es de un tipo de trabajo** → al `CLAUDE.md` de su estación, que carga recién cuando se toca un archivo de esa carpeta.
+
+No achican nada un rule sin `paths` ni un `@import`: los dos cargan al arrancar, igual que el `CLAUDE.md`.
+
+La regla se mueve completa, con su condición y su motivo, y sale del `CLAUDE.md`. Si el destino es un dueño que se lee por instrucción, su fila tiene que estar en la lista de acciones del raíz: sin esa fila nadie lo abre.
+
+Antes del primer rule en una superficie (Code, Cowork), probá que ahí cargue: un rule de prueba con una palabra inventada y `paths` a una carpeta de prueba; en una sesión nueva leé un archivo de esa carpeta y preguntá por la palabra. Si no aparece, en esa superficie esas reglas van al dueño o a la estación. En Claude Code está probado (nov-2026): cargó al leer el archivo que coincidía y no cargó al leer otro ni al hablar del tema.
 
 ---
 
@@ -114,7 +137,7 @@ find "$RAIZ" \( -name "CLAUDE.md" -o -name "MEMORY.md" \) \
   -not -path "*/node_modules/*" -not -path "$RAIZ/_archivo/*" -not -path "$RAIZ/_to_delete/*"
 ```
 
-2. **Leé `CLAUDE.md` y `MEMORY.md` raíz.** Contá líneas con `wc -l` y compará contra los umbrales.
+2. **Leé `CLAUDE.md` y `MEMORY.md` raíz.** Contá líneas con `wc -l` y palabras con `wc -w`, y compará contra los umbrales.
 3. **Leé los archivos de referencia que se usaron en esta sesión.** Están en la tabla de Referencias del `CLAUDE.md` raíz: leé esa tabla y tomá de ahí los que apliquen a lo que se trabajó hoy. No los leas todos siempre: leé los que la sesión tocó, más el dueño de cada acción que aparezca en un hallazgo.
 4. **Listá lo que la memoria automática guardó en esta sesión**, si la sesión la tiene. Buscá solo en la carpeta de memoria de este proyecto (Code la nombra en sus instrucciones de sistema, en la sección de memoria), no en `~/.claude/projects/*`, que trae las de todos los proyectos. Tomá desde la fecha en que arrancó la sesión (la que figura al principio del contexto), no desde hoy, para no perder lo guardado antes de la medianoche: `find "<carpeta de memoria del proyecto>" -name "*.md" -newermt "<fecha de inicio>"`. Si el archivo trae el id de la sesión que lo creó, entran solo los de esta sesión (si no lo trae, entra por fecha): los de otras sesiones abiertas el mismo día los audita cada una, y traerlos acá repite el mismo ítem en cada reporte. Cada archivo que queda es algo que Claude Code guardó por su cuenta: entra al PASO 1 como hallazgo, aunque la conversación no lo muestre, y pasa el mismo filtro previo que el resto. En Cowork esa carpeta no se ve: decilo en una línea y seguí.
 5. Los `CLAUDE.md` de las estaciones no se leen todavía. Solo los que resulten destino de un hallazgo (ver filtro del PASO 1).
@@ -252,7 +275,7 @@ Antes de proponer dónde guardar, chequeá estas dos condiciones:
 
 ### 3A. ¿Raíz se está inflando?
 
-- Si `CLAUDE.md` raíz supera **200 líneas**: emitilo como 📈 ESCALA en el PASO 4 y preguntá si Mati quiere que identifiques qué secciones podrían moverse a una estación antes de agregar más. No guardes nada en raíz hasta que confirme.
+- Si `CLAUDE.md` raíz, o el de la estación donde va un hallazgo, supera **200 líneas o 2.000 palabras**: emitilo como 📈 ESCALA en el PASO 4 con la compartimentación ya armada: qué reglas salen y a qué destino va cada una, según "Cómo se achica un `CLAUDE.md` sobre su umbral". No guardes nada en ese archivo hasta que confirme.
 - Si `MEMORY.md` raíz supera **150 líneas**: emitilo como 📈 ESCALA y proponé comprimir y mover lo viejo a `archivo-historico.md`, mostrando qué entradas se moverían. Guardá lo nuevo recién después de resolver la compresión.
 
 ### 3B. ¿Hay candidatos para una estación nueva?
@@ -310,7 +333,7 @@ Reglas del reporte:
 - Entra solo lo que se guardó y lo que Mati tiene que decidir. Queda afuera lo descartado por los filtros, los duplicados, los archivos leídos, los umbrales que están en orden, el método y el porqué de cada destino: nada de eso cambia lo que él hace.
 - Un grupo sin ítems no aparece, tampoco la línea de correcciones únicas, y la línea final de deshacer va solo si hay algo guardado. Sin hallazgos, el reporte entero es una línea: "No encontré nada nuevo para guardar."
 - Cada ítem de TU DECISIÓN se contesta con sí, no o una opción. Si lo que se aprueba es una escritura, lleva el texto exacto y el destino con su sección; si aprobarlo borra o cambia texto que ya está, muestra también qué sale. Un conflicto que toca más de una regla las cita todas.
-- La marca (⚔️ 🌐 🧩 📈 📁 📋) va adelante solo si aplica. Un 🌐 GLOBAL lleva el texto listo para pegar en su `CLAUDE.md` global; un 📈 las líneas del archivo y su umbral; un 📁 la acción que cubre y qué reglas se mueven ahí; la limpieza de memoria nombra cada archivo; la candidata a automatizar, cómo correría sola y cuántas horas libera.
+- La marca (⚔️ 🌐 🧩 📈 📁 📋) va adelante solo si aplica. Un 🌐 GLOBAL lleva el texto listo para pegar en su `CLAUDE.md` global; un 📈 las líneas y las palabras del archivo, su umbral y, si es un `CLAUDE.md`, cada regla que sale con su destino; un 📁 la acción que cubre y qué reglas se mueven ahí; la limpieza de memoria nombra cada archivo; la candidata a automatizar, cómo correría sola y cuántas horas libera.
 - La numeración es corrida entre los dos grupos, para que pueda contestar "va el 3, el 4 gana lo de hoy, sacá el 1". Este reporte es la excepción a preguntarle de a una cosa por vez: son aprobaciones por número.
 - Dudas que se resuelven con una misma respuesta van en un solo ítem; si cada una necesita la suya, un ítem cada una.
 - El nombre del archivo de cada ítem es un link que lo abre; la sección va al lado, en texto.
@@ -345,7 +368,7 @@ Lo que se escribe después de su respuesta se confirma en una línea por archivo
 - Si se crea una estación nueva: actualizar el Mapa de Enrutamiento como parte del mismo cambio
 
 **Antes de mostrar el reporte**, evaluá si se cumplen dos o más de estas condiciones:
-- Raíz está cerca o sobre el umbral de líneas
+- Raíz está cerca o sobre su umbral
 - Varios hallazgos fueron a raíz porque no había estación disponible
 - Se propuso crear una estación nueva
 - Hubo dudas de nivel que se resolvieron yendo a raíz por defecto

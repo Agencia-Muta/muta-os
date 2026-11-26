@@ -42,9 +42,9 @@ Terminadas las rondas, corré una **ronda de cierre** sobre el índice acumulado
 
 ## SYS-PASO 1: Relevamiento del sistema
 
-1. `CLAUDE.md` raíz: contá líneas con `wc -l`, identificá secciones
+1. `CLAUDE.md` raíz: contá líneas con `wc -l` y palabras con `wc -w`, identificá secciones
 2. `MEMORY.md` raíz: contá líneas con `wc -l`, identificá secciones
-3. Para cada `CLAUDE.md`/`MEMORY.md` que devolvió el `find`: leelo y contá líneas con `wc -l`
+3. Para cada `CLAUDE.md`/`MEMORY.md` que devolvió el `find`: leelo y contá líneas con `wc -l`; en los `CLAUDE.md`, también palabras con `wc -w`
 4. Para cada archivo de referencia de la tabla del raíz: leelo y contá líneas
 5. Listá el nivel raíz de la carpeta (`ls`) y anotá los archivos sueltos que no sean CLAUDE.md, MEMORY.md o archivo-historico.md
 6. Listá **todas las carpetas del sistema, a cualquier profundidad**, tengan o no `CLAUDE.md`, y compará contra el Mapa de Enrutamiento: anotá qué carpetas están en disco y no en el mapa, y qué filas del mapa apuntan a carpetas que no existen. Las sub-estaciones cuentan: una carpeta con `CLAUDE.md` propio dentro de otra estación necesita su fila igual, o estar declarada en la tabla de Recursos de su estación madre.
@@ -54,13 +54,13 @@ Terminadas las rondas, corré una **ronda de cierre** sobre el índice acumulado
 Construí internamente esta tabla antes de continuar:
 
 ```
-ARCHIVO                        | LÍNEAS | UMBRAL | ESTADO
--------------------------------|--------|--------|--------
-CLAUDE.md (raíz)               |  ___   |  200   |  ✅/⚠️
-MEMORY.md (raíz)               |  ___   |  150   |  ✅/⚠️
-[estación]/CLAUDE.md           |  ___   |  200   |  ✅/⚠️
-[estación]/MEMORY.md           |  ___   |  150   |  ✅/⚠️
-[archivo de referencia]        |  ___   |  :    |  ✅/⚠️
+ARCHIVO                        | LÍNEAS | PALABRAS | UMBRAL        | ESTADO
+-------------------------------|--------|----------|---------------|--------
+CLAUDE.md (raíz)               |  ___   |   ___    | 200 o 2.000   |  ✅/⚠️
+MEMORY.md (raíz)               |  ___   |    :     | 150           |  ✅/⚠️
+[estación]/CLAUDE.md           |  ___   |   ___    | 200 o 2.000   |  ✅/⚠️
+[estación]/MEMORY.md           |  ___   |    :     | 150           |  ✅/⚠️
+[archivo de referencia]        |  ___   |    :     |  :            |  ✅/⚠️
 ```
 
 ---
@@ -189,7 +189,7 @@ El reporte trae solo lo que él tiene que decidir. Formato:
 SALUD DEL CLAUDE OS: [N] críticos, [N] mejoras, [N] de mantenimiento. [N] archivos sobre su umbral.
 
 SOBRE EL UMBRAL
-1. [archivo]: [líneas] de [umbral] → [qué se comprime o se mueve, y a dónde]
+1. [archivo]: [líneas o palabras] de [umbral] → [qué se comprime o se mueve, y a dónde]
 
 🔴 CRÍTICOS
 2. [problema en una línea] ([archivo])
@@ -233,6 +233,7 @@ Por cada cambio aprobado:
 - **Resolver contradicciones:** conservar la versión que Mati confirmó, eliminar la otra.
 - **Corregir referencias rotas:** actualizar la ruta en todos los archivos que la citan.
 - **Actualizar Mapa de Enrutamiento:** agregar, quitar o reparar filas según corresponda.
+- **Achicar un CLAUDE.md sobre umbral:** cada regla que sale va al destino que le toca según "Cómo se achica un `CLAUDE.md` sobre su umbral" de `SKILL.md` (un rule con `paths`, su dueño, una skill o su estación), completa, y se borra del origen.
 - **Comprimir MEMORY.md sobre umbral:** las entradas viejas del raíz van a `archivo-historico.md`; las de una estación, a un `archivo-historico.md` dentro de esa estación.
 
 Al terminar, confirmar en una línea por archivo qué cambió.
